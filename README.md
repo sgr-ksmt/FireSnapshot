@@ -1,6 +1,6 @@
 # FireSnapshot
 ![Swift](https://img.shields.io/badge/swift-5.1-orange.svg?style=for-the-badge)
-![Swift](https://img.shields.io/badge/firebase-6.9.0-orange.svg?style=for-the-badge)
+![Firebase](https://img.shields.io/badge/firebase-6.9.0-orange.svg?style=for-the-badge)
 ![Platforms](https://img.shields.io/badge/Platforms-macOS-blue.svg?style=for-the-badge)
 [![Git Version](https://img.shields.io/github/release/sgr-ksmt/FireSnapshot.svg?style=for-the-badge)](https://github.com/sgr-ksmt/FireSnapshot/releases)
 [![license](https://img.shields.io/github/license/sgr-ksmt/FireSnapshot.svg?style=for-the-badge)](https://github.com/sgr-ksmt/FireSnapshot/blob/master/LICENSE)
@@ -68,6 +68,13 @@ or, run `./scripts/test.sh`.
 - If you have a feature request, open an issue.
 - If you want to contribute, submit a pull request.:muscle:
 
+## Credit
+
+FireSnapshot was inspired by followings:
+
+- [starhoshi/tart](https://github.com/starhoshi/tart)
+- [alickbass/CodableFirebase](https://github.com/alickbass/CodableFirebase)
+
 ## License
 
-**FireTodo** is under MIT license. See the [LICENSE](LICENSE) file for more info.
+**FireSnapshot** is under MIT license. See the [LICENSE](LICENSE) file for more info.
