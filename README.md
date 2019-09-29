@@ -18,6 +18,14 @@ Firebase Cloud Firestore Model Framework using Codable.
 
 🚧
 
+## Installation
+
+- CocoaPods
+
+```ruby
+pod 'FireSnapshot', '~> 0.2.0'
+```
+
 ## Dependencies
 
 - Firebase: v6.9.0 or higher.
