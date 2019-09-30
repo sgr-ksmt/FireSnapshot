@@ -51,8 +51,8 @@ public final class Snapshot<D>: SnapshotType where D: Codable {
 
         self.init(data: data, reference: snapshot.reference)
         if data is HasTimestamps {
-            _createTime = snapshot.data()?[HasTimestampsKeys.createTime] as? Timestamp
-            _updateTime = snapshot.data()?[HasTimestampsKeys.updateTime] as? Timestamp
+            _createTime = snapshot.data()?[SnapshotTimestampKey.createTime.rawValue] as? Timestamp
+            _updateTime = snapshot.data()?[SnapshotTimestampKey.updateTime.rawValue] as? Timestamp
         }
     }
 }

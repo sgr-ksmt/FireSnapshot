@@ -83,3 +83,55 @@ public final class QueryBuilder<D> where D: FieldNameReferable {
         query = builder(query, fieldName)
     }
 }
+
+extension QueryBuilder where D: HasTimestamps {
+    public func `where`(_ key: SnapshotTimestampKey, isEqualTo value: Timestamp) -> Self {
+        query = query.whereField(key.rawValue, isEqualTo: value)
+        return self
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isLessThan value: Timestamp) -> Self {
+        query = query.whereField(key.rawValue, isLessThan: value)
+        return self
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isGreaterThan value: Timestamp) -> Self {
+        query = query.whereField(key.rawValue, isGreaterThan: value)
+        return self
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isLessThanOrEqualTo value: Timestamp) -> Self {
+        query = query.whereField(key.rawValue, isLessThanOrEqualTo: value)
+        return self
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isGreaterThanOrEqualTo value: Timestamp) -> Self {
+        query = query.whereField(key.rawValue, isGreaterThanOrEqualTo: value)
+        return self
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isEqualTo value: Date) -> Self {
+        `where`(key, isEqualTo: Timestamp(date: value))
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isLessThan value: Date) -> Self {
+        `where`(key, isLessThan: Timestamp(date: value))
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isGreaterThan value: Date) -> Self {
+        `where`(key, isGreaterThan: Timestamp(date: value))
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isLessThanOrEqualTo value: Date) -> Self {
+        `where`(key, isLessThanOrEqualTo: Timestamp(date: value))
+    }
+
+    public func `where`(_ key: SnapshotTimestampKey, isGreaterThanOrEqualTo value: Date) -> Self {
+        `where`(key, isGreaterThanOrEqualTo: Timestamp(date: value))
+    }
+
+    public func order(_ key: SnapshotTimestampKey, descending: Bool = false) -> Self {
+        query = query.order(by: key.rawValue, descending: descending)
+        return self
+    }
+}
