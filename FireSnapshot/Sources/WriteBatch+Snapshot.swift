@@ -6,21 +6,17 @@ import Foundation
 import FirebaseFirestore
 
 extension WriteBatch {
-    func set<D>(_ snapshot: Snapshot<D>) throws {
+    func create<D>(_ snapshot: Snapshot<D>) throws {
         var fields = try Firestore.Encoder().encode(snapshot.data)
         if snapshot.data is HasTimestamps {
-            fields[HasTimestampsKeys.createTime] = FieldValue.serverTimestamp()
-            fields[HasTimestampsKeys.updateTime] = FieldValue.serverTimestamp()
+            fields[SnapshotTimestampKey.createTime.rawValue] = FieldValue.serverTimestamp()
+            fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
         }
-        setData(fields, forDocument: snapshot.reference)
+        setData(try snapshot.extractWriteFieldsForCreate(), forDocument: snapshot.reference)
     }
 
     func update<D>(_ snapshot: Snapshot<D>) throws {
-        var fields = try Firestore.Encoder().encode(snapshot.data)
-        if snapshot.data is HasTimestamps {
-            fields[HasTimestampsKeys.updateTime] = FieldValue.serverTimestamp()
-        }
-        updateData(fields, forDocument: snapshot.reference)
+        updateData(try snapshot.extractWriteFieldsForUpdate(), forDocument: snapshot.reference)
     }
 
     func delete<D>(_ snapshot: Snapshot<D>) {
