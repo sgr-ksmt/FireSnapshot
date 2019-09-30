@@ -14,8 +14,8 @@ public extension Snapshot {
         do {
             var fields = try encoder.encode(data)
             if data is HasTimestamps {
-                fields[HasTimestampsKeys.createTime] = FieldValue.serverTimestamp()
-                fields[HasTimestampsKeys.updateTime] = FieldValue.serverTimestamp()
+                fields[SnapshotTimestampKey.createTime.rawValue] = FieldValue.serverTimestamp()
+                fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
             }
             reference.setData(fields, merge: merge, completion: Self.writeCompletion(completion))
         } catch {
@@ -28,7 +28,7 @@ public extension Snapshot {
         do {
             var fields = try encoder.encode(data)
             if data is HasTimestamps {
-                fields[HasTimestampsKeys.updateTime] = FieldValue.serverTimestamp()
+                fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
             }
             reference.updateData(fields, completion: Self.writeCompletion(completion))
         } catch {

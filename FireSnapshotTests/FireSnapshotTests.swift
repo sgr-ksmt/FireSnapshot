@@ -49,20 +49,28 @@ class FireSnapshotTests: XCTestCase {
                 exp.fulfill()
             default:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    Snapshot<User>.get(snapshot.path) { result in
-                        switch result {
-                        case let .success(user):
-                            XCTAssertEqual(user.data.id.id, snapshot.reference.documentID)
-                            XCTAssertEqual(user.data.taskRef.path, taskSnapshot.reference.path)
-                            user.data.$taskRef.get { result in
-                                XCTAssertEqual((try? result.get())?.data.name, "test")
-                                exp.fulfill()
-                            }
-                        case let .failure(error):
-                            XCTFail("\(error)")
-                            exp.fulfill()
-                        }
+                    Snapshot<User>.get(CollectionPath("users"), queryBuilder: {
+                        QueryBuilder<User>($0)
+                            .where(.createTime, isLessThanOrEqualTo: Date())
+                            .generate()
+                    }) { result in
+                        XCTAssertEqual((try? result.get())?.count, 1)
+                        exp.fulfill()
                     }
+//                    Snapshot<User>.get(snapshot.path) { result in
+//                        switch result {
+//                        case let .success(user):
+//                            XCTAssertEqual(user.data.id.id, snapshot.reference.documentID)
+//                            XCTAssertEqual(user.data.taskRef.path, taskSnapshot.reference.path)
+//                            user.data.$taskRef.get { result in
+//                                XCTAssertEqual((try? result.get())?.data.name, "test")
+//                                exp.fulfill()
+//                            }
+//                        case let .failure(error):
+//                            XCTFail("\(error)")
+//                            exp.fulfill()
+//                        }
+//                    }
                 }
             }
         }
