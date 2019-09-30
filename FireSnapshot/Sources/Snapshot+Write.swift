@@ -8,11 +8,10 @@ import FirebaseFirestore
 public extension Snapshot {
     typealias WriteResultBlock = (Result<Void, Error>) -> Void
 
-    func create(encoder: Firestore.Encoder = .init(),
-             merge: Bool = false,
-             completion: @escaping WriteResultBlock = { _ in }) {
+    func create(merge: Bool = false,
+                completion: @escaping WriteResultBlock = { _ in }) {
         do {
-            var fields = try encoder.encode(data)
+            var fields = try Firestore.Encoder().encode(data)
             if data is HasTimestamps {
                 fields[SnapshotTimestampKey.createTime.rawValue] = FieldValue.serverTimestamp()
                 fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
@@ -23,10 +22,9 @@ public extension Snapshot {
         }
     }
 
-    func update(encoder: Firestore.Encoder = .init(),
-                completion: @escaping WriteResultBlock = { _ in }) {
+    func update(completion: @escaping WriteResultBlock = { _ in }) {
         do {
-            var fields = try encoder.encode(data)
+            var fields = try Firestore.Encoder().encode(data)
             if data is HasTimestamps {
                 fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
             }
@@ -36,7 +34,7 @@ public extension Snapshot {
         }
     }
 
-    func remove(completion: @escaping WriteResultBlock = { _ in }) {
+    func delete(completion: @escaping WriteResultBlock = { _ in }) {
         reference.delete(completion: Self.writeCompletion(completion))
     }
 
