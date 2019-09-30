@@ -76,4 +76,36 @@ class FireSnapshotTests: XCTestCase {
         }
         wait(for: [exp], timeout: 10.0)
     }
+
+    func testBatch() {
+        let exp = expectation(description: #function)
+
+        let task = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
+        let task2 = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
+        let user = Snapshot<User>(data: .init(taskRef: task.reference), path: CollectionPath("users"))
+
+        task2.create { result in
+            switch result {
+            case .success:
+                task2.data.name = "mike"
+                let batch = Firestore.firestore().batch()
+                try! batch.create(task)
+                try! batch.create(user)
+                try! batch.update(task2)
+                batch.commit { error in
+                    if let error = error {
+                        XCTFail("\(error)")
+                        exp.fulfill()
+                    } else {
+                        exp.fulfill()
+                    }
+                }
+
+            case let .failure(error):
+                XCTFail("\(error)")
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 10.0)
+    }
 }
