@@ -108,4 +108,25 @@ class FireSnapshotTests: XCTestCase {
         }
         wait(for: [exp], timeout: 10.0)
     }
+
+    func testTransaction() {
+        let exp = expectation(description: #function)
+
+        Firestore.firestore().runTransaction({ t, errorPointer -> Any? in
+            do {
+                let task = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
+                try t.create(task)
+            } catch {
+                errorPointer?.pointee = error as NSError
+            }
+            return nil
+        }) { result, error in
+            if let error = error {
+                XCTFail("\(error)")
+            }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 10.0)
+    }
 }
