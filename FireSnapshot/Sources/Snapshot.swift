@@ -55,6 +55,23 @@ public final class Snapshot<D>: SnapshotType where D: Codable {
             _updateTime = snapshot.data()?[SnapshotTimestampKey.updateTime.rawValue] as? Timestamp
         }
     }
+
+    func extractWriteFieldsForCreate() throws -> [String: Any] {
+        var fields = try Firestore.Encoder().encode(data)
+        if data is HasTimestamps {
+            fields[SnapshotTimestampKey.createTime.rawValue] = FieldValue.serverTimestamp()
+            fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
+        }
+        return fields
+    }
+
+    func extractWriteFieldsForUpdate() throws -> [String: Any] {
+        var fields = try Firestore.Encoder().encode(data)
+        if data is HasTimestamps {
+            fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
+        }
+        return fields
+    }
 }
 
 extension Snapshot: Equatable where D: Equatable {

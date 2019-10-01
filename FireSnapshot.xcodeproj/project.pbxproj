@@ -39,6 +39,8 @@
 		1617CD662340CC9100099FC5 /* FirestoreDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD642340CC9100099FC5 /* FirestoreDecoder.swift */; };
 		1617CD672340CC9100099FC5 /* FirestoreEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD652340CC9100099FC5 /* FirestoreEncoder.swift */; };
 		1659EBEA234113D900BD510D /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBE9234113D900BD510D /* Reference.swift */; };
+		1659EBF02341CBEE00BD510D /* WriteBatch+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBEF2341CBEE00BD510D /* WriteBatch+Snapshot.swift */; };
+		1659EBF223431E8800BD510D /* Transaction+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF123431E8800BD510D /* Transaction+Snapshot.swift */; };
 		C7AC0728461714610F570CB5 /* Pods_FireSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9C3F24DAB7C0106A5A122D /* Pods_FireSnapshotTests.framework */; };
 		CE86EA2FE75980E5237BCED1 /* Pods_FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8925B294155F0A90A59C088 /* Pods_FireSnapshot.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,8 @@
 		1617CD642340CC9100099FC5 /* FirestoreDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreDecoder.swift; sourceTree = "<group>"; };
 		1617CD652340CC9100099FC5 /* FirestoreEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEncoder.swift; sourceTree = "<group>"; };
 		1659EBE9234113D900BD510D /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
+		1659EBEF2341CBEE00BD510D /* WriteBatch+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteBatch+Snapshot.swift"; sourceTree = "<group>"; };
+		1659EBF123431E8800BD510D /* Transaction+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+Snapshot.swift"; sourceTree = "<group>"; };
 		25B42645485A6D1C6682724A /* Pods-FireSnapshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.debug.xcconfig"; sourceTree = "<group>"; };
 		648BB37871CC0A94356CF0DB /* Pods-FireSnapshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.release.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.release.xcconfig"; sourceTree = "<group>"; };
 		B90A83261856C6D7C28E7346 /* Pods-FireSnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshotTests.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshotTests/Pods-FireSnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				1617CD452340B23D00099FC5 /* FieldNameReferable.swift */,
 				1617CD472340B3F900099FC5 /* QueryBuilder.swift */,
 				1659EBE9234113D900BD510D /* Reference.swift */,
+				1659EBEF2341CBEE00BD510D /* WriteBatch+Snapshot.swift */,
+				1659EBF123431E8800BD510D /* Transaction+Snapshot.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -402,12 +408,14 @@
 				1617CD5C2340CB1700099FC5 /* CodablePassThroughTypes.swift in Sources */,
 				1607A5BA233F42580034BB35 /* DocumentTimestamps.swift in Sources */,
 				1617CD592340CB1700099FC5 /* SelfDocumentId.swift in Sources */,
+				1659EBF223431E8800BD510D /* Transaction+Snapshot.swift in Sources */,
 				1607A5B6233F41C50034BB35 /* Path.swift in Sources */,
 				1607A5B8233F42440034BB35 /* Snapshot.swift in Sources */,
 				1617CD602340CB1700099FC5 /* FieldValue+Encodable.swift in Sources */,
 				1617CD44233FB88200099FC5 /* Result+.swift in Sources */,
 				1617CD3E233FA5B300099FC5 /* IncrementableDouble.swift in Sources */,
 				1659EBEA234113D900BD510D /* Reference.swift in Sources */,
+				1659EBF02341CBEE00BD510D /* WriteBatch+Snapshot.swift in Sources */,
 				1617CD572340CB1700099FC5 /* WriteBatch+WriteEncodable.swift in Sources */,
 				1617CD672340CC9100099FC5 /* FirestoreEncoder.swift in Sources */,
 				1617CD612340CB1700099FC5 /* GeoPoint+Codable.swift in Sources */,

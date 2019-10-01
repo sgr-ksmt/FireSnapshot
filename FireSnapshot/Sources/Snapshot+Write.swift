@@ -8,35 +8,24 @@ import FirebaseFirestore
 public extension Snapshot {
     typealias WriteResultBlock = (Result<Void, Error>) -> Void
 
-    func create(encoder: Firestore.Encoder = .init(),
-             merge: Bool = false,
-             completion: @escaping WriteResultBlock = { _ in }) {
-        do {
-            var fields = try encoder.encode(data)
-            if data is HasTimestamps {
-                fields[SnapshotTimestampKey.createTime.rawValue] = FieldValue.serverTimestamp()
-                fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
-            }
-            reference.setData(fields, merge: merge, completion: Self.writeCompletion(completion))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-
-    func update(encoder: Firestore.Encoder = .init(),
+    func create(merge: Bool = false,
                 completion: @escaping WriteResultBlock = { _ in }) {
         do {
-            var fields = try encoder.encode(data)
-            if data is HasTimestamps {
-                fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
-            }
-            reference.updateData(fields, completion: Self.writeCompletion(completion))
+            reference.setData(try extractWriteFieldsForCreate(), merge: merge, completion: Self.writeCompletion(completion))
         } catch {
             completion(.failure(error))
         }
     }
 
-    func remove(completion: @escaping WriteResultBlock = { _ in }) {
+    func update(completion: @escaping WriteResultBlock = { _ in }) {
+        do {
+            reference.updateData(try extractWriteFieldsForUpdate(), completion: Self.writeCompletion(completion))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
+    func delete(completion: @escaping WriteResultBlock = { _ in }) {
         reference.delete(completion: Self.writeCompletion(completion))
     }
 
