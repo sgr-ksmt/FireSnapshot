@@ -110,7 +110,7 @@ DEPENDENCIES:
   - Firebase/Firestore (~> 6.9)
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
