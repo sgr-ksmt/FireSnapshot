@@ -9,7 +9,7 @@ import FirebaseFirestore
 private let dateFormatter: DateFormatter = {
     let f = DateFormatter()
     f.locale = Locale(identifier: "en-US")
-    f.dateFormat = "yyyyMMddHHmmss"
+    f.dateFormat = "yyyyMMddHHmmssSSS"
     return f
 }()
 
