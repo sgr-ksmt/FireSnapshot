@@ -44,7 +44,6 @@
 		1659EBF423433F9300BD510D /* AtomicArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF323433F9300BD510D /* AtomicArray.swift */; };
 		1659EBF6234446B900BD510D /* DeletableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF5234446B900BD510D /* DeletableField.swift */; };
 		16B699E4234636DD005877A9 /* CollectionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B699E3234636DD005877A9 /* CollectionGroup.swift */; };
-		16B699E623463D23005877A9 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B699E523463D23005877A9 /* Deprecated.swift */; };
 		C7AC0728461714610F570CB5 /* Pods_FireSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9C3F24DAB7C0106A5A122D /* Pods_FireSnapshotTests.framework */; };
 		CE86EA2FE75980E5237BCED1 /* Pods_FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8925B294155F0A90A59C088 /* Pods_FireSnapshot.framework */; };
 /* End PBXBuildFile section */
@@ -100,7 +99,6 @@
 		1659EBF323433F9300BD510D /* AtomicArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicArray.swift; sourceTree = "<group>"; };
 		1659EBF5234446B900BD510D /* DeletableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableField.swift; sourceTree = "<group>"; };
 		16B699E3234636DD005877A9 /* CollectionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGroup.swift; sourceTree = "<group>"; };
-		16B699E523463D23005877A9 /* Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
 		25B42645485A6D1C6682724A /* Pods-FireSnapshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.debug.xcconfig"; sourceTree = "<group>"; };
 		648BB37871CC0A94356CF0DB /* Pods-FireSnapshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.release.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.release.xcconfig"; sourceTree = "<group>"; };
 		B90A83261856C6D7C28E7346 /* Pods-FireSnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshotTests.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshotTests/Pods-FireSnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				1659EBF323433F9300BD510D /* AtomicArray.swift */,
 				1659EBF5234446B900BD510D /* DeletableField.swift */,
 				16B699E3234636DD005877A9 /* CollectionGroup.swift */,
-				16B699E523463D23005877A9 /* Deprecated.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -432,7 +429,6 @@
 				1617CD672340CC9100099FC5 /* FirestoreEncoder.swift in Sources */,
 				1617CD612340CB1700099FC5 /* GeoPoint+Codable.swift in Sources */,
 				1659EBF423433F9300BD510D /* AtomicArray.swift in Sources */,
-				16B699E623463D23005877A9 /* Deprecated.swift in Sources */,
 				1617CD5E2340CB1700099FC5 /* DocumentReference+Codable.swift in Sources */,
 				1617CD5B2340CB1700099FC5 /* ExplicitNull.swift in Sources */,
 				1617CD632340CB1700099FC5 /* CodableErrors.swift in Sources */,
