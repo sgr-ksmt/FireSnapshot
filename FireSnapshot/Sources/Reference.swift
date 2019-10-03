@@ -26,11 +26,11 @@ public struct Reference<D>: Codable  where D: Codable {
         self
     }
 
-    func get(source: FirestoreSource = .default, completion: @escaping Snapshot<D>.DocumentReadResultBlock) {
+    func get(source: FirestoreSource = .default, completion: @escaping Snapshot<D>.DocumentReadResultBlock<D>) {
         Snapshot<D>.get(wrappedValue, source: source, completion: completion)
     }
 
-    func listen(includeMetadataChanges: Bool = false, completion: @escaping Snapshot<D>.DocumentReadResultBlock) {
+    func listen(includeMetadataChanges: Bool = false, completion: @escaping Snapshot<D>.DocumentReadResultBlock<D>) {
         Snapshot<D>.listen(wrappedValue, includeMetadataChanges: includeMetadataChanges, completion: completion)
     }
 }
