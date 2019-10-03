@@ -11,7 +11,9 @@ Firebase Cloud Firestore Model Framework using Codable.
 ## Feature
 
 - Support Codable.
+- Support `ArrayUnion/ArrayRemove` with `@propertyWrapper`.
 - Support `FieldValue.increment` with `@propertyWrapper`
+- Support `FieldValue.delete()`.
 - Support KeyPath based query.
 
 ## Usage
@@ -23,7 +25,7 @@ Firebase Cloud Firestore Model Framework using Codable.
 - CocoaPods
 
 ```ruby
-pod 'FireSnapshot', '~> 0.2.0'
+pod 'FireSnapshot', '~> 0.3.0'
 ```
 
 ## Dependencies
@@ -34,9 +36,7 @@ pod 'FireSnapshot', '~> 0.2.0'
 
 ## ToDo
 
-- [ ] Supprt Batch.
-- [ ] Support Transaction.
-- [ ] Array Union/Remove.
+- [ ] Collection Group query.
 - [ ] Write documentation more and more.
 - [ ] Improve test coverage.
 
