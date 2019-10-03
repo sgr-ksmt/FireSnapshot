@@ -22,14 +22,14 @@ public extension Snapshot {
         reference.getDocument(source: source, completion: documentReadCompletion(completion))
     }
 
-    static func get(_ path: CollectionPath,
+    static func list(_ path: CollectionPath,
                     queryBuilder: QueryBuilder = { $0 },
                     source: FirestoreSource = .default,
                     completion: @escaping CollectionReadResultBlock<Data>) {
-        get(path.collectionReference, queryBuilder: queryBuilder, source: source, completion: completion)
+        list(path.collectionReference, queryBuilder: queryBuilder, source: source, completion: completion)
     }
 
-    static func get(_ reference: CollectionReference,
+    static func list(_ reference: CollectionReference,
                     queryBuilder: QueryBuilder = { $0 },
                     source: FirestoreSource = .default,
                     completion: @escaping CollectionReadResultBlock<Data>) {
@@ -39,7 +39,7 @@ public extension Snapshot {
         )
     }
 
-    static func get<T>(_ collectionGroup: CollectionGroup<T>,
+    static func list<T>(_ collectionGroup: CollectionGroup<T>,
                        queryBuilder: QueryBuilder = { $0 },
                        source: FirestoreSource = .default,
                        completion: @escaping CollectionReadResultBlock<T>) where T: Codable {
@@ -64,11 +64,11 @@ public extension Snapshot {
         )
     }
 
-    static func listen(_ path: CollectionPath,
+    static func listenList(_ path: CollectionPath,
                      queryBuilder: QueryBuilder = { $0 },
                      includeMetadataChanges: Bool = false,
                      completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {
-        listen(
+        listenList(
             path.collectionReference,
             queryBuilder: queryBuilder,
             includeMetadataChanges: includeMetadataChanges,
@@ -76,7 +76,7 @@ public extension Snapshot {
         )
     }
 
-    static func listen(_ reference: CollectionReference,
+    static func listenList(_ reference: CollectionReference,
                      queryBuilder: QueryBuilder = { $0 },
                      includeMetadataChanges: Bool = false,
                      completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {
@@ -86,7 +86,7 @@ public extension Snapshot {
         )
     }
 
-    static func listen<T>(_ collectionGroup: CollectionGroup<T>,
+    static func listenList<T>(_ collectionGroup: CollectionGroup<T>,
                        queryBuilder: QueryBuilder = { $0 },
                        includeMetadataChanges: Bool = false,
                        completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {
