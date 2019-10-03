@@ -7,9 +7,48 @@ import FirebaseFirestore
 
 @testable import FireSnapshot
 
+public struct DeletableFieldBox<T: Codable>: Codable {
+    @DeletableField var value: T?
+
+    public init(value: T? = nil) {
+        self.value = value
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if container.decodeNil() {
+            value = nil
+        } else {
+            value = try container.decode(T.self)
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        try _value.encode(to: encoder)
+    }
+}
+
 struct Task: Codable {
     var name: String = "test"
     @AtomicArray var userNames: [String] = []
+    var bio: DeletableFieldBox<String>? = .init(value: "Hogeeeeeeeeeeeeee!")
+
+//    enum CodingKeys: String, CodingKey {
+//        case name
+//        case userNames
+//        case bio
+//    }
+//
+//    init(userNames: [String] = []) {
+//        self.userNames = userNames
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        name = try container.decode(String.self, forKey: .name)
+//        userNames = try container.decode([String].self, forKey: .userNames)
+//        bio = try container.decodeIfPresent(String.self, forKey: .bio)
+//    }
 }
 
 struct User: Codable, HasTimestamps, FieldNameReferable {
@@ -142,6 +181,33 @@ class FireSnapshotTests: XCTestCase {
                     Snapshot<Task>.get(taskSnapshot.path) { result in
                         XCTAssertEqual((try? result.get())?.data.userNames.count, 3)
                         XCTAssertEqual((try? result.get())?.data.userNames, ["Mike", "John", "Lisa"])
+                        exp.fulfill()
+                    }
+                }
+            case let .failure(error):
+                XCTFail("\(error)")
+                exp.fulfill()
+            }
+        }
+
+        wait(for: [exp], timeout: 10.0)
+    }
+
+    func testDeletableField() {
+        let exp = expectation(description: #function)
+        let taskSnapshot = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
+        taskSnapshot.create { result in
+            switch result {
+            case .success:
+                taskSnapshot.data.bio?.$value.delete()
+                taskSnapshot.update { _ in
+                    Snapshot<Task>.get(taskSnapshot.path) { result in
+                        switch result {
+                        case let .success(task):
+                            XCTAssertEqual(task.data.bio?.value, nil)
+                        case let .failure(error):
+                            XCTFail("\(error)")
+                        }
                         exp.fulfill()
                     }
                 }

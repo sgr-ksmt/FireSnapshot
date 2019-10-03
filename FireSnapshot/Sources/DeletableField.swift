@@ -43,6 +43,7 @@ public struct DeletableField<V>: Codable where V: Codable {
 
     public mutating func delete() {
         deleted = true
+        wrappedValue = nil
     }
 
     public mutating func reset() {
