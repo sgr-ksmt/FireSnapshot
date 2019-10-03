@@ -5,49 +5,73 @@
 import Foundation
 import FirebaseFirestore
 
-@propertyWrapper
-public struct DeletableField<V>: Codable where V: Codable {
-    public var initialValue: V?
-    public var wrappedValue: V? {
-        didSet {
-            if wrappedValue != nil {
-                deleted = false
+public struct DeletableField<T: Codable>: Codable {
+    @propertyWrapper
+    public struct Box<V>: Codable where V: Codable {
+        private var initialValue: V?
+        public fileprivate(set) var wrappedValue: V? {
+            didSet {
+                if wrappedValue != nil {
+                    deleted = false
+                }
             }
         }
+        private var deleted: Bool = false
+        public var projectedValue: Self {
+            get { self }
+            set { self = newValue }
+        }
+        public init(wrappedValue: V?) {
+            initialValue = wrappedValue
+            self.wrappedValue = wrappedValue
+        }
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            let value = !container.decodeNil() ? try container.decode(V.self) : nil
+            initialValue = value
+            wrappedValue = value
+        }
+
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            if deleted {
+                try container.encode(FieldValue.delete())
+            } else {
+                try container.encode(wrappedValue)
+            }
+        }
+
+        mutating func delete() {
+            deleted = true
+            wrappedValue = nil
+        }
+
+        mutating func reset() {
+            wrappedValue = initialValue
+            deleted = false
+        }
     }
-    private var deleted: Bool = false
-    public var projectedValue: Self {
-        get { self }
-        set { self = newValue }
-    }
-    public init(wrappedValue: V?) {
-        initialValue = wrappedValue
-        self.wrappedValue = wrappedValue
+
+    @Box public var value: T?
+
+    public init(value: T? = nil) {
+        self.value = value
     }
 
     public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let value = try container.decode(V.self)
-        initialValue = value
-        wrappedValue = value
+        _value = try Box<T>(from: decoder)
     }
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        if deleted {
-            try container.encode(FieldValue.delete())
-        } else {
-            try container.encode(wrappedValue)
-        }
+        try _value.encode(to: encoder)
     }
 
     public mutating func delete() {
-        deleted = true
-        wrappedValue = nil
+        $value.delete()
     }
 
     public mutating func reset() {
-        wrappedValue = initialValue
-        deleted = false
+        $value.reset()
     }
 }
