@@ -46,7 +46,7 @@ public struct AtomicArray<E>: Codable where E: Codable, E: Equatable {
         }
     }
 
-    private mutating func reset() {
+    public mutating func reset() {
         wrappedValue = initialValue
         operation = nil
     }
