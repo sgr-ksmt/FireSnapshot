@@ -17,6 +17,10 @@ public extension Snapshot {
         }
     }
 
+    func merge(completion: @escaping WriteResultBlock = { _ in }) {
+        create(merge: true, completion: completion)
+    }
+
     func update(completion: @escaping WriteResultBlock = { _ in }) {
         do {
             reference.updateData(try extractWriteFieldsForUpdate(), completion: Self.writeCompletion(completion))
