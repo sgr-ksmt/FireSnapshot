@@ -15,7 +15,6 @@ public class CollectionPaths {
     }
 }
 
-
 public protocol FirestorePath: Equatable {
     var path: String { get }
     init(_ path: String)

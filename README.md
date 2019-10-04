@@ -20,12 +20,48 @@ Firebase Cloud Firestore Model Framework using Codable.
 
 🚧
 
+```swift
+// Define model that is adopted `Codable`
+struct User: Codable {
+    var name: String
+}
+
+// Define collection/document path
+extension CollectionPaths {
+    static let users = CollectionPath<User>("users")
+}
+
+extension DocumentPaths {
+    static func user(userID: String) -> DocumentPath<User> {
+        CollectionPaths.users.document(userID)
+    }
+}
+
+// Create user
+let user = Snapshot(data: .init(name: "Mike"), path: .users)
+user.create()
+
+// Update user
+user.data.name = "John"
+user.update()
+
+// Get user
+Snapshot.get(.user(userID: "xxxx")) { result in
+    switch result {
+    case let .success(user):
+        print(user.data.name)
+    case let .failure(error):
+        print(error)
+    }
+}
+```
+
 ## Installation
 
 - CocoaPods
 
 ```ruby
-pod 'FireSnapshot', '~> 0.3.0'
+pod 'FireSnapshot', '~> 0.4.0'
 ```
 
 ## Dependencies
@@ -36,7 +72,6 @@ pod 'FireSnapshot', '~> 0.3.0'
 
 ## ToDo
 
-- [ ] Collection Group query.
 - [ ] Write documentation more and more.
 - [ ] Improve test coverage.
 
