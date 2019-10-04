@@ -10,7 +10,7 @@ public extension Snapshot {
     typealias DocumentReadResultBlock<T: Codable> = (Result<Snapshot<T>, Error>) -> Void
     typealias CollectionReadResultBlock<T: Codable> = (Result<[Snapshot<T>], Error>) -> Void
 
-    static func get(_ path: DocumentPath,
+    static func get(_ path: DocumentPath<Data>,
                     source: FirestoreSource = .default,
                     completion: @escaping DocumentReadResultBlock<Data>) {
         get(path.documentReference, source: source, completion: completion)
@@ -22,7 +22,7 @@ public extension Snapshot {
         reference.getDocument(source: source, completion: documentReadCompletion(completion))
     }
 
-    static func get(_ path: CollectionPath,
+    static func get(_ path: CollectionPath<Data>,
                     queryBuilder: QueryBuilder = { $0 },
                     source: FirestoreSource = .default,
                     completion: @escaping CollectionReadResultBlock<Data>) {
@@ -39,17 +39,17 @@ public extension Snapshot {
         )
     }
 
-    static func get<T>(_ collectionGroup: CollectionGroup<T>,
-                       queryBuilder: QueryBuilder = { $0 },
-                       source: FirestoreSource = .default,
-                       completion: @escaping CollectionReadResultBlock<T>) where T: Codable {
+    static func get(_ collectionGroup: CollectionGroup<Data>,
+                    queryBuilder: QueryBuilder = { $0 },
+                    source: FirestoreSource = .default,
+                    completion: @escaping CollectionReadResultBlock<Data>) {
         queryBuilder(collectionGroup.query).getDocuments(
             source: source,
             completion: collectionReadCompletion(completion)
         )
     }
 
-    static func listen(_ path: DocumentPath,
+    static func listen(_ path: DocumentPath<Data>,
                        includeMetadataChanges: Bool = false,
                        completion: @escaping DocumentReadResultBlock<Data>) {
         listen(path.documentReference, includeMetadataChanges: includeMetadataChanges, completion: completion)
@@ -64,10 +64,10 @@ public extension Snapshot {
         )
     }
 
-    static func listen(_ path: CollectionPath,
-                     queryBuilder: QueryBuilder = { $0 },
-                     includeMetadataChanges: Bool = false,
-                     completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {
+    static func listen(_ path: CollectionPath<Data>,
+                       queryBuilder: QueryBuilder = { $0 },
+                       includeMetadataChanges: Bool = false,
+                       completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {
         listen(
             path.collectionReference,
             queryBuilder: queryBuilder,
@@ -77,16 +77,16 @@ public extension Snapshot {
     }
 
     static func listen(_ reference: CollectionReference,
-                     queryBuilder: QueryBuilder = { $0 },
-                     includeMetadataChanges: Bool = false,
-                     completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {
+                       queryBuilder: QueryBuilder = { $0 },
+                       includeMetadataChanges: Bool = false,
+                       completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {
         queryBuilder(reference).addSnapshotListener(
             includeMetadataChanges: includeMetadataChanges,
             listener: collectionReadCompletion(completion)
         )
     }
 
-    static func listen<T>(_ collectionGroup: CollectionGroup<T>,
+    static func listen(_ collectionGroup: CollectionGroup<Data>,
                        queryBuilder: QueryBuilder = { $0 },
                        includeMetadataChanges: Bool = false,
                        completion: @escaping CollectionReadResultBlock<Data>) -> ListenerRegistration {

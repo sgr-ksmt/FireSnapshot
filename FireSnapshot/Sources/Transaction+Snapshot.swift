@@ -6,7 +6,7 @@ import Foundation
 import FirebaseFirestore
 
 extension Transaction {
-    func get<D>(_ path: DocumentPath) throws -> Snapshot<D> {
+    func get<D>(_ path: DocumentPath<D>) throws -> Snapshot<D> {
         try .init(snapshot: try getDocument(path.documentReference))
     }
 

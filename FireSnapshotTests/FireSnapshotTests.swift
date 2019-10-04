@@ -27,6 +27,18 @@ struct User: Codable, HasTimestamps, FieldNameReferable {
     }
 }
 
+extension CollectionPaths {
+    static let tasks = CollectionPath<Task>("tasks")
+    static let users = CollectionPath<User>("users")
+    static let superNestedTasks: CollectionPath<Task> = AnyCollectionPath("foo").anyDocument("bar").anyCollection("baz").anyDocument("hye").collection("tasks")
+}
+
+extension DocumentPaths {
+    static func task(taskID: String) -> DocumentPath<Task> {
+        CollectionPaths.tasks.document(taskID)
+    }
+}
+
 class FireSnapshotTests: XCTestCase {
 
     override func setUp() {
@@ -41,9 +53,9 @@ class FireSnapshotTests: XCTestCase {
 
     func testExample() {
         let exp = expectation(description: #function)
-        let taskSnapshot = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
+        let taskSnapshot = Snapshot(data: .init(), path: .tasks)
         taskSnapshot.create()
-        let snapshot = Snapshot<User>(data: .init(taskRef: taskSnapshot.reference), path: CollectionPath("users"))
+        let snapshot = Snapshot(data: .init(taskRef: taskSnapshot.reference), path: .users)
         snapshot.create { result in
             switch result {
             case let .failure(error):
@@ -51,7 +63,7 @@ class FireSnapshotTests: XCTestCase {
                 exp.fulfill()
             default:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    Snapshot<User>.get(CollectionPath("users"), queryBuilder: {
+                    Snapshot.get(.users, queryBuilder: {
                         QueryBuilder<User>($0)
                             .where(.createTime, isLessThanOrEqualTo: Date())
                             .generate()
@@ -82,9 +94,9 @@ class FireSnapshotTests: XCTestCase {
     func testBatch() {
         let exp = expectation(description: #function)
 
-        let task = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
-        let task2 = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
-        let user = Snapshot<User>(data: .init(taskRef: task.reference), path: CollectionPath("users"))
+        let task = Snapshot(data: .init(), path: .tasks)
+        let task2 = Snapshot(data: .init(), path: .tasks)
+        let user = Snapshot(data: .init(taskRef: task.reference), path: .users)
 
         task2.create { result in
             switch result {
@@ -116,7 +128,7 @@ class FireSnapshotTests: XCTestCase {
 
         Firestore.firestore().runTransaction({ t, errorPointer -> Any? in
             do {
-                let task = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
+                let task = Snapshot(data: .init(), path: .tasks)
                 try t.create(task)
             } catch {
                 errorPointer?.pointee = error as NSError
@@ -134,13 +146,13 @@ class FireSnapshotTests: XCTestCase {
 
     func testAtomicArray() {
         let exp = expectation(description: #function)
-        let taskSnapshot = Snapshot<Task>(data: .init(userNames: ["Mike"]), path: CollectionPath("tasks"))
+        let taskSnapshot = Snapshot(data: .init(userNames: ["Mike"]), path: .tasks)
         taskSnapshot.create { result in
             switch result {
             case .success:
                 taskSnapshot.data.$userNames.union(["John", "Lisa"])
                 taskSnapshot.update { _ in
-                    Snapshot<Task>.get(taskSnapshot.path) { result in
+                    Snapshot.get(.task(taskID: taskSnapshot.reference.documentID)) { result in
                         XCTAssertEqual((try? result.get())?.data.userNames.count, 3)
                         XCTAssertEqual((try? result.get())?.data.userNames, ["Mike", "John", "Lisa"])
                         exp.fulfill()
@@ -157,13 +169,13 @@ class FireSnapshotTests: XCTestCase {
 
     func testDeletableField() {
         let exp = expectation(description: #function)
-        let taskSnapshot = Snapshot<Task>(data: .init(), path: CollectionPath("tasks"))
+        let taskSnapshot = Snapshot(data: .init(), path: .tasks)
         taskSnapshot.create { result in
             switch result {
             case .success:
                 taskSnapshot.data.bio?.delete()
                 taskSnapshot.update { _ in
-                    Snapshot<Task>.get(taskSnapshot.path) { result in
+                    Snapshot.get(taskSnapshot.path) { result in
                         switch result {
                         case let .success(task):
                             XCTAssertEqual(task.data.bio?.value, nil)

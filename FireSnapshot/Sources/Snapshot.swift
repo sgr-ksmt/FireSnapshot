@@ -14,7 +14,7 @@ public final class Snapshot<D>: SnapshotType where D: Codable {
     public typealias DataFactory = (DocumentReference) -> D
     public var data: D
     public let reference: DocumentReference
-    public var path: DocumentPath {
+    public var path: DocumentPath<D> {
         DocumentPath(reference.path)
     }
 
@@ -26,20 +26,20 @@ public final class Snapshot<D>: SnapshotType where D: Codable {
         self.data = data
     }
 
-    public convenience init(data: D, path: DocumentPath) {
+    public convenience init(data: D, path: DocumentPath<D>) {
         self.init(data: data, reference: path.documentReference)
     }
 
-    public convenience init(dataFactory: DataFactory, path: DocumentPath) {
+    public convenience init(dataFactory: DataFactory, path: DocumentPath<D>) {
         let ref = path.documentReference
         self.init(data: dataFactory(ref), reference: ref)
     }
 
-    public convenience init(data: D, path: CollectionPath, id: String? = nil) {
+    public convenience init(data: D, path: CollectionPath<D>, id: String? = nil) {
         self.init(data: data, reference: path.documentRefernce(id: id))
     }
 
-    public convenience init(dataFactory: DataFactory, path: CollectionPath, id: String? = nil) {
+    public convenience init(dataFactory: DataFactory, path: CollectionPath<D>, id: String? = nil) {
         let ref = path.documentRefernce(id: id)
         self.init(data: dataFactory(ref), reference: ref)
     }
