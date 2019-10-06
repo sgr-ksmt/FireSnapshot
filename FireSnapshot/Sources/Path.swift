@@ -19,7 +19,7 @@ public class CollectionPaths {
 public protocol FirestorePath: Hashable {
     var path: String { get }
     init(_ path: String)
-    func isValid() -> Bool
+    var isValid: Bool { get }
 }
 
 enum PathLength: Int {
@@ -30,8 +30,9 @@ enum PathLength: Int {
 extension FirestorePath {
     func isValid(_ pathLength: PathLength) -> Bool {
         let components = path.components(separatedBy: "/")
-        let isValid = !components.isEmpty && components.count % pathLength.rawValue == 0 && !components.last!.isEmpty
-        return isValid
+        return !components.isEmpty
+            && components.count % 2 == pathLength.rawValue
+            && components.allSatisfy { !$0.isEmpty }
     }
 
     public func hash(into hasher: inout Hasher) {
@@ -40,13 +41,13 @@ extension FirestorePath {
 }
 
 extension FirestorePath where Self: DocumentPaths {
-    public func isValid() -> Bool {
+    public var isValid: Bool {
         isValid(.even)
     }
 }
 
 extension FirestorePath where Self: CollectionPaths {
-    public func isValid() -> Bool {
+    public var isValid: Bool {
         isValid(.odd)
     }
 }
@@ -169,7 +170,7 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
     public required init(_ path: String) {
         self.path = path
     }
-
+    
     public convenience init<T>(_ path: CollectionPath<T>) {
         self.init(path.path)
     }
@@ -182,7 +183,7 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
         DocumentPath(self.path, documentID)
     }
 
-     public static func == (lhs: AnyCollectionPath, rhs: AnyCollectionPath) -> Bool {
+    public static func == (lhs: AnyCollectionPath, rhs: AnyCollectionPath) -> Bool {
         lhs.path == rhs.path
     }
 }
