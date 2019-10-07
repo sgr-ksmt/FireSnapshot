@@ -39,6 +39,7 @@
 		1617CD662340CC9100099FC5 /* FirestoreDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD642340CC9100099FC5 /* FirestoreDecoder.swift */; };
 		1617CD672340CC9100099FC5 /* FirestoreEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD652340CC9100099FC5 /* FirestoreEncoder.swift */; };
 		1622A2EA234AAE630003826D /* IncrementableNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1622A2E9234AAE630003826D /* IncrementableNumberTests.swift */; };
+		1622A2EC234ABCE30003826D /* AtomicArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1622A2EB234ABCE30003826D /* AtomicArrayTests.swift */; };
 		1659EBEA234113D900BD510D /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBE9234113D900BD510D /* Reference.swift */; };
 		1659EBF02341CBEE00BD510D /* WriteBatch+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBEF2341CBEE00BD510D /* WriteBatch+Snapshot.swift */; };
 		1659EBF223431E8800BD510D /* Transaction+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF123431E8800BD510D /* Transaction+Snapshot.swift */; };
@@ -96,6 +97,7 @@
 		1617CD642340CC9100099FC5 /* FirestoreDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreDecoder.swift; sourceTree = "<group>"; };
 		1617CD652340CC9100099FC5 /* FirestoreEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEncoder.swift; sourceTree = "<group>"; };
 		1622A2E9234AAE630003826D /* IncrementableNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementableNumberTests.swift; sourceTree = "<group>"; };
+		1622A2EB234ABCE30003826D /* AtomicArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicArrayTests.swift; sourceTree = "<group>"; };
 		1659EBE9234113D900BD510D /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		1659EBEF2341CBEE00BD510D /* WriteBatch+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteBatch+Snapshot.swift"; sourceTree = "<group>"; };
 		1659EBF123431E8800BD510D /* Transaction+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+Snapshot.swift"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				1607A5C5233F4CC00034BB35 /* Info.plist */,
 				16B699E72348CA80005877A9 /* PathTests.swift */,
 				1622A2E9234AAE630003826D /* IncrementableNumberTests.swift */,
+				1622A2EB234ABCE30003826D /* AtomicArrayTests.swift */,
 			);
 			path = FireSnapshotTests;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16B699E82348CA80005877A9 /* PathTests.swift in Sources */,
+				1622A2EC234ABCE30003826D /* AtomicArrayTests.swift in Sources */,
 				1617CD36233F4E4C00099FC5 /* FirebaseTestHelper.swift in Sources */,
 				1622A2EA234AAE630003826D /* IncrementableNumberTests.swift in Sources */,
 				1607A5C4233F4CC00034BB35 /* FireSnapshotTests.swift in Sources */,
