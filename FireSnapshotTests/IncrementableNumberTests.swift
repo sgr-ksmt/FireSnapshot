@@ -91,4 +91,52 @@ class IncrementableNumberTests: XCTestCase {
 
         wait(for: [exp], timeout: 10.0)
     }
+
+    func testIncrementableNumberBehavior() {
+        do {
+            var mock = Mock()
+            XCTAssertEqual(mock.count, 5)
+
+            mock.$count.increment(10)
+            XCTAssertEqual(mock.count, 15)
+
+            mock.$count.reset()
+            XCTAssertEqual(mock.count, 5)
+
+            mock.count = 10
+            XCTAssertEqual(mock.count, 10)
+
+            mock.$count.reset()
+            XCTAssertEqual(mock.count, 5)
+
+            mock.$count.increment(-10)
+            XCTAssertEqual(mock.count, -5)
+
+            mock.$count.reset()
+            XCTAssertEqual(mock.count, 5)
+        }
+
+        do {
+            var mock = Mock()
+            XCTAssertEqual(mock.distance, 5.0)
+
+            mock.$distance.increment(10.0)
+            XCTAssertEqual(mock.distance, 15.0)
+
+            mock.$distance.reset()
+            XCTAssertEqual(mock.distance, 5.0)
+
+            mock.distance = 10.0
+            XCTAssertEqual(mock.distance, 10.0)
+
+            mock.$distance.reset()
+            XCTAssertEqual(mock.distance, 5.0)
+
+            mock.$distance.increment(-10.0)
+            XCTAssertEqual(mock.distance, -5.0)
+
+            mock.$distance.reset()
+            XCTAssertEqual(mock.distance, 5.0)
+        }
+    }
 }
