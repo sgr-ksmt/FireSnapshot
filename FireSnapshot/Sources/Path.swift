@@ -15,10 +15,41 @@ public class CollectionPaths {
     }
 }
 
-public protocol FirestorePath: Equatable {
+
+public protocol FirestorePath: Hashable {
     var path: String { get }
     init(_ path: String)
-    func verify() -> Bool
+    var isValid: Bool { get }
+}
+
+enum PathLength: Int {
+    case even
+    case odd
+}
+
+extension FirestorePath {
+    func isValid(_ pathLength: PathLength) -> Bool {
+        let components = path.components(separatedBy: "/")
+        return !components.isEmpty
+            && components.count % 2 == pathLength.rawValue
+            && components.allSatisfy { !$0.isEmpty }
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(path)
+    }
+}
+
+extension FirestorePath where Self: DocumentPaths {
+    public var isValid: Bool {
+        isValid(.even)
+    }
+}
+
+extension FirestorePath where Self: CollectionPaths {
+    public var isValid: Bool {
+        isValid(.odd)
+    }
 }
 
 public class DocumentPath<T>: DocumentPaths, FirestorePath where T: Codable {
@@ -42,12 +73,6 @@ public class DocumentPath<T>: DocumentPaths, FirestorePath where T: Codable {
 
     public func collection<U>(_ collectionName: String) -> CollectionPath<U> where U: Codable{
         CollectionPath(self, collectionName)
-    }
-
-    public func verify() -> Bool {
-        let components = path.components(separatedBy: "/")
-        let isValid = components.count % 2 == 0 && !components.last!.isEmpty
-        return isValid
     }
 
     public var documentReference: DocumentReference {
@@ -80,12 +105,6 @@ public class CollectionPath<T>: CollectionPaths, FirestorePath where T: Codable 
 
     public func document<U>(_ documentID: String) -> DocumentPath<U> where U: Codable {
         DocumentPath(self, documentID)
-    }
-
-    public func verify() -> Bool {
-        let components = path.components(separatedBy: "/")
-        let isValid = components.count % 2 == 1 && !components.last!.isEmpty
-        return isValid
     }
 
     public var collectionReference: CollectionReference {
@@ -132,12 +151,6 @@ public class AnyDocumentPath: DocumentPaths, FirestorePath {
         CollectionPath(self.path, collectionName)
     }
 
-    public func verify() -> Bool {
-        let components = path.components(separatedBy: "/")
-        let isValid = components.count % 2 == 0 && !components.last!.isEmpty
-        return isValid
-    }
-
     public static func == (lhs: AnyDocumentPath, rhs: AnyDocumentPath) -> Bool {
         lhs.path == rhs.path
     }
@@ -157,7 +170,7 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
     public required init(_ path: String) {
         self.path = path
     }
-
+    
     public convenience init<T>(_ path: CollectionPath<T>) {
         self.init(path.path)
     }
@@ -168,12 +181,6 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
 
     public func document<T>(_ documentID: String) -> DocumentPath<T> where T: Codable {
         DocumentPath(self.path, documentID)
-    }
-
-    public func verify() -> Bool {
-        let components = path.components(separatedBy: "/")
-        let isValid = components.count % 2 == 1 && !components.last!.isEmpty
-        return isValid
     }
 
     public static func == (lhs: AnyCollectionPath, rhs: AnyCollectionPath) -> Bool {

@@ -7,13 +7,13 @@ import FirebaseFirestore
 
 @testable import FireSnapshot
 
-struct Task: Codable {
+private struct Task: Codable {
     var name: String = "test"
     @AtomicArray var userNames: [String] = []
     var bio: DeletableField<String>? = .init(value: "Hogeeeeeeeeeeeeee!")
 }
 
-struct User: Codable, HasTimestamps, FieldNameReferable {
+private struct User: Codable, HasTimestamps, FieldNameReferable {
     var id: SelfDocumentID = .init()
     var name: String = "google"
     @IncrementableInt var count: Int64 = 10
@@ -27,13 +27,13 @@ struct User: Codable, HasTimestamps, FieldNameReferable {
     }
 }
 
-extension CollectionPaths {
+private extension CollectionPaths {
     static let tasks = CollectionPath<Task>("tasks")
     static let users = CollectionPath<User>("users")
     static let superNestedTasks: CollectionPath<Task> = AnyCollectionPath("foo").anyDocument("bar").anyCollection("baz").anyDocument("hye").collection("tasks")
 }
 
-extension DocumentPaths {
+private extension DocumentPaths {
     static func task(taskID: String) -> DocumentPath<Task> {
         CollectionPaths.tasks.document(taskID)
     }

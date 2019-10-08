@@ -38,12 +38,15 @@
 		1617CD632340CB1700099FC5 /* CodableErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD562340CB1700099FC5 /* CodableErrors.swift */; };
 		1617CD662340CC9100099FC5 /* FirestoreDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD642340CC9100099FC5 /* FirestoreDecoder.swift */; };
 		1617CD672340CC9100099FC5 /* FirestoreEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD652340CC9100099FC5 /* FirestoreEncoder.swift */; };
+		1622A2EA234AAE630003826D /* IncrementableNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1622A2E9234AAE630003826D /* IncrementableNumberTests.swift */; };
+		1622A2EC234ABCE30003826D /* AtomicArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1622A2EB234ABCE30003826D /* AtomicArrayTests.swift */; };
 		1659EBEA234113D900BD510D /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBE9234113D900BD510D /* Reference.swift */; };
 		1659EBF02341CBEE00BD510D /* WriteBatch+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBEF2341CBEE00BD510D /* WriteBatch+Snapshot.swift */; };
 		1659EBF223431E8800BD510D /* Transaction+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF123431E8800BD510D /* Transaction+Snapshot.swift */; };
 		1659EBF423433F9300BD510D /* AtomicArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF323433F9300BD510D /* AtomicArray.swift */; };
 		1659EBF6234446B900BD510D /* DeletableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF5234446B900BD510D /* DeletableField.swift */; };
 		16B699E4234636DD005877A9 /* CollectionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B699E3234636DD005877A9 /* CollectionGroup.swift */; };
+		16B699E82348CA80005877A9 /* PathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B699E72348CA80005877A9 /* PathTests.swift */; };
 		C7AC0728461714610F570CB5 /* Pods_FireSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9C3F24DAB7C0106A5A122D /* Pods_FireSnapshotTests.framework */; };
 		CE86EA2FE75980E5237BCED1 /* Pods_FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8925B294155F0A90A59C088 /* Pods_FireSnapshot.framework */; };
 /* End PBXBuildFile section */
@@ -93,12 +96,15 @@
 		1617CD562340CB1700099FC5 /* CodableErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableErrors.swift; sourceTree = "<group>"; };
 		1617CD642340CC9100099FC5 /* FirestoreDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreDecoder.swift; sourceTree = "<group>"; };
 		1617CD652340CC9100099FC5 /* FirestoreEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEncoder.swift; sourceTree = "<group>"; };
+		1622A2E9234AAE630003826D /* IncrementableNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementableNumberTests.swift; sourceTree = "<group>"; };
+		1622A2EB234ABCE30003826D /* AtomicArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicArrayTests.swift; sourceTree = "<group>"; };
 		1659EBE9234113D900BD510D /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		1659EBEF2341CBEE00BD510D /* WriteBatch+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WriteBatch+Snapshot.swift"; sourceTree = "<group>"; };
 		1659EBF123431E8800BD510D /* Transaction+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+Snapshot.swift"; sourceTree = "<group>"; };
 		1659EBF323433F9300BD510D /* AtomicArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicArray.swift; sourceTree = "<group>"; };
 		1659EBF5234446B900BD510D /* DeletableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableField.swift; sourceTree = "<group>"; };
 		16B699E3234636DD005877A9 /* CollectionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGroup.swift; sourceTree = "<group>"; };
+		16B699E72348CA80005877A9 /* PathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTests.swift; sourceTree = "<group>"; };
 		25B42645485A6D1C6682724A /* Pods-FireSnapshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.debug.xcconfig"; sourceTree = "<group>"; };
 		648BB37871CC0A94356CF0DB /* Pods-FireSnapshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.release.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.release.xcconfig"; sourceTree = "<group>"; };
 		B90A83261856C6D7C28E7346 /* Pods-FireSnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshotTests.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshotTests/Pods-FireSnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +196,9 @@
 				1607A5C3233F4CC00034BB35 /* FireSnapshotTests.swift */,
 				1617CD35233F4E4B00099FC5 /* FirebaseTestHelper.swift */,
 				1607A5C5233F4CC00034BB35 /* Info.plist */,
+				16B699E72348CA80005877A9 /* PathTests.swift */,
+				1622A2E9234AAE630003826D /* IncrementableNumberTests.swift */,
+				1622A2EB234ABCE30003826D /* AtomicArrayTests.swift */,
 			);
 			path = FireSnapshotTests;
 			sourceTree = "<group>";
@@ -453,7 +462,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B699E82348CA80005877A9 /* PathTests.swift in Sources */,
+				1622A2EC234ABCE30003826D /* AtomicArrayTests.swift in Sources */,
 				1617CD36233F4E4C00099FC5 /* FirebaseTestHelper.swift in Sources */,
+				1622A2EA234AAE630003826D /* IncrementableNumberTests.swift in Sources */,
 				1607A5C4233F4CC00034BB35 /* FireSnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
