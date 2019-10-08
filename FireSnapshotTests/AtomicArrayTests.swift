@@ -36,14 +36,14 @@ class AtomicArrayTests: XCTestCase {
                 Snapshot.get(mock.path) { result in
                     switch result {
                     case let .success(m):
-                        XCTAssertEqual(m.data.languages, ["ja"])
-                        m.data.$languages.union("en")
-                        XCTAssertEqual(m.data.languages, ["ja", "en"])
+                        XCTAssertEqual(m.languages, ["ja"])
+                        m.$languages.union("en")
+                        XCTAssertEqual(m.languages, ["ja", "en"])
                         m.update { result in
                             switch result {
                             case .success:
                                 Snapshot.get(mock.path) { result in
-                                    XCTAssertEqual((try? result.get())?.data.languages, ["ja", "en"])
+                                    XCTAssertEqual((try? result.get())?.languages, ["ja", "en"])
                                     exp.fulfill()
                                 }
                             case let .failure(error):
@@ -58,7 +58,7 @@ class AtomicArrayTests: XCTestCase {
                 XCTFail("\(error)")
             }
         }
-        wait(for: [exp], timeout: 10.0)
+        wait(for: [exp], timeout: 30.0)
     }
 
     func testRemoveUpdate() {
@@ -70,14 +70,14 @@ class AtomicArrayTests: XCTestCase {
                 Snapshot.get(mock.path) { result in
                     switch result {
                     case let .success(m):
-                        XCTAssertEqual(m.data.languages, ["ja", "en", "zh"])
-                        m.data.$languages.remove("en")
-                        XCTAssertEqual(m.data.languages, ["ja", "zh"])
+                        XCTAssertEqual(m.languages, ["ja", "en", "zh"])
+                        m.$languages.remove("en")
+                        XCTAssertEqual(m.languages, ["ja", "zh"])
                         m.update { result in
                             switch result {
                             case .success:
                                 Snapshot.get(mock.path) { result in
-                                    XCTAssertEqual((try? result.get())?.data.languages, ["ja", "zh"])
+                                    XCTAssertEqual((try? result.get())?.languages, ["ja", "zh"])
                                     exp.fulfill()
                                 }
                             case let .failure(error):
@@ -92,7 +92,7 @@ class AtomicArrayTests: XCTestCase {
                 XCTFail("\(error)")
             }
         }
-        wait(for: [exp], timeout: 10.0)
+        wait(for: [exp], timeout: 30.0)
     }
 
     func testAtomicArrayBehavior() {

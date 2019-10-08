@@ -45,15 +45,15 @@ class IncrementableNumberTests: XCTestCase {
             Snapshot.get(mock1.path) { result in
                 switch result {
                 case let .success(mock):
-                    XCTAssertEqual(mock.data.count, 5)
-                    mock.data.$count.increment(10)
-                    XCTAssertEqual(mock.data.count, 15)
-                    XCTAssertEqual(mock.data.$count.incrementValue, 10)
+                    XCTAssertEqual(mock.count, 5)
+                    mock.$count.increment(10)
+                    XCTAssertEqual(mock.count, 15)
+                    XCTAssertEqual(mock.$count.incrementValue, 10)
                     mock.update { result in
                         switch result {
                         case .success:
                             Snapshot.get(mock1.path) { result in
-                                XCTAssertEqual((try? result.get())?.data.count, 15)
+                                XCTAssertEqual((try? result.get())?.count, 15)
                                 exp.fulfill()
                             }
                         case let .failure(error):
@@ -68,15 +68,15 @@ class IncrementableNumberTests: XCTestCase {
             Snapshot.get(mock2.path) { result in
                 switch result {
                 case let .success(mock):
-                    XCTAssertEqual(mock.data.distance, 5.0)
-                    mock.data.$distance.increment(10.0)
-                    XCTAssertEqual(mock.data.distance, 15.0)
-                    XCTAssertEqual(mock.data.$distance.incrementValue, 10.0)
+                    XCTAssertEqual(mock.distance, 5.0)
+                    mock.$distance.increment(10.0)
+                    XCTAssertEqual(mock.distance, 15.0)
+                    XCTAssertEqual(mock.$distance.incrementValue, 10.0)
                     mock.update { result in
                         switch result {
                         case .success:
                             Snapshot.get(mock2.path) { result in
-                                XCTAssertEqual((try? result.get())?.data.distance, 15.0)
+                                XCTAssertEqual((try? result.get())?.distance, 15.0)
                                 exp.fulfill()
                             }
                         case let .failure(error):

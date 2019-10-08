@@ -9,10 +9,11 @@ public protocol SnapshotType {
     associatedtype Data: Codable
 }
 
+@dynamicMemberLookup
 public final class Snapshot<D>: SnapshotType where D: Codable {
     public typealias Data = D
     public typealias DataFactory = (DocumentReference) -> D
-    public var data: D
+    public private(set) var data: D
     public let reference: DocumentReference
     public var path: DocumentPath<D> {
         DocumentPath(reference.path)
@@ -71,6 +72,15 @@ public final class Snapshot<D>: SnapshotType where D: Codable {
             fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
         }
         return fields
+    }
+
+    public subscript<V>(dynamicMember keyPath: WritableKeyPath<D, V>) -> V {
+        get {
+            return data[keyPath: keyPath]
+        }
+        set {
+            data[keyPath: keyPath] = newValue
+        }
     }
 }
 
