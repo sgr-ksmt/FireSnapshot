@@ -71,20 +71,6 @@ class FireSnapshotTests: XCTestCase {
                         XCTAssertEqual((try? result.get())?.count, 1)
                         exp.fulfill()
                     }
-//                    Snapshot<User>.get(snapshot.path) { result in
-//                        switch result {
-//                        case let .success(user):
-//                            XCTAssertEqual(user.data.id.id, snapshot.reference.documentID)
-//                            XCTAssertEqual(user.data.taskRef.path, taskSnapshot.reference.path)
-//                            user.data.$taskRef.get { result in
-//                                XCTAssertEqual((try? result.get())?.data.name, "test")
-//                                exp.fulfill()
-//                            }
-//                        case let .failure(error):
-//                            XCTFail("\(error)")
-//                            exp.fulfill()
-//                        }
-//                    }
                 }
             }
         }
@@ -101,7 +87,7 @@ class FireSnapshotTests: XCTestCase {
         task2.create { result in
             switch result {
             case .success:
-                task2.data.name = "mike"
+                task2.name = "mike"
                 let batch = Firestore.firestore().batch()
                 try! batch.create(task)
                 try! batch.create(user)
@@ -150,11 +136,11 @@ class FireSnapshotTests: XCTestCase {
         taskSnapshot.create { result in
             switch result {
             case .success:
-                taskSnapshot.data.$userNames.union(["John", "Lisa"])
+                taskSnapshot.$userNames.union(["John", "Lisa"])
                 taskSnapshot.update { _ in
                     Snapshot.get(.task(taskID: taskSnapshot.reference.documentID)) { result in
-                        XCTAssertEqual((try? result.get())?.data.userNames.count, 3)
-                        XCTAssertEqual((try? result.get())?.data.userNames, ["Mike", "John", "Lisa"])
+                        XCTAssertEqual((try? result.get())?.userNames.count, 3)
+                        XCTAssertEqual((try? result.get())?.userNames, ["Mike", "John", "Lisa"])
                         exp.fulfill()
                     }
                 }
@@ -173,12 +159,12 @@ class FireSnapshotTests: XCTestCase {
         taskSnapshot.create { result in
             switch result {
             case .success:
-                taskSnapshot.data.bio?.delete()
+                taskSnapshot.bio?.delete()
                 taskSnapshot.update { _ in
                     Snapshot.get(taskSnapshot.path) { result in
                         switch result {
                         case let .success(task):
-                            XCTAssertEqual(task.data.bio?.value, nil)
+                            XCTAssertEqual(task.bio?.value, nil)
                         case let .failure(error):
                             XCTFail("\(error)")
                         }
