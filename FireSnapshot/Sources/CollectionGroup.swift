@@ -10,7 +10,7 @@ public class CollectionGroups {
     }
 }
 
-public class CollectionGroup<T>: CollectionGroups where T: Codable {
+public class CollectionGroup<T>: CollectionGroups where T: SnapshotData {
     public let collectionID: String
     public init(_ collectionID: String) {
         self.collectionID = collectionID

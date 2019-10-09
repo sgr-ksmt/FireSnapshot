@@ -7,13 +7,13 @@ import FirebaseFirestore
 
 @testable import FireSnapshot
 
-private struct Task: Codable {
+private struct Task: SnapshotData {
     var name: String = "test"
     @AtomicArray var userNames: [String] = []
     var bio: DeletableField<String>? = .init(value: "Hogeeeeeeeeeeeeee!")
 }
 
-private struct User: Codable, HasTimestamps, FieldNameReferable {
+private struct User: SnapshotData, HasTimestamps, FieldNameReferable {
     var id: SelfDocumentID = .init()
     var name: String = "google"
     @IncrementableInt var count: Int64 = 10

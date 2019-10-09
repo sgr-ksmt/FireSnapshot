@@ -11,7 +11,7 @@ private extension CollectionPaths {
     static let mocks = CollectionPath<Mock>("mocks")
 }
 
-private struct Mock: Codable {
+private struct Mock: SnapshotData {
     @IncrementableInt var count: Int64 = 5
     @IncrementableDouble var distance: Double = 5.0
 }

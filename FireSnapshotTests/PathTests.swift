@@ -7,7 +7,7 @@ import FirebaseFirestore
 
 @testable import FireSnapshot
 
-private struct Mock: Codable {
+private struct Mock: SnapshotData {
 }
 
 class PathTests: XCTestCase {

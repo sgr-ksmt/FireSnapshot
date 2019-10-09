@@ -52,14 +52,14 @@ extension FirestorePath where Self: CollectionPaths {
     }
 }
 
-public class DocumentPath<T>: DocumentPaths, FirestorePath where T: Codable {
+public class DocumentPath<T>: DocumentPaths, FirestorePath where T: SnapshotData {
     public let path: String
 
     fileprivate convenience init(_ collectionPath: String, _ documentID: String) {
         self.init([collectionPath, documentID].joined(separator: "/"))
     }
 
-    fileprivate convenience init<U>(_ collectionPath: CollectionPath<U>, _ documentID: String) where U: Codable {
+    fileprivate convenience init<U>(_ collectionPath: CollectionPath<U>, _ documentID: String) where U: SnapshotData {
         self.init(collectionPath.path, documentID)
     }
 
@@ -71,7 +71,7 @@ public class DocumentPath<T>: DocumentPaths, FirestorePath where T: Codable {
         CollectionPath(self, collectionName)
     }
 
-    public func collection<U>(_ collectionName: String) -> CollectionPath<U> where U: Codable{
+    public func collection<U>(_ collectionName: String) -> CollectionPath<U> where U: SnapshotData {
         CollectionPath(self, collectionName)
     }
 
@@ -84,14 +84,14 @@ public class DocumentPath<T>: DocumentPaths, FirestorePath where T: Codable {
     }
 }
 
-public class CollectionPath<T>: CollectionPaths, FirestorePath where T: Codable {
+public class CollectionPath<T>: CollectionPaths, FirestorePath where T: SnapshotData {
     public let path: String
 
     fileprivate convenience init(_ documentPath: String, _ collectionName: String) {
         self.init([documentPath, collectionName].joined(separator: "/"))
     }
 
-    fileprivate convenience init<U>(_ documentPath: DocumentPath<U>, _ collectionName: String) where U: Codable {
+    fileprivate convenience init<U>(_ documentPath: DocumentPath<U>, _ collectionName: String) where U: SnapshotData {
         self.init(documentPath.path, collectionName)
     }
 
@@ -103,7 +103,7 @@ public class CollectionPath<T>: CollectionPaths, FirestorePath where T: Codable 
         DocumentPath(self, documentID)
     }
 
-    public func document<U>(_ documentID: String) -> DocumentPath<U> where U: Codable {
+    public func document<U>(_ documentID: String) -> DocumentPath<U> where U: SnapshotData {
         DocumentPath(self, documentID)
     }
 
@@ -131,7 +131,7 @@ public class AnyDocumentPath: DocumentPaths, FirestorePath {
         self.init([collectionPath, documentID].joined(separator: "/"))
     }
 
-    fileprivate convenience init<T>(_ collectionPath: CollectionPath<T>, _ documentID: String) where T: Codable {
+    fileprivate convenience init<T>(_ collectionPath: CollectionPath<T>, _ documentID: String) where T: SnapshotData {
         self.init(collectionPath.path, documentID)
     }
 
@@ -147,7 +147,7 @@ public class AnyDocumentPath: DocumentPaths, FirestorePath {
         AnyCollectionPath(self.path, collectionName)
     }
 
-    public func collection<T>(_ collectionName: String) -> CollectionPath<T> where T: Codable {
+    public func collection<T>(_ collectionName: String) -> CollectionPath<T> where T: SnapshotData {
         CollectionPath(self.path, collectionName)
     }
 
@@ -163,7 +163,7 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
         self.init([documentPath, collectionName].joined(separator: "/"))
     }
 
-    fileprivate convenience init<T>(_ documentPath: DocumentPath<T>, _ collectionName: String) where T: Codable {
+    fileprivate convenience init<T>(_ documentPath: DocumentPath<T>, _ collectionName: String) where T: SnapshotData {
         self.init(documentPath.path, collectionName)
     }
 
@@ -179,7 +179,7 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
         AnyDocumentPath(self.path, documentID)
     }
 
-    public func document<T>(_ documentID: String) -> DocumentPath<T> where T: Codable {
+    public func document<T>(_ documentID: String) -> DocumentPath<T> where T: SnapshotData {
         DocumentPath(self.path, documentID)
     }
 

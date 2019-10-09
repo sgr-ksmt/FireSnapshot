@@ -7,8 +7,8 @@ import FirebaseFirestore
 
 public extension Snapshot {
     typealias QueryBuilder = (Query) -> Query
-    typealias DocumentReadResultBlock<T: Codable> = (Result<Snapshot<T>, Error>) -> Void
-    typealias CollectionReadResultBlock<T: Codable> = (Result<[Snapshot<T>], Error>) -> Void
+    typealias DocumentReadResultBlock<T: SnapshotData> = (Result<Snapshot<T>, Error>) -> Void
+    typealias CollectionReadResultBlock<T: SnapshotData> = (Result<[Snapshot<T>], Error>) -> Void
 
     static func get(_ path: DocumentPath<Data>,
                     source: FirestoreSource = .default,

@@ -5,7 +5,7 @@
 import Foundation
 import FirebaseFirestore
 
-public final class QueryBuilder<D> where D: FieldNameReferable {
+public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable {
     private(set) var query: Query
     public init(_ query: Query) {
         self.query = query
