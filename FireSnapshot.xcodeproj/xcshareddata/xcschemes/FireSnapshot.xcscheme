@@ -26,13 +26,24 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "NO">
+      shouldUseLaunchSchemeArgsEnv = "NO"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-FIRDebugEnabled "
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1607A5A6233F398A0034BB35"
+            BuildableName = "FireSnapshot.framework"
+            BlueprintName = "FireSnapshot"
+            ReferencedContainer = "container:FireSnapshot.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">

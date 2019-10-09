@@ -56,7 +56,7 @@ public struct DeletableField<T: Codable>: Codable {
     @Box public var value: T?
 
     public init(value: T? = nil) {
-        self.value = value
+        self._value = Box(wrappedValue: value)
     }
 
     public init(from decoder: Decoder) throws {
