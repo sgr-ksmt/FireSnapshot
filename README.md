@@ -21,8 +21,8 @@ Firebase Cloud Firestore Model Framework using Codable.
 🚧
 
 ```swift
-// Define model that is adopted `Codable`
-struct User: Codable {
+// Define model and conform to protocol `SnapshotData`.
+struct User: SnapshotData {
     var name: String
 }
 
