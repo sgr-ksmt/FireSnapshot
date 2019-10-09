@@ -12,7 +12,6 @@
 		1607A5B8233F42440034BB35 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A5B7233F42440034BB35 /* Snapshot.swift */; };
 		1607A5BA233F42580034BB35 /* DocumentTimestamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A5B9233F42570034BB35 /* DocumentTimestamps.swift */; };
 		1607A5BC233F4A550034BB35 /* SnapshotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A5BB233F4A550034BB35 /* SnapshotError.swift */; };
-		1607A5C4233F4CC00034BB35 /* FireSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607A5C3233F4CC00034BB35 /* FireSnapshotTests.swift */; };
 		1607A5C6233F4CC00034BB35 /* FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1607A5A7233F398A0034BB35 /* FireSnapshot.framework */; };
 		1617CD36233F4E4C00099FC5 /* FirebaseTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD35233F4E4B00099FC5 /* FirebaseTestHelper.swift */; };
 		1617CD3A233FA53800099FC5 /* IncrementableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617CD39233FA53800099FC5 /* IncrementableNumber.swift */; };
@@ -75,7 +74,6 @@
 		1607A5B9233F42570034BB35 /* DocumentTimestamps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTimestamps.swift; sourceTree = "<group>"; };
 		1607A5BB233F4A550034BB35 /* SnapshotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotError.swift; sourceTree = "<group>"; };
 		1607A5C1233F4CC00034BB35 /* FireSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1607A5C3233F4CC00034BB35 /* FireSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireSnapshotTests.swift; sourceTree = "<group>"; };
 		1607A5C5233F4CC00034BB35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1617CD35233F4E4B00099FC5 /* FirebaseTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTestHelper.swift; sourceTree = "<group>"; };
 		1617CD39233FA53800099FC5 /* IncrementableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementableNumber.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 		1607A5C2233F4CC00034BB35 /* FireSnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
-				1607A5C3233F4CC00034BB35 /* FireSnapshotTests.swift */,
 				1617CD35233F4E4B00099FC5 /* FirebaseTestHelper.swift */,
 				1607A5C5233F4CC00034BB35 /* Info.plist */,
 				16B699E72348CA80005877A9 /* PathTests.swift */,
@@ -486,7 +483,6 @@
 				1617CD36233F4E4C00099FC5 /* FirebaseTestHelper.swift in Sources */,
 				1694DF6B234DE2C600B7807A /* DeletableFieldTests.swift in Sources */,
 				1622A2EA234AAE630003826D /* IncrementableNumberTests.swift in Sources */,
-				1607A5C4233F4CC00034BB35 /* FireSnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
