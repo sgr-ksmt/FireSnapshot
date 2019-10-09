@@ -82,6 +82,18 @@ public final class Snapshot<D>: SnapshotType where D: Codable {
             data[keyPath: keyPath] = newValue
         }
     }
+
+    public func replicated(path: DocumentPath<D>? = nil) throws -> Snapshot<D> {
+        let replicated = Snapshot<D>(
+            data: try Firestore.Decoder().decode(D.self, from: try Firestore.Encoder().encode(data)),
+            path: path ?? self.path
+        )
+        if data is HasTimestamps {
+            replicated._createTime = _createTime
+            replicated._updateTime = _updateTime
+        }
+        return replicated
+    }
 }
 
 extension Snapshot: Equatable where D: Equatable {
