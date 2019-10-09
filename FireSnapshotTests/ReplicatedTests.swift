@@ -11,7 +11,7 @@ private extension CollectionPaths {
     static let mocks = CollectionPath<Mock>("mocks")
 }
 
-private struct Mock: Codable, HasTimestamps {
+private struct Mock: Codable, HasTimestamps, Equatable {
     var name: String = "Mike"
 }
 
@@ -32,6 +32,7 @@ class ReplicatedTests: XCTestCase {
         XCTAssertNotNil(replicated)
         XCTAssertEqual(mock.path, replicated?.path)
         XCTAssertEqual(mock.name, replicated?.name)
+        XCTAssertEqual(mock, replicated)
         mock.name = "changed"
         XCTAssertNotEqual(mock.name, replicated?.name)
     }
@@ -53,6 +54,7 @@ class ReplicatedTests: XCTestCase {
                         XCTAssertNotNil(replicated?.updateTime)
                         XCTAssertEqual(m.createTime, replicated?.createTime)
                         XCTAssertEqual(m.updateTime, replicated?.updateTime)
+                        XCTAssertEqual(mock, replicated)
                         XCTAssertEqual(m.path, replicated?.path)
                         XCTAssertEqual(m.name, replicated?.name)
                         exp.fulfill()
@@ -74,6 +76,7 @@ class ReplicatedTests: XCTestCase {
         XCTAssertNotNil(replicated)
         XCTAssertNotEqual(mock.path, replicated?.path)
         XCTAssertEqual(mock.name, replicated?.name)
+        XCTAssertNotEqual(mock, replicated)
         mock.name = "changed"
         XCTAssertNotEqual(mock.name, replicated?.name)
     }
