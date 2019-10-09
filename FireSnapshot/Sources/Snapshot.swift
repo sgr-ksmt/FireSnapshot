@@ -83,10 +83,10 @@ public final class Snapshot<D>: SnapshotType where D: Codable {
         }
     }
 
-    public func replicated() throws -> Snapshot<D> {
+    public func replicated(path: DocumentPath<D>? = nil) throws -> Snapshot<D> {
         let replicated = Snapshot<D>(
             data: try Firestore.Decoder().decode(D.self, from: try Firestore.Encoder().encode(data)),
-            path: path
+            path: path ?? self.path
         )
         if data is HasTimestamps {
             replicated._createTime = _createTime
