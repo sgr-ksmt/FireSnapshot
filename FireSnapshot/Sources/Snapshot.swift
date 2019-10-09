@@ -113,6 +113,6 @@ public extension Snapshot where D: HasTimestamps {
     }
 
     var updateTime: Timestamp? {
-        _createTime
+        _updateTime
     }
 }
