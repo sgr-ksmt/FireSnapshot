@@ -95,10 +95,8 @@ class FireSnapshotTests: XCTestCase {
                 batch.commit { error in
                     if let error = error {
                         XCTFail("\(error)")
-                        exp.fulfill()
-                    } else {
-                        exp.fulfill()
                     }
+                    exp.fulfill()
                 }
 
             case let .failure(error):

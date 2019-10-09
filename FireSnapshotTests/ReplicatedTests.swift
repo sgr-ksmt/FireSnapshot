@@ -61,10 +61,12 @@ class ReplicatedTests: XCTestCase {
 
                     case let .failure(error):
                         XCTFail("\(error)")
+                        exp.fulfill()
                     }
                 }
             case let .failure(error):
                 XCTFail("\(error)")
+                exp.fulfill()
             }
         }
         wait(for: [exp], timeout: 10.0)

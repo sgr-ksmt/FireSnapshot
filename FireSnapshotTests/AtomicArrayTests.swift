@@ -48,14 +48,17 @@ class AtomicArrayTests: XCTestCase {
                                 }
                             case let .failure(error):
                                 XCTFail("\(error)")
+                                exp.fulfill()
                             }
                         }
                     case let .failure(error):
                         XCTFail("\(error)")
+                        exp.fulfill()
                     }
                 }
             case let .failure(error):
                 XCTFail("\(error)")
+                exp.fulfill()
             }
         }
         wait(for: [exp], timeout: 30.0)
@@ -82,14 +85,17 @@ class AtomicArrayTests: XCTestCase {
                                 }
                             case let .failure(error):
                                 XCTFail("\(error)")
+                                exp.fulfill()
                             }
                         }
                     case let .failure(error):
                         XCTFail("\(error)")
+                        exp.fulfill()
                     }
                 }
             case let .failure(error):
                 XCTFail("\(error)")
+                exp.fulfill()
             }
         }
         wait(for: [exp], timeout: 30.0)

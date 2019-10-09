@@ -53,14 +53,17 @@ class ReferenceTests: XCTestCase {
                                 }
                             case let .failure(error):
                                 XCTFail("\(error)")
+                                exp.fulfill()
                             }
                         }
                     case let .failure(error):
                         XCTFail("\(error)")
+                        exp.fulfill()
                     }
                 }
             case let .failure(error):
                 XCTFail("\(error)")
+                exp.fulfill()
             }
         }
 
@@ -85,20 +88,24 @@ class ReferenceTests: XCTestCase {
                                     switch result {
                                     case .success:
                                         XCTFail()
+                                        exp.fulfill()
                                     case .failure:
                                         exp.fulfill()
                                     }
                                 }
                             case let .failure(error):
                                 XCTFail("\(error)")
+                                exp.fulfill()
                             }
                         }
                     case let .failure(error):
                         XCTFail("\(error)")
+                        exp.fulfill()
                     }
                 }
             case let .failure(error):
                 XCTFail("\(error)")
+                exp.fulfill()
             }
         }
 
