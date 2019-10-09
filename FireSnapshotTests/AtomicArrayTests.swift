@@ -28,7 +28,7 @@ class AtomicArrayTests: XCTestCase {
     }
 
     func testUnionUpdate() {
-        let exp = XCTestExpectation(description: #function)
+        let exp = expectation(description: #function)
         let mock = Snapshot(data: .init(), path: .mocks)
         mock.create { result in
             switch result {
@@ -65,7 +65,7 @@ class AtomicArrayTests: XCTestCase {
     }
 
     func testRemoveUpdate() {
-        let exp = XCTestExpectation(description: #function)
+        let exp = expectation(description: #function)
         let mock = Snapshot(data: .init(languages: ["ja", "en", "zh"]), path: .mocks)
         mock.create { result in
             switch result {
