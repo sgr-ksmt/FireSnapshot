@@ -83,6 +83,10 @@ public final class Snapshot<D>: SnapshotType where D: SnapshotData {
         }
     }
 
+    public subscript<V>(dynamicMember keyPath: KeyPath<D, Reference<V>>) -> Reference<V> where V: SnapshotData {
+        return data[keyPath: keyPath]
+    }
+
     public func replicated(path: DocumentPath<D>? = nil) throws -> Snapshot<D> {
         let replicated = Snapshot<D>(
             data: try Firestore.Decoder().decode(D.self, from: try Firestore.Encoder().encode(data)),
