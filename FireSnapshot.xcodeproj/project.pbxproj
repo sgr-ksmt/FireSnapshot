@@ -47,6 +47,8 @@
 		1659EBF6234446B900BD510D /* DeletableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659EBF5234446B900BD510D /* DeletableField.swift */; };
 		1694DF5F234D78E800B7807A /* ReplicatedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF5E234D78E800B7807A /* ReplicatedTests.swift */; };
 		1694DF63234DA1C400B7807A /* SnapshotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF62234DA1C400B7807A /* SnapshotData.swift */; };
+		1694DF67234DD29E00B7807A /* ReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF66234DD29E00B7807A /* ReferenceTests.swift */; };
+		1694DF69234DDF0D00B7807A /* DocumentReference+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF68234DDF0D00B7807A /* DocumentReference+.swift */; };
 		16B699E4234636DD005877A9 /* CollectionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B699E3234636DD005877A9 /* CollectionGroup.swift */; };
 		16B699E82348CA80005877A9 /* PathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B699E72348CA80005877A9 /* PathTests.swift */; };
 		C7AC0728461714610F570CB5 /* Pods_FireSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9C3F24DAB7C0106A5A122D /* Pods_FireSnapshotTests.framework */; };
@@ -107,6 +109,8 @@
 		1659EBF5234446B900BD510D /* DeletableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableField.swift; sourceTree = "<group>"; };
 		1694DF5E234D78E800B7807A /* ReplicatedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatedTests.swift; sourceTree = "<group>"; };
 		1694DF62234DA1C400B7807A /* SnapshotData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotData.swift; sourceTree = "<group>"; };
+		1694DF66234DD29E00B7807A /* ReferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceTests.swift; sourceTree = "<group>"; };
+		1694DF68234DDF0D00B7807A /* DocumentReference+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentReference+.swift"; sourceTree = "<group>"; };
 		16B699E3234636DD005877A9 /* CollectionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGroup.swift; sourceTree = "<group>"; };
 		16B699E72348CA80005877A9 /* PathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTests.swift; sourceTree = "<group>"; };
 		25B42645485A6D1C6682724A /* Pods-FireSnapshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				1659EBF5234446B900BD510D /* DeletableField.swift */,
 				16B699E3234636DD005877A9 /* CollectionGroup.swift */,
 				1694DF62234DA1C400B7807A /* SnapshotData.swift */,
+				1694DF68234DDF0D00B7807A /* DocumentReference+.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				1622A2E9234AAE630003826D /* IncrementableNumberTests.swift */,
 				1622A2EB234ABCE30003826D /* AtomicArrayTests.swift */,
 				1694DF5E234D78E800B7807A /* ReplicatedTests.swift */,
+				1694DF66234DD29E00B7807A /* ReferenceTests.swift */,
 			);
 			path = FireSnapshotTests;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				16B699E4234636DD005877A9 /* CollectionGroup.swift in Sources */,
 				1617CD42233FAA2900099FC5 /* Snapshot+Write.swift in Sources */,
 				1617CD5F2340CB1700099FC5 /* DocumentSnapshot+ReadDecodable.swift in Sources */,
+				1694DF69234DDF0D00B7807A /* DocumentReference+.swift in Sources */,
 				1617CD3A233FA53800099FC5 /* IncrementableNumber.swift in Sources */,
 				1617CD3C233FA57400099FC5 /* IncrementableInt.swift in Sources */,
 				1617CD582340CB1700099FC5 /* CollectionReference+WriteEncodable.swift in Sources */,
@@ -469,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1694DF67234DD29E00B7807A /* ReferenceTests.swift in Sources */,
 				1694DF5F234D78E800B7807A /* ReplicatedTests.swift in Sources */,
 				16B699E82348CA80005877A9 /* PathTests.swift in Sources */,
 				1622A2EC234ABCE30003826D /* AtomicArrayTests.swift in Sources */,
