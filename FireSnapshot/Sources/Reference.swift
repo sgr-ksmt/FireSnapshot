@@ -7,7 +7,7 @@ import FirebaseFirestore
 
 @propertyWrapper
 public struct Reference<D>: Codable where D: SnapshotData {
-    public private(set) var wrappedValue: DocumentReference
+    public var wrappedValue: DocumentReference
     public init(wrappedValue: DocumentReference) {
         self.wrappedValue = wrappedValue
     }
@@ -19,6 +19,9 @@ public struct Reference<D>: Codable where D: SnapshotData {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
+        if wrappedValue.path == DocumentReference.dummy().path {
+            throw SnapshotError.emptyReference
+        }
         try container.encode(wrappedValue)
     }
 
@@ -26,11 +29,11 @@ public struct Reference<D>: Codable where D: SnapshotData {
         self
     }
 
-    func get(source: FirestoreSource = .default, completion: @escaping Snapshot<D>.DocumentReadResultBlock<D>) {
+    public func get(source: FirestoreSource = .default, completion: @escaping Snapshot<D>.DocumentReadResultBlock<D>) {
         Snapshot<D>.get(wrappedValue, source: source, completion: completion)
     }
 
-    func listen(includeMetadataChanges: Bool = false, completion: @escaping Snapshot<D>.DocumentReadResultBlock<D>) {
+    public func listen(includeMetadataChanges: Bool = false, completion: @escaping Snapshot<D>.DocumentReadResultBlock<D>) {
         Snapshot<D>.listen(wrappedValue, includeMetadataChanges: includeMetadataChanges, completion: completion)
     }
 }

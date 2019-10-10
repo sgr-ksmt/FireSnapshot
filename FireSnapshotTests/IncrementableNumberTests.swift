@@ -39,6 +39,7 @@ class IncrementableNumberTests: XCTestCase {
         batch.commit { error in
             if let error = error {
                 XCTFail("\(error)")
+                exp.fulfill()
                 return
             }
 
@@ -58,10 +59,12 @@ class IncrementableNumberTests: XCTestCase {
                             }
                         case let .failure(error):
                             XCTFail("\(error)")
+                            exp.fulfill()
                         }
                     }
                 case let .failure(error):
                     XCTFail("\(error)")
+                    exp.fulfill()
                 }
             }
 
@@ -81,10 +84,12 @@ class IncrementableNumberTests: XCTestCase {
                             }
                         case let .failure(error):
                             XCTFail("\(error)")
+                            exp.fulfill()
                         }
                     }
                 case let .failure(error):
                     XCTFail("\(error)")
+                    exp.fulfill()
                 }
             }
         }

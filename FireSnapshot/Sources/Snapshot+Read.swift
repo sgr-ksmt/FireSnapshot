@@ -39,7 +39,7 @@ public extension Snapshot {
         )
     }
 
-    static func get(_ collectionGroup: CollectionGroup<Data>,
+    static func get(collectionGroup: CollectionGroup<Data>,
                     queryBuilder: QueryBuilder = { $0 },
                     source: FirestoreSource = .default,
                     completion: @escaping CollectionReadResultBlock<Data>) {

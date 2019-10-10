@@ -28,7 +28,7 @@ class AtomicArrayTests: XCTestCase {
     }
 
     func testUnionUpdate() {
-        let exp = XCTestExpectation(description: #function)
+        let exp = expectation(description: #function)
         let mock = Snapshot(data: .init(), path: .mocks)
         mock.create { result in
             switch result {
@@ -48,21 +48,24 @@ class AtomicArrayTests: XCTestCase {
                                 }
                             case let .failure(error):
                                 XCTFail("\(error)")
+                                exp.fulfill()
                             }
                         }
                     case let .failure(error):
                         XCTFail("\(error)")
+                        exp.fulfill()
                     }
                 }
             case let .failure(error):
                 XCTFail("\(error)")
+                exp.fulfill()
             }
         }
-        wait(for: [exp], timeout: 30.0)
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testRemoveUpdate() {
-        let exp = XCTestExpectation(description: #function)
+        let exp = expectation(description: #function)
         let mock = Snapshot(data: .init(languages: ["ja", "en", "zh"]), path: .mocks)
         mock.create { result in
             switch result {
@@ -82,17 +85,20 @@ class AtomicArrayTests: XCTestCase {
                                 }
                             case let .failure(error):
                                 XCTFail("\(error)")
+                                exp.fulfill()
                             }
                         }
                     case let .failure(error):
                         XCTFail("\(error)")
+                        exp.fulfill()
                     }
                 }
             case let .failure(error):
                 XCTFail("\(error)")
+                exp.fulfill()
             }
         }
-        wait(for: [exp], timeout: 30.0)
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testAtomicArrayBehavior() {
