@@ -1,3 +1,4 @@
+rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /mocks/{mockID} {
@@ -13,6 +14,10 @@ service cloud.firestore {
     }
 
     match /tasks/{taskID} {
+      allow read, write;
+    }
+
+    match /{path=**}/groups/{groupId} {
       allow read, write;
     }
   }
