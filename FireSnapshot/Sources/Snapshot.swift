@@ -6,11 +6,11 @@ import FirebaseFirestore
 import Foundation
 
 public protocol SnapshotType {
-    associatedtype Data: Codable
+    associatedtype Data: SnapshotData
 }
 
 @dynamicMemberLookup
-public final class Snapshot<D>: SnapshotType where D: Codable {
+public final class Snapshot<D>: SnapshotType where D: SnapshotData {
     public typealias Data = D
     public typealias DataFactory = (DocumentReference) -> D
     public private(set) var data: D

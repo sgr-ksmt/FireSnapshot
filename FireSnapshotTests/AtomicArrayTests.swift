@@ -11,7 +11,7 @@ private extension CollectionPaths {
     static let mocks = CollectionPath<Mock>("mocks")
 }
 
-private struct Mock: Codable {
+private struct Mock: SnapshotData {
     @AtomicArray var languages: [String] = ["ja"]
 }
 

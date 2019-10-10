@@ -6,7 +6,7 @@ import Foundation
 import FirebaseFirestore
 
 @propertyWrapper
-public struct Reference<D>: Codable  where D: Codable {
+public struct Reference<D>: Codable where D: SnapshotData {
     public private(set) var wrappedValue: DocumentReference
     public init(wrappedValue: DocumentReference) {
         self.wrappedValue = wrappedValue

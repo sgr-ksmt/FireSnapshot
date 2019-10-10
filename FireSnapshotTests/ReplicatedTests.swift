@@ -11,7 +11,7 @@ private extension CollectionPaths {
     static let mocks = CollectionPath<Mock>("mocks")
 }
 
-private struct Mock: Codable, HasTimestamps, Equatable {
+private struct Mock: SnapshotData, HasTimestamps, Equatable {
     var name: String = "Mike"
 }
 
