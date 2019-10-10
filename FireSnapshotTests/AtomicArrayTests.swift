@@ -61,7 +61,7 @@ class AtomicArrayTests: XCTestCase {
                 exp.fulfill()
             }
         }
-        wait(for: [exp], timeout: 30.0)
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testRemoveUpdate() {
@@ -98,7 +98,7 @@ class AtomicArrayTests: XCTestCase {
                 exp.fulfill()
             }
         }
-        wait(for: [exp], timeout: 30.0)
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testAtomicArrayBehavior() {
