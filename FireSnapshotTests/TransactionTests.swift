@@ -125,5 +125,4 @@ class TransactionTests: XCTestCase {
 
         wait(for: [exp], timeout: 10.0)
     }
-
 }

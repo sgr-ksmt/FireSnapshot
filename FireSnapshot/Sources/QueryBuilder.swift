@@ -6,6 +6,8 @@ import Foundation
 import FirebaseFirestore
 
 public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable {
+    private(set) var call: Int = 0
+    private(set) var stack: Int = 0
     private(set) var query: Query
     public init(_ query: Query) {
         self.query = query
@@ -76,37 +78,48 @@ public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable 
     }
 
     private func updateQuery(_ keyPath: PartialKeyPath<D>, builder: (Query, String) -> Query) {
+        call += 1
         guard let fieldName = D.fieldName(from: keyPath) else {
             print("[Warn] field name for \(keyPath) is not found.")
             return
         }
+        updateQuery(fieldName, builder: builder)
+    }
+
+    private func updateQuery(_ fieldName: String, builder: (Query, String) -> Query) {
         query = builder(query, fieldName)
+        stack += 1
     }
 }
 
 extension QueryBuilder where D: HasTimestamps {
     public func `where`(_ key: SnapshotTimestampKey, isEqualTo value: Timestamp) -> Self {
-        query = query.whereField(key.rawValue, isEqualTo: value)
+        call += 1
+        updateQuery(key.rawValue, builder: { $0.whereField($1, isEqualTo: value) })
         return self
     }
 
     public func `where`(_ key: SnapshotTimestampKey, isLessThan value: Timestamp) -> Self {
-        query = query.whereField(key.rawValue, isLessThan: value)
+        call += 1
+        updateQuery(key.rawValue, builder: { $0.whereField($1, isLessThan: value) })
         return self
     }
 
     public func `where`(_ key: SnapshotTimestampKey, isGreaterThan value: Timestamp) -> Self {
-        query = query.whereField(key.rawValue, isGreaterThan: value)
+        call += 1
+        updateQuery(key.rawValue, builder: { $0.whereField($1, isGreaterThan: value) })
         return self
     }
 
     public func `where`(_ key: SnapshotTimestampKey, isLessThanOrEqualTo value: Timestamp) -> Self {
-        query = query.whereField(key.rawValue, isLessThanOrEqualTo: value)
+        call += 1
+        updateQuery(key.rawValue, builder: { $0.whereField($1, isLessThanOrEqualTo: value) })
         return self
     }
 
     public func `where`(_ key: SnapshotTimestampKey, isGreaterThanOrEqualTo value: Timestamp) -> Self {
-        query = query.whereField(key.rawValue, isGreaterThanOrEqualTo: value)
+        call += 1
+        updateQuery(key.rawValue, builder: { $0.whereField($1, isGreaterThanOrEqualTo: value) })
         return self
     }
 
@@ -131,7 +144,8 @@ extension QueryBuilder where D: HasTimestamps {
     }
 
     public func order(_ key: SnapshotTimestampKey, descending: Bool = false) -> Self {
-        query = query.order(by: key.rawValue, descending: descending)
+        call += 1
+        updateQuery(key.rawValue, builder: { $0.order(by: $1, descending: descending) })
         return self
     }
 }
