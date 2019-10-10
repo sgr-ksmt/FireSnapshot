@@ -16,6 +16,11 @@ Firebase Cloud Firestore Model Framework using Codable.
 - Support `FieldValue.delete()`.
 - Support KeyPath based query.
 
+### Use Swift features(version: 5.1)
+
+- `@propertyWrapper`: [SE-0258](https://github.com/apple/swift-evolution/blob/master/proposals/0258-property-wrappers.md)
+- Key Path Member Lookup: [SE-0252](https://github.com/apple/swift-evolution/blob/master/proposals/0252-keypath-dynamic-member-lookup.md)
+
 ## Usage
 
 🚧
@@ -42,14 +47,14 @@ let user = Snapshot(data: .init(name: "Mike"), path: .users)
 user.create()
 
 // Update user
-user.data.name = "John"
+user.name = "John"
 user.update()
 
 // Get user
 Snapshot.get(.user(userID: "xxxx")) { result in
     switch result {
     case let .success(user):
-        print(user.data.name)
+        print(user.name)
     case let .failure(error):
         print(error)
     }
@@ -61,7 +66,7 @@ Snapshot.get(.user(userID: "xxxx")) { result in
 - CocoaPods
 
 ```ruby
-pod 'FireSnapshot', '~> 0.4.0'
+pod 'FireSnapshot', '~> 0.5.0'
 ```
 
 ## Dependencies
@@ -73,7 +78,6 @@ pod 'FireSnapshot', '~> 0.4.0'
 ## ToDo
 
 - [ ] Write documentation more and more.
-- [ ] Improve test coverage.
 
 ## Road to 1.0
 
