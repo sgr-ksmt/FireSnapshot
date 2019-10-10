@@ -54,6 +54,7 @@ class BatchTests: XCTestCase {
         batch.commit { error in
             if error != nil {
                 XCTFail()
+                exp.fulfill()
             }
             let mock = Snapshot(data: .init(), path: .mocks)
 
