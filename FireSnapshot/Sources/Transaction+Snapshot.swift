@@ -11,11 +11,6 @@ extension Transaction {
     }
 
     func create<D>(_ snapshot: Snapshot<D>) throws {
-        var fields = try Firestore.Encoder().encode(snapshot.data)
-        if snapshot.data is HasTimestamps {
-            fields[SnapshotTimestampKey.createTime.rawValue] = FieldValue.serverTimestamp()
-            fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
-        }
         setData(try snapshot.extractWriteFieldsForCreate(), forDocument: snapshot.reference)
     }
 

@@ -53,9 +53,9 @@ class CollectionGroupTests: XCTestCase {
         let user = Snapshot(data: .init(), path: .users)
         let task = Snapshot(data: .init(), path: .tasks)
 
-        let batch = Firestore.firestore().batch()
-        try! batch.create(user)
-        try! batch.create(task)
+        let batch = Batch()
+            .create(user)
+            .create(task)
         batch.commit { error in
             if let error = error {
                 XCTFail("\(error)")
@@ -66,9 +66,9 @@ class CollectionGroupTests: XCTestCase {
             g1.name = "from user"
             let g2 = Snapshot(data: .init(), path: .groups(for: task.path))
             g2.name = "from task"
-            let batch = Firestore.firestore().batch()
-            try! batch.create(g1)
-            try! batch.create(g2)
+            let batch = Batch()
+                .create(g1)
+                .create(g2)
 
             batch.commit { error in
                 if let error = error {

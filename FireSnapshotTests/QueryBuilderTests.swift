@@ -170,9 +170,9 @@ class QueryBuilderTests: XCTestCase {
         let mock2 = Snapshot(data: .init(), path: .mocks)
         mock2.count = 15
 
-        let batch = Firestore.firestore().batch()
-        try! batch.create(mock1)
-        try! batch.create(mock2)
+        let batch = Batch()
+            .create(mock1)
+            .create(mock2)
 
         batch.commit { error in
             if let error = error {
@@ -201,9 +201,9 @@ class QueryBuilderTests: XCTestCase {
         let mock2 = Snapshot(data: .init(), path: .mocks)
         mock2.count = 15
 
-        let batch = Firestore.firestore().batch()
-        try! batch.create(mock1)
-        try! batch.create(mock2)
+        let batch = Batch()
+            .create(mock1)
+            .create(mock2)
 
         batch.commit { error in
             if let error = error {
