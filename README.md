@@ -66,7 +66,7 @@ Snapshot.get(.user(userID: "xxxx")) { result in
 - CocoaPods
 
 ```ruby
-pod 'FireSnapshot', '~> 0.5.0'
+pod 'FireSnapshot', '~> 0.6.0'
 ```
 
 ## Dependencies
