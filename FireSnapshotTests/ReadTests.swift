@@ -118,6 +118,57 @@ class ReadTests: XCTestCase {
         wait(for: [exp], timeout: 10.0)
     }
 
+    func testGetDocumentsWithQueryBuilder() {
+        let exp = expectation(description: #function)
+        exp.expectedFulfillmentCount = 2
+
+        let mock1 = Snapshot(data: .init(), path: .mocks)
+        mock1.name = "abc"
+        let mock2 = Snapshot(data: .init(), path: .mocks)
+        mock2.name = "xyz"
+
+        let batch = Firestore.firestore().batch()
+        try! batch.create(mock1)
+        try! batch.create(mock2)
+        batch.commit { error in
+            if let error = error {
+                XCTFail("\(error)")
+                exp.fulfill()
+                return
+            }
+
+            Snapshot.get(.mocks, queryBuilderBlock: {
+                $0.order(\Mock.name, descending: true)
+            }) { result in
+                switch result {
+                case let .success(mocks):
+                    XCTAssertEqual(mocks.count, 2)
+                    XCTAssertEqual(mocks.map { $0.name }, ["xyz", "abc"])
+                    exp.fulfill()
+                case let .failure(error):
+                    XCTFail("\(error)")
+                    exp.fulfill()
+                }
+            }
+        }
+
+
+        Snapshot.get(.invalids, queryBuilderBlock: {
+            $0.order(\Mock.name, descending: true)
+        }) { result in
+            switch result {
+            case .success:
+                XCTFail()
+                exp.fulfill()
+            case let .failure(error):
+                XCTAssertEqual(error._code, 7)
+                exp.fulfill()
+            }
+        }
+
+        wait(for: [exp], timeout: 10.0)
+    }
+
     func testGetDocumentsWithQuery() {
         let exp = expectation(description: #function)
         exp.expectedFulfillmentCount = 2
@@ -137,10 +188,8 @@ class ReadTests: XCTestCase {
                 return
             }
 
-            Snapshot.get(.mocks, queryBuilder: {
-                QueryBuilder<Mock>($0)
-                    .order(\Mock.name, descending: true)
-                    .generate()
+            Snapshot.get(.mocks, queryBuildBlock: {
+                $0.order(by: "name", descending: true)
             }) { result in
                 switch result {
                 case let .success(mocks):
@@ -155,10 +204,8 @@ class ReadTests: XCTestCase {
         }
 
 
-        Snapshot.get(.invalids, queryBuilder: {
-            QueryBuilder<Mock>($0)
-                .order(\Mock.name, descending: true)
-                .generate()
+        Snapshot.get(.invalids, queryBuildBlock: {
+            $0.order(by: "name", descending: true)
         }) { result in
             switch result {
             case .success:
@@ -257,14 +304,12 @@ class ReadTests: XCTestCase {
         XCTAssertEqual(counts, [0, 1])
     }
 
-    func testListenDocumentsWithQuery() {
+    func testListenDocumentsWithQueryBuilder() {
         let exp = expectation(description: #function)
         exp.expectedFulfillmentCount = 4
         var results = [[String]]()
-        _ = Snapshot.listen(.mocks, queryBuilder: {
-            QueryBuilder<Mock>($0)
-                .order(\Mock.name, descending: true)
-                .generate()
+        _ = Snapshot.listen(.mocks, queryBuilderBlock: {
+            $0.order(\Mock.name, descending: true)
         }) { result in
             switch result {
             case let .success(mocks):
@@ -286,10 +331,8 @@ class ReadTests: XCTestCase {
             }
         }
 
-        _ = Snapshot.listen(.invalids, queryBuilder: {
-            QueryBuilder<Mock>($0)
-                .order(\Mock.name, descending: true)
-                .generate()
+        _ = Snapshot.listen(.invalids, queryBuilderBlock: {
+            $0.order(\Mock.name, descending: true)
         }) { result in
             switch result {
             case .success:
