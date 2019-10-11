@@ -127,9 +127,9 @@ class ReadTests: XCTestCase {
         let mock2 = Snapshot(data: .init(), path: .mocks)
         mock2.name = "xyz"
 
-        let batch = Firestore.firestore().batch()
-        try! batch.create(mock1)
-        try! batch.create(mock2)
+        let batch = Batch()
+            .create(mock1)
+            .create(mock2)
         batch.commit { error in
             if let error = error {
                 XCTFail("\(error)")
@@ -178,9 +178,9 @@ class ReadTests: XCTestCase {
         let mock2 = Snapshot(data: .init(), path: .mocks)
         mock2.name = "xyz"
 
-        let batch = Firestore.firestore().batch()
-        try! batch.create(mock1)
-        try! batch.create(mock2)
+        let batch = Batch()
+            .create(mock1)
+            .create(mock2)
         batch.commit { error in
             if let error = error {
                 XCTFail("\(error)")

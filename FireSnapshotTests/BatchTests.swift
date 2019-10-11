@@ -47,6 +47,38 @@ class BatchTests: XCTestCase {
         let user = Snapshot(data: .init(), path: .users)
         let task = Snapshot(data: .init(), path: .tasks)
 
+        let batch = Batch()
+            .create(user)
+            .create(task)
+
+        batch.commit { error in
+            if error != nil {
+                XCTFail()
+                exp.fulfill()
+            }
+            let mock = Snapshot(data: .init(), path: .mocks)
+            user.name = "John"
+
+            let batch = Batch()
+                .update(user)
+                .delete(task)
+                .create(mock)
+
+            batch.commit { error in
+                if error != nil {
+                    XCTFail()
+                }
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 10.0)
+    }
+
+    func testSuccessWriteWithExtension() {
+        let exp = expectation(description: #function)
+        let user = Snapshot(data: .init(), path: .users)
+        let task = Snapshot(data: .init(), path: .tasks)
+
         let batch = Firestore.firestore().batch()
         try! batch.create(user)
         try! batch.create(task)
@@ -79,9 +111,9 @@ class BatchTests: XCTestCase {
         let user = Snapshot(data: .init(), path: .users)
         let invalid = Snapshot(data: .init(), path: .invalids)
 
-        let batch = Firestore.firestore().batch()
-        try! batch.create(user)
-        try! batch.create(invalid)
+        let batch = Batch()
+            .create(user)
+            .create(invalid)
 
         batch.commit { error in
             if error == nil {
