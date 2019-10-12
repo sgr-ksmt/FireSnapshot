@@ -21,6 +21,21 @@ Developed by [@sgr-ksmt](https://github.com/sgr-ksmt) [![Twitter Follow](https:/
 
 <hr />
 
+## Table of Contents <!-- omit in toc -->
+- [Feature](#feature)
+- [Usage](#usage)
+  - [Basic Usage](#basic-usage)
+  - [Advanced Usage](#advanced-usage)
+- [Installation](#installation)
+- [Dependencies](#dependencies)
+- [Road to 1.0](#road-to-10)
+- [Development](#development)
+- [Communication](#communication)
+- [Credit](#credit)
+- [License](#license)
+
+<hr />
+
 ## Feature
 
 - 🙌 Support Codable (Use [`FirebaseFirestoreSwift`](https://github.com/firebase/firebase-ios-sdk/tree/master/Firestore/Swift) inside).
@@ -30,7 +45,7 @@ Developed by [@sgr-ksmt](https://github.com/sgr-ksmt) [![Twitter Follow](https:/
 - 🙌 Support `FieldValue.delete()`.
 - 🙌 Support KeyPath based query.
 
-### Use Swift features(version: 5.1)
+### Use Swift features(version: 5.1) <!-- omit in toc -->
 
 - 💪 **`@propertyWrapper`**: [SE-0258](https://github.com/apple/swift-evolution/blob/master/proposals/0258-property-wrappers.md)
 - 💪 **Key Path Member Lookup**: [SE-0252](https://github.com/apple/swift-evolution/blob/master/proposals/0252-keypath-dynamic-member-lookup.md)
@@ -187,7 +202,7 @@ Snapshot.get(product.path) { result in
 
 ### Advanced Usage
 
-#### `@IncrementableInt` / `@IncrementableDouble`
+#### `@IncrementableInt` / `@IncrementableDouble` <!-- omit in toc -->
 
 If you want to use `FieldValue.increment` on model, use `@IncrementableInt(Double)`.  
 
@@ -235,7 +250,7 @@ Snapshot.get(.model(modelID)) { result in
 }
 ```
 
-#### `@AtomicArray`
+#### `@AtomicArray` <!-- omit in toc -->
 
 If you want to use `FieldValue.arrayUnion` or `FieldValue.arrayRemove`, use `@AtomicArray`.  
 
@@ -273,7 +288,7 @@ Snapshot.get(.model(modelID)) { result in
 }
 ```
 
-#### `@DeletableField`
+#### `@DeletableField` <!-- omit in toc -->
 
 IF you want to use `FieldValue.delete`, use `@DeletableField`.
 
@@ -313,7 +328,7 @@ Snapshot.get(.model(modelID)) { result in
 Normally, when property is set to nil, `{key: null}` will be written to document,  
 but when using `FieldValue.delete`, field of `key` will be deleted from document.
 
-#### KeyPath-based query
+#### KeyPath-based query <!-- omit in toc -->
 
 You can use KeyPath-based query generator called `QueryBuilder` if the model conform to `FieldNameReferable` protocol.
 
@@ -380,7 +395,7 @@ pod 'FireSnapshot', '~> 0.6.0'
 
 ## Development
 
-### Setup
+### Setup <!-- omit in toc -->
 
 ```sh
 $ git clone ...
@@ -389,7 +404,7 @@ $ make
 $ open FireSnapshot.xcworkspace
 ```
 
-### Unit Test
+### Unit Test <!-- omit in toc -->
 
 Start `Firestore Emulator` before running Unit Test.
 
