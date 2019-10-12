@@ -49,21 +49,24 @@ public extension Snapshot {
         )
     }
 
+    @discardableResult
     static func listen(_ path: DocumentPath<Data>,
                        includeMetadataChanges: Bool = false,
-                       completion: @escaping DocumentReadResultBlock<Data>) {
+                       completion: @escaping DocumentReadResultBlock<Data>) -> ListenerRegistration {
         listen(path.documentReference, includeMetadataChanges: includeMetadataChanges, completion: completion)
     }
 
+    @discardableResult
     static func listen(_ reference: DocumentReference,
                        includeMetadataChanges: Bool = false,
-                       completion: @escaping DocumentReadResultBlock<Data>) {
+                       completion: @escaping DocumentReadResultBlock<Data>) -> ListenerRegistration {
         reference.addSnapshotListener(
             includeMetadataChanges: includeMetadataChanges,
             listener: documentReadCompletion(completion)
         )
     }
 
+    @discardableResult
     static func listen(_ path: CollectionPath<Data>,
                        queryBuildBlock: QueryBuildBlock = { $0 },
                        includeMetadataChanges: Bool = false,
@@ -76,6 +79,7 @@ public extension Snapshot {
         )
     }
 
+    @discardableResult
     static func listen(_ reference: CollectionReference,
                        queryBuildBlock: QueryBuildBlock = { $0 },
                        includeMetadataChanges: Bool = false,
@@ -86,6 +90,7 @@ public extension Snapshot {
         )
     }
 
+    @discardableResult
     static func listen(collectionGroup: CollectionGroup<Data>,
                        queryBuildBlock: QueryBuildBlock = { $0 },
                        includeMetadataChanges: Bool = false,
@@ -165,6 +170,7 @@ public extension Snapshot where Data: FieldNameReferable {
         )
     }
 
+    @discardableResult
     static func listen(_ path: CollectionPath<Data>,
                        queryBuilderBlock: QueryBuilderBlock<Data>,
                        includeMetadataChanges: Bool = false,
@@ -177,6 +183,7 @@ public extension Snapshot where Data: FieldNameReferable {
         )
     }
 
+    @discardableResult
     static func listen(_ reference: CollectionReference,
                        queryBuilderBlock: QueryBuilderBlock<Data>,
                        includeMetadataChanges: Bool = false,
@@ -189,6 +196,7 @@ public extension Snapshot where Data: FieldNameReferable {
         )
     }
 
+    @discardableResult
     static func listen(collectionGroup: CollectionGroup<Data>,
                        queryBuilderBlock: QueryBuilderBlock<Data>,
                        includeMetadataChanges: Bool = false,
