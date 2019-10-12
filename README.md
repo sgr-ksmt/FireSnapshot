@@ -1,4 +1,9 @@
-<h1 align='center'>FireSnapshot</h1>
+<p align='center'>
+
+![](assets/logo.png)  
+<img src='https://raw.githubusercontent.com/sgr-ksmt/FireSnapshot/master/assets/logo.png' width='600px' />
+
+</p>
 
 <div align='center'>
 
