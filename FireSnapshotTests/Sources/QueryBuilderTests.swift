@@ -63,7 +63,7 @@ class QueryBuilderTests: XCTestCase {
             { $0.where(\.name, isLessThanOrEqualTo: "") },
             { $0.where(\.name, isGreaterThan: "") },
             { $0.where(\.name, isGreaterThanOrEqualTo: "") },
-            { $0.order(\Mock.name, descending: false) },
+            { $0.order(by: \Mock.name, descending: false) },
             { $0.limit(to: 10) },
             { $0.where(.createTime, isEqualTo: Timestamp()) },
             { $0.where(.createTime, isLessThan: Timestamp()) },
@@ -85,8 +85,8 @@ class QueryBuilderTests: XCTestCase {
             { $0.where(.updateTime, isLessThanOrEqualTo: Date()) },
             { $0.where(.updateTime, isGreaterThan: Date()) },
             { $0.where(.updateTime, isGreaterThanOrEqualTo: Date()) },
-            { $0.order(.createTime, descending: false) },
-            { $0.order(.updateTime, descending: false) },
+            { $0.order(by: .createTime, descending: false) },
+            { $0.order(by: .updateTime, descending: false) },
             ]
 
             queryBuilders.forEach {
@@ -180,12 +180,12 @@ class QueryBuilderTests: XCTestCase {
                 exp.fulfill()
             }
 
-            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(\Mock.count, descending: true) }) { result in
+            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(by: \Mock.count, descending: true) }) { result in
                 XCTAssertEqual((try? result.get())?.map { $0.count }, [15, 10])
                 exp.fulfill()
             }
 
-            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(\Mock.count, descending: false) }) { result in
+            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(by: \Mock.count, descending: false) }) { result in
                 XCTAssertEqual((try? result.get())?.map { $0.count }, [10, 15])
                 exp.fulfill()
             }
@@ -211,13 +211,13 @@ class QueryBuilderTests: XCTestCase {
                 exp.fulfill()
             }
 
-            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(\Mock.count, descending: false).limit(to: 1) }) { result in
+            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(by: \Mock.count, descending: false).limit(to: 1) }) { result in
                 XCTAssertEqual((try? result.get())?.count, 1)
                 XCTAssertEqual((try? result.get())?.first?.count, 10)
                 exp.fulfill()
             }
 
-            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(\Mock.count, descending: true).limit(to: 1) }) { result in
+            Snapshot.get(.mocks, queryBuilderBlock: { $0.order(by: \Mock.count, descending: true).limit(to: 1) }) { result in
                 XCTAssertEqual((try? result.get())?.count, 1)
                 XCTAssertEqual((try? result.get())?.first?.count, 15)
                 exp.fulfill()

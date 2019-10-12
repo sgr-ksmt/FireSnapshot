@@ -138,7 +138,7 @@ class ReadTests: XCTestCase {
             }
 
             Snapshot.get(.mocks, queryBuilderBlock: {
-                $0.order(\Mock.name, descending: true)
+                $0.order(by: \Mock.name, descending: true)
             }) { result in
                 switch result {
                 case let .success(mocks):
@@ -154,7 +154,7 @@ class ReadTests: XCTestCase {
 
 
         Snapshot.get(.invalids, queryBuilderBlock: {
-            $0.order(\Mock.name, descending: true)
+            $0.order(by: \Mock.name, descending: true)
         }) { result in
             switch result {
             case .success:
@@ -309,7 +309,7 @@ class ReadTests: XCTestCase {
         exp.expectedFulfillmentCount = 4
         var results = [[String]]()
         _ = Snapshot.listen(.mocks, queryBuilderBlock: {
-            $0.order(\Mock.name, descending: true)
+            $0.order(by: \Mock.name, descending: true)
         }) { result in
             switch result {
             case let .success(mocks):
@@ -332,7 +332,7 @@ class ReadTests: XCTestCase {
         }
 
         _ = Snapshot.listen(.invalids, queryBuilderBlock: {
-            $0.order(\Mock.name, descending: true)
+            $0.order(by: \Mock.name, descending: true)
         }) { result in
             switch result {
             case .success:
