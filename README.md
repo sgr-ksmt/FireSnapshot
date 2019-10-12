@@ -1,6 +1,5 @@
 <p align='center'>
 
-![](assets/logo.png)  
 <img src='https://raw.githubusercontent.com/sgr-ksmt/FireSnapshot/master/assets/logo.png' width='600px' />
 
 </p>
@@ -154,26 +153,203 @@ let listener = Snapshot.listen(.products) { result in
         print(error)
     }
 }
+```
 
+If you can read/write timestamp such as `createTime` and `updateTime`, model must be conform to `HasTimestamps` protocol.
+
+```swift
+struct Product: SnapshotData, HasTimestamps {
+    var name: String = ""
+    var desc: String?
+    var price: Int = 0
+    var attributes: [String: String] = [:]
+}
+
+let product = Snapshot(data: .init(), path: .products)
+// `createTime` and `updateTime` will be written to field with other properties.
+product.create()
+
+Snapshot.get(product.path) { result in
+    guard let p = try? result.get() else {
+        return
+    }
+
+    // optional timestamp value.
+    print(p.createTime)
+    print(p.updateTime)
+
+    // `updateTime` will be updated with other properties.
+    p.update()
+}
 ```
 
 <hr />
 
 ### Advanced Usage
 
-🚧
+#### `@IncrementableInt` / `@IncrementableDouble`
 
-#### `@incrementableInt`/`@incrementableDouble`
+If you want to use `FieldValue.increment` on model, use `@IncrementableInt(Double)`.  
 
-🚧
+- The type of `@IncrementableInt` property is `Int64`.  
+- The type of `@IncrementableDouble` property is `Double`.  
+
+```swift
+extension CollectionPaths {
+    static let products = CollectionPath<Model>("models")
+}
+
+struct Model: SnapshotData {
+    @IncrementableInt var count = 10
+    @IncrementableDouble var distance = 10.0
+}
+
+Snapshot.get(.model(modelID)) { result in
+    guard let model = try? result.get() else {
+        return
+    }
+    // Refer a number
+    print(model.count) // print `10`.
+    print(model.distance) // print `10.0`.
+
+    // Increment (use `$` prefix)
+    model.$count.increment(1)
+    print(model.count) // print `11`.
+    model.update()
+
+    model.$distance.increment(1.0)
+    print(model.distance) // print `11.0`.
+    model.update()
+
+    // Decrement
+    model.$count.increment(-1)
+    print(model.count) // print `9`.
+    model.update()
+
+    model.$distance.increment(-1.0)
+    print(model.distance) // print `9.0`.
+    model.update()
+
+    // if you want to reset property, use `reset` method.
+    model.$count.reset()
+}
+```
 
 #### `@AtomicArray`
 
-🚧
+If you want to use `FieldValue.arrayUnion` or `FieldValue.arrayRemove`, use `@AtomicArray`.  
+
+The type of `@AtomicArray`'s element must be conformed to `Codable` protocol.
+
+```swift
+extension CollectionPaths {
+    static let products = CollectionPath<Model>("models")
+}
+
+struct Model: SnapshotData {
+    @AtomicArray var languages: [String] = ["en", "ja"]
+}
+
+Snapshot.get(.model(modelID)) { result in
+    guard let model = try? result.get() else {
+        return
+    }
+
+    // Refer an array
+    print(model.languages) // print `["en", "ja"]`.
+
+    // Union element(s)
+    model.$languages.union("zh")
+    print(model.count) // print `["en", "ja", "zh"]`.
+    model.update()
+
+    // Remove element(s)
+    model.$languages.remove("en")
+    print(model.count) // print `["ja"]`.
+    model.update()
+
+    // if you want to reset property, use `reset` method.
+    model.$languages.reset()
+}
+```
+
+#### `@DeletableField`
+
+IF you want to use `FieldValue.delete`, use `@DeletableField`.
+
+```swift
+extension CollectionPaths {
+    static let products = CollectionPath<Model>("models")
+}
+
+struct Model: SnapshotData {
+    var bio: DeletableField<String>? = .init(value: "I'm a software engineer.")
+}
+
+Snapshot.get(.model(modelID)) { result in
+    guard let model = try? result.get() else {
+        return
+    }
+
+    print(model.bio?.value) // print `Optional("I'm a software engineer.")`
+
+    // Delete property
+    model.bio.delete()
+    model.update()
+}
+
+// After updated
+Snapshot.get(.model(modelID)) { result in
+    guard let model = try? result.get() else {
+        return
+    }
+
+    print(model.bio) // nil
+    print(model.bio?.value) // nil
+}
+```
+
+**NOTE:** 
+Normally, when property is set to nil, `{key: null}` will be written to document,  
+but when using `FieldValue.delete`, field of `key` will be deleted from document.
 
 #### KeyPath-based query
 
-🚧
+You can use KeyPath-based query generator called `QueryBuilder` if the model conform to `FieldNameReferable` protocol.
+
+```swift
+extension CollectionPaths {
+    static let products = CollectionPath<Product>("products")
+}
+
+struct Product: SnapshotData, HasTimestamps {
+    var name: String = ""
+    var desc: String?
+    var price: Int = 0
+    var deleted: Bool = false
+    var attributes: [String: String] = [:]
+}
+
+extension Product: FieldNameReferable {
+    static var fieldNames: [PartialKeyPath<Mock> : String] {
+        return [
+            \Self.self.name: "name",
+            \Self.self.desc: "desc",
+            \Self.self.price: "price",
+            \Self.self.deleted: "deleted",
+        ]
+    }
+}
+
+Snapshot.get(.products, queryBuilder: { builder in
+    builder
+        .where(\.price, isGreaterThan: 5000)
+        .where(\.deleted, isEqualTo: false)
+        .order(by: \.updateTime, descending: true)
+}) { result in
+    ...
+}
+```
 
 <hr />
 
