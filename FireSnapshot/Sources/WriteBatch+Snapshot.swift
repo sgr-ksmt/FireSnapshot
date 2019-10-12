@@ -2,10 +2,10 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
-extension WriteBatch {
+public extension WriteBatch {
     func create<D>(_ snapshot: Snapshot<D>) throws {
         setData(try snapshot.extractWriteFieldsForCreate(), forDocument: snapshot.reference)
     }

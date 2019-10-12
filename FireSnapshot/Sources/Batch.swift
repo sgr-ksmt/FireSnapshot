@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 public final class Batch {
     enum SnapshotBag {
@@ -15,6 +15,7 @@ public final class Batch {
     }
 
     private var bags: [SnapshotBag] = []
+
     public init() {
     }
 
@@ -38,7 +39,7 @@ public final class Batch {
         return self
     }
 
-    public func commit(completion: @escaping (Error?) -> Void) {
+    public func commit(completion: @escaping (Error?) -> Void = { _ in }) {
         do {
             (try asWriteBatch()).commit(completion: completion)
         } catch {

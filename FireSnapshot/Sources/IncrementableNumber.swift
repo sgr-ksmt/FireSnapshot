@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 public protocol IncrementableNumber: Codable {
     associatedtype Number: AdditiveArithmetic, Codable

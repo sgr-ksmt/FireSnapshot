@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 @propertyWrapper
 public struct IncrementableDouble: IncrementableNumber {
@@ -29,6 +29,6 @@ public struct IncrementableDouble: IncrementableNumber {
     }
 
     public func makeFieldValue() -> FieldValue? {
-        incrementValue.map { FieldValue.increment($0) }
+        incrementValue.map(FieldValue.increment)
     }
 }

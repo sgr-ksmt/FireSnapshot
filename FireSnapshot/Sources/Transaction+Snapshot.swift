@@ -2,10 +2,10 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
-extension Transaction {
+public extension Transaction {
     func get<D>(_ path: DocumentPath<D>) throws -> Snapshot<D> {
         try .init(snapshot: try getDocument(path.documentReference))
     }
