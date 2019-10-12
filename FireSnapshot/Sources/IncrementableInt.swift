@@ -29,6 +29,6 @@ public struct IncrementableInt: IncrementableNumber {
     }
 
     public func makeFieldValue() -> FieldValue? {
-        incrementValue.map { FieldValue.increment($0) }
+        incrementValue.map(FieldValue.increment)
     }
 }
