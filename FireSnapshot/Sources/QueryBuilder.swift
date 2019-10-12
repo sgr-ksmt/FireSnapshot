@@ -55,7 +55,7 @@ public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable 
     }
 
     @discardableResult
-    public func order(_ keyPath: PartialKeyPath<D>, descending: Bool = false) -> Self {
+    public func order(by keyPath: PartialKeyPath<D>, descending: Bool = false) -> Self {
         updateQuery(keyPath, builder: { $0.order(by: $1, descending: descending) })
         return self
     }
@@ -167,7 +167,7 @@ public extension QueryBuilder where D: HasTimestamps {
     }
 
     @discardableResult
-    func order(_ key: SnapshotTimestampKey, descending: Bool = false) -> Self {
+    func order(by key: SnapshotTimestampKey, descending: Bool = false) -> Self {
         updateQuery(key.rawValue, builder: { $0.order(by: $1, descending: descending) })
         return self
     }
