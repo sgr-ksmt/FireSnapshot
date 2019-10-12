@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 extension Transaction {
     func get<D>(_ path: DocumentPath<D>) throws -> Snapshot<D> {

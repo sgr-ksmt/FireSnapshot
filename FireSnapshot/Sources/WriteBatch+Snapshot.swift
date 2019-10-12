@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 extension WriteBatch {
     func create<D>(_ snapshot: Snapshot<D>) throws {

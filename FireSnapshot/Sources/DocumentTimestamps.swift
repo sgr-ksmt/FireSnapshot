@@ -6,7 +6,7 @@ import Foundation
 
 public protocol HasTimestamps {}
 
-public enum SnapshotTimestampKey: String  {
+public enum SnapshotTimestampKey: String {
     case createTime
     case updateTime
 }

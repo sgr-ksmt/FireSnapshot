@@ -15,7 +15,6 @@ public class CollectionPaths {
     }
 }
 
-
 public protocol FirestorePath: Hashable {
     var path: String { get }
     init(_ path: String)
@@ -170,7 +169,7 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
     public required init(_ path: String) {
         self.path = path
     }
-    
+
     public convenience init<T>(_ path: CollectionPath<T>) {
         self.init(path.path)
     }

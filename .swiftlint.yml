@@ -1,0 +1,45 @@
+disabled_rules:
+  - colon
+  - comma
+  - control_statement
+  - identifier_name
+  - type_name
+  - trailing_comma
+
+opt_in_rules:
+  - empty_count
+  - anyobject_protocol
+  - array_init
+  - empty_string
+  - weak_delegate
+  - sorted_imports
+
+excluded:
+  - Carthage
+  - Pods
+  - vendor/bundle
+  - FireSnapshotTests
+  - FireSnapshot/Sources/FirebaseFirestoreSwift
+
+force_cast: error
+
+force_try:
+  severity: error
+
+line_length: 150
+
+type_body_length:
+  - 300
+  - 400
+
+function_body_length:
+  - 200
+  - 300
+
+file_length:
+  warning: 500
+  error: 800
+
+nesting:
+  type_level: 3
+  statement_level: 5

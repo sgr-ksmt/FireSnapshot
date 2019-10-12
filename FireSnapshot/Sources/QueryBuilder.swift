@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable {
     private(set) var call: Int = 0
@@ -42,7 +42,7 @@ public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable 
         return self
     }
 
-    public func `where`<V>(_ keyPath: KeyPath<D, Array<V>>, arrayContains value: V) -> Self where V: Equatable {
+    public func `where`<V>(_ keyPath: KeyPath<D, [V]>, arrayContains value: V) -> Self where V: Equatable {
         updateQuery(keyPath, builder: { $0.whereField($1, arrayContains: value) })
         return self
     }

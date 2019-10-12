@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 public extension Snapshot {
     typealias WriteResultBlock = (Result<Void, Error>) -> Void

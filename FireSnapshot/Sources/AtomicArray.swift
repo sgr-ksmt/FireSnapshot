@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 @propertyWrapper
 public struct AtomicArray<E>: Codable where E: Codable, E: Equatable {
