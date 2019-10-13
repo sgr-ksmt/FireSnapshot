@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		1607A5AC233F398A0034BB35 /* FireSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1607A5AA233F398A0034BB35 /* FireSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1607A5C6233F4CC00034BB35 /* FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1607A5A7233F398A0034BB35 /* FireSnapshot.framework */; };
-		1694DFA72351CA6A00B7807A /* Snapshot+Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF812351CA6A00B7807A /* Snapshot+Write.swift */; };
+		1637436023534929009EB510 /* SnapshotType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637435F23534929009EB510 /* SnapshotType.swift */; };
+		1694DFA72351CA6A00B7807A /* SnapshotType+Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */; };
 		1694DFA82351CA6A00B7807A /* IncrementableInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF822351CA6A00B7807A /* IncrementableInt.swift */; };
 		1694DFA92351CA6A00B7807A /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF832351CA6A00B7807A /* Reference.swift */; };
 		1694DFAA2351CA6A00B7807A /* FieldNameReferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF842351CA6A00B7807A /* FieldNameReferable.swift */; };
@@ -38,7 +39,7 @@
 		1694DFC12351CA6A00B7807A /* FieldValue+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9C2351CA6A00B7807A /* FieldValue+Encodable.swift */; };
 		1694DFC22351CA6A00B7807A /* CodablePassThroughTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9D2351CA6A00B7807A /* CodablePassThroughTypes.swift */; };
 		1694DFC32351CA6A00B7807A /* FirestoreDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9E2351CA6A00B7807A /* FirestoreDecoder.swift */; };
-		1694DFC42351CA6A00B7807A /* Snapshot+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9F2351CA6A00B7807A /* Snapshot+Read.swift */; };
+		1694DFC42351CA6A00B7807A /* SnapshotType+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9F2351CA6A00B7807A /* SnapshotType+Read.swift */; };
 		1694DFC52351CA6A00B7807A /* IncrementableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFA02351CA6A00B7807A /* IncrementableNumber.swift */; };
 		1694DFC62351CA6A00B7807A /* DeletableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFA12351CA6A00B7807A /* DeletableField.swift */; };
 		1694DFC72351CA6A00B7807A /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFA22351CA6A00B7807A /* QueryBuilder.swift */; };
@@ -81,7 +82,8 @@
 		1607A5AB233F398A0034BB35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1607A5C1233F4CC00034BB35 /* FireSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1607A5C5233F4CC00034BB35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1694DF812351CA6A00B7807A /* Snapshot+Write.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Snapshot+Write.swift"; sourceTree = "<group>"; };
+		1637435F23534929009EB510 /* SnapshotType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotType.swift; sourceTree = "<group>"; };
+		1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SnapshotType+Write.swift"; sourceTree = "<group>"; };
 		1694DF822351CA6A00B7807A /* IncrementableInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementableInt.swift; sourceTree = "<group>"; };
 		1694DF832351CA6A00B7807A /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		1694DF842351CA6A00B7807A /* FieldNameReferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldNameReferable.swift; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		1694DF9C2351CA6A00B7807A /* FieldValue+Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FieldValue+Encodable.swift"; sourceTree = "<group>"; };
 		1694DF9D2351CA6A00B7807A /* CodablePassThroughTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodablePassThroughTypes.swift; sourceTree = "<group>"; };
 		1694DF9E2351CA6A00B7807A /* FirestoreDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreDecoder.swift; sourceTree = "<group>"; };
-		1694DF9F2351CA6A00B7807A /* Snapshot+Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Snapshot+Read.swift"; sourceTree = "<group>"; };
+		1694DF9F2351CA6A00B7807A /* SnapshotType+Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SnapshotType+Read.swift"; sourceTree = "<group>"; };
 		1694DFA02351CA6A00B7807A /* IncrementableNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementableNumber.swift; sourceTree = "<group>"; };
 		1694DFA12351CA6A00B7807A /* DeletableField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletableField.swift; sourceTree = "<group>"; };
 		1694DFA22351CA6A00B7807A /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
@@ -220,10 +222,11 @@
 				1694DF832351CA6A00B7807A /* Reference.swift */,
 				1694DFA52351CA6A00B7807A /* Result+.swift */,
 				1694DF892351CA6A00B7807A /* Snapshot.swift */,
-				1694DF882351CA6A00B7807A /* SnapshotError.swift */,
 				1694DF8D2351CA6A00B7807A /* SnapshotData.swift */,
-				1694DF9F2351CA6A00B7807A /* Snapshot+Read.swift */,
-				1694DF812351CA6A00B7807A /* Snapshot+Write.swift */,
+				1694DF882351CA6A00B7807A /* SnapshotError.swift */,
+				1637435F23534929009EB510 /* SnapshotType.swift */,
+				1694DF9F2351CA6A00B7807A /* SnapshotType+Read.swift */,
+				1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */,
 				1694DF862351CA6A00B7807A /* Transaction+Snapshot.swift */,
 				1694DFA62351CA6A00B7807A /* WriteBatch+Snapshot.swift */,
 			);
@@ -490,17 +493,18 @@
 				1694DFBF2351CA6A00B7807A /* DocumentSnapshot+ReadDecodable.swift in Sources */,
 				1694DFC32351CA6A00B7807A /* FirestoreDecoder.swift in Sources */,
 				1694DFC22351CA6A00B7807A /* CodablePassThroughTypes.swift in Sources */,
-				1694DFA72351CA6A00B7807A /* Snapshot+Write.swift in Sources */,
+				1694DFA72351CA6A00B7807A /* SnapshotType+Write.swift in Sources */,
 				1694DFC92351CA6A00B7807A /* AtomicArray.swift in Sources */,
 				1694DFB82351CA6A00B7807A /* GeoPoint+Codable.swift in Sources */,
 				1694DFAD2351CA6A00B7807A /* CollectionGroup.swift in Sources */,
-				1694DFC42351CA6A00B7807A /* Snapshot+Read.swift in Sources */,
+				1694DFC42351CA6A00B7807A /* SnapshotType+Read.swift in Sources */,
 				1694DFB72351CA6A00B7807A /* CodableErrors.swift in Sources */,
 				1694DFAF2351CA6A00B7807A /* Snapshot.swift in Sources */,
 				1694DFB92351CA6A00B7807A /* Transaction+WriteEncodable.swift in Sources */,
 				1694DFAC2351CA6A00B7807A /* Transaction+Snapshot.swift in Sources */,
 				1694DFBD2351CA6A00B7807A /* DocumentReference+WriteEncodable.swift in Sources */,
 				1694DFB62351CA6A00B7807A /* ExplicitNull.swift in Sources */,
+				1637436023534929009EB510 /* SnapshotType.swift in Sources */,
 				1694DFA82351CA6A00B7807A /* IncrementableInt.swift in Sources */,
 				1694DFB22351CA6A00B7807A /* Path.swift in Sources */,
 				1694DFC82351CA6A00B7807A /* Batch.swift in Sources */,

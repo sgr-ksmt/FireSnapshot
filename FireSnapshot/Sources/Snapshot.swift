@@ -5,10 +5,6 @@
 import FirebaseFirestore
 import Foundation
 
-public protocol SnapshotType {
-    associatedtype Data: SnapshotData
-}
-
 @dynamicMemberLookup
 public final class Snapshot<D>: SnapshotType where D: SnapshotData {
     public typealias Data = D
@@ -55,23 +51,6 @@ public final class Snapshot<D>: SnapshotType where D: SnapshotData {
             _createTime = snapshot.data()?[SnapshotTimestampKey.createTime.rawValue] as? Timestamp
             _updateTime = snapshot.data()?[SnapshotTimestampKey.updateTime.rawValue] as? Timestamp
         }
-    }
-
-    func extractWriteFieldsForCreate() throws -> [String: Any] {
-        var fields = try Firestore.Encoder().encode(data)
-        if data is HasTimestamps {
-            fields[SnapshotTimestampKey.createTime.rawValue] = FieldValue.serverTimestamp()
-            fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
-        }
-        return fields
-    }
-
-    func extractWriteFieldsForUpdate() throws -> [String: Any] {
-        var fields = try Firestore.Encoder().encode(data)
-        if data is HasTimestamps {
-            fields[SnapshotTimestampKey.updateTime.rawValue] = FieldValue.serverTimestamp()
-        }
-        return fields
     }
 
     public subscript<V>(dynamicMember keyPath: WritableKeyPath<D, V>) -> V {

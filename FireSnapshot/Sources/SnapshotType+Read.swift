@@ -5,11 +5,11 @@
 import FirebaseFirestore
 import Foundation
 
-public extension Snapshot {
+public extension SnapshotType {
     typealias QueryBuildBlock = (Query) -> Query
     typealias DocumentReadResultBlock<T: SnapshotData> = (Result<Snapshot<T>, Error>) -> Void
     typealias CollectionReadResultBlock<T: SnapshotData> = (Result<[Snapshot<T>], Error>) -> Void
-
+    
     static func get(_ path: DocumentPath<Data>,
                     source: FirestoreSource = .default,
                     completion: @escaping DocumentReadResultBlock<Data>) {
@@ -131,7 +131,7 @@ public extension Snapshot {
     }
 }
 
-public extension Snapshot where Data: FieldNameReferable {
+public extension SnapshotType where Data: FieldNameReferable {
     typealias QueryBuilderBlock<T: SnapshotData & FieldNameReferable> = (QueryBuilder<T>) -> QueryBuilder<T>
 
     static func get(_ path: CollectionPath<Data>,

@@ -5,7 +5,7 @@
 import FirebaseFirestore
 import Foundation
 
-public extension Snapshot {
+public extension SnapshotType {
     typealias WriteResultBlock = (Result<Void, Error>) -> Void
 
     func create(merge: Bool = false,
