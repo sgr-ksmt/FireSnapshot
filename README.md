@@ -14,7 +14,7 @@
 ![Bitrise](https://img.shields.io/bitrise/088b3cb378bed01b/master?style=for-the-badge&token=W33-pqQu735MA5qn3GGn5w)
 [![license](https://img.shields.io/github/license/sgr-ksmt/FireSnapshot.svg?style=for-the-badge)](https://github.com/sgr-ksmt/FireSnapshot/blob/master/LICENSE)
 
-**Firebase Cloud Firestore Model Framework using Codable.**  
+**A useful Firebase-Cloud-Firestore Wrapper with Codable.**  
 
 Developed by [@sgr-ksmt](https://github.com/sgr-ksmt) [![Twitter Follow](https://img.shields.io/twitter/follow/_sgr_ksmt?label=Follow&style=social)](https://twitter.com/_sgr_ksmt)
 </div>
@@ -53,6 +53,8 @@ Developed by [@sgr-ksmt](https://github.com/sgr-ksmt) [![Twitter Follow](https:/
 <hr />
 
 ## Usage
+
+- 👉 [Example App](https://github.com/sgr-ksmt/FireTodo)
 
 ### Basic Usage
 
