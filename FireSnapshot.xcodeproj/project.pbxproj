@@ -10,6 +10,7 @@
 		1607A5AC233F398A0034BB35 /* FireSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1607A5AA233F398A0034BB35 /* FireSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1607A5C6233F4CC00034BB35 /* FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1607A5A7233F398A0034BB35 /* FireSnapshot.framework */; };
 		1637436023534929009EB510 /* SnapshotType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637435F23534929009EB510 /* SnapshotType.swift */; };
+		1637436423547326009EB510 /* DocumentReference+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637436323547326009EB510 /* DocumentReference+.swift */; };
 		1694DFA72351CA6A00B7807A /* SnapshotType+Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */; };
 		1694DFA82351CA6A00B7807A /* IncrementableInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF822351CA6A00B7807A /* IncrementableInt.swift */; };
 		1694DFA92351CA6A00B7807A /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF832351CA6A00B7807A /* Reference.swift */; };
@@ -82,6 +83,7 @@
 		1607A5C1233F4CC00034BB35 /* FireSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1607A5C5233F4CC00034BB35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1637435F23534929009EB510 /* SnapshotType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotType.swift; sourceTree = "<group>"; };
+		1637436323547326009EB510 /* DocumentReference+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentReference+.swift"; sourceTree = "<group>"; };
 		1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SnapshotType+Write.swift"; sourceTree = "<group>"; };
 		1694DF822351CA6A00B7807A /* IncrementableInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementableInt.swift; sourceTree = "<group>"; };
 		1694DF832351CA6A00B7807A /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				1694DFA32351CA6A00B7807A /* Batch.swift */,
 				1694DF872351CA6A00B7807A /* CollectionGroup.swift */,
 				1694DFA12351CA6A00B7807A /* DeletableField.swift */,
+				1637436323547326009EB510 /* DocumentReference+.swift */,
 				1694DF8A2351CA6A00B7807A /* DocumentTimestamps.swift */,
 				1694DF842351CA6A00B7807A /* FieldNameReferable.swift */,
 				1694DF8B2351CA6A00B7807A /* IncrementableDouble.swift */,
@@ -508,6 +511,7 @@
 				1694DFB32351CA6A00B7807A /* SnapshotData.swift in Sources */,
 				1694DFBA2351CA6A00B7807A /* SelfDocumentId.swift in Sources */,
 				1694DFB02351CA6A00B7807A /* DocumentTimestamps.swift in Sources */,
+				1637436423547326009EB510 /* DocumentReference+.swift in Sources */,
 				1694DFB52351CA6A00B7807A /* Timestamp+Codable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
