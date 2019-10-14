@@ -14,7 +14,6 @@
 		1694DFA82351CA6A00B7807A /* IncrementableInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF822351CA6A00B7807A /* IncrementableInt.swift */; };
 		1694DFA92351CA6A00B7807A /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF832351CA6A00B7807A /* Reference.swift */; };
 		1694DFAA2351CA6A00B7807A /* FieldNameReferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF842351CA6A00B7807A /* FieldNameReferable.swift */; };
-		1694DFAB2351CA6A00B7807A /* DocumentReference+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF852351CA6A00B7807A /* DocumentReference+.swift */; };
 		1694DFAC2351CA6A00B7807A /* Transaction+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF862351CA6A00B7807A /* Transaction+Snapshot.swift */; };
 		1694DFAD2351CA6A00B7807A /* CollectionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF872351CA6A00B7807A /* CollectionGroup.swift */; };
 		1694DFAE2351CA6A00B7807A /* SnapshotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF882351CA6A00B7807A /* SnapshotError.swift */; };
@@ -87,7 +86,6 @@
 		1694DF822351CA6A00B7807A /* IncrementableInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementableInt.swift; sourceTree = "<group>"; };
 		1694DF832351CA6A00B7807A /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		1694DF842351CA6A00B7807A /* FieldNameReferable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldNameReferable.swift; sourceTree = "<group>"; };
-		1694DF852351CA6A00B7807A /* DocumentReference+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentReference+.swift"; sourceTree = "<group>"; };
 		1694DF862351CA6A00B7807A /* Transaction+Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+Snapshot.swift"; sourceTree = "<group>"; };
 		1694DF872351CA6A00B7807A /* CollectionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionGroup.swift; sourceTree = "<group>"; };
 		1694DF882351CA6A00B7807A /* SnapshotError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotError.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 				1694DFA32351CA6A00B7807A /* Batch.swift */,
 				1694DF872351CA6A00B7807A /* CollectionGroup.swift */,
 				1694DFA12351CA6A00B7807A /* DeletableField.swift */,
-				1694DF852351CA6A00B7807A /* DocumentReference+.swift */,
 				1694DF8A2351CA6A00B7807A /* DocumentTimestamps.swift */,
 				1694DF842351CA6A00B7807A /* FieldNameReferable.swift */,
 				1694DF8B2351CA6A00B7807A /* IncrementableDouble.swift */,
@@ -483,7 +480,6 @@
 				1694DFAA2351CA6A00B7807A /* FieldNameReferable.swift in Sources */,
 				1694DFC52351CA6A00B7807A /* IncrementableNumber.swift in Sources */,
 				1694DFB42351CA6A00B7807A /* DocumentReference+Codable.swift in Sources */,
-				1694DFAB2351CA6A00B7807A /* DocumentReference+.swift in Sources */,
 				1694DFA92351CA6A00B7807A /* Reference.swift in Sources */,
 				1694DFBB2351CA6A00B7807A /* CollectionReference+WriteEncodable.swift in Sources */,
 				1694DFCA2351CA6A00B7807A /* Result+.swift in Sources */,

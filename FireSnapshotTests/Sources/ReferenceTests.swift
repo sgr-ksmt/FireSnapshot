@@ -18,7 +18,7 @@ private struct User: SnapshotData {
 
 private struct Task: SnapshotData {
     var title: String
-    @Reference<User> var author = .dummy()
+    @Reference<User> var author = nil
 }
 
 class ReferenceTests: XCTestCase {
@@ -118,10 +118,26 @@ class ReferenceTests: XCTestCase {
         task.create { result in
             switch result {
             case .success:
-                XCTFail()
-                 exp.fulfill()
+                Snapshot.get(task.path) { result in
+                    switch result {
+                    case let .success(task):
+                        task.$author.get { result in
+                            switch result {
+                            case .success:
+                                XCTFail()
+                                exp.fulfill()
+                            case let .failure(error):
+                                XCTAssertEqual(error as? SnapshotError, SnapshotError.notExists)
+                                exp.fulfill()
+                            }
+                        }
+                    case let .failure(error):
+                        XCTFail("\(error)")
+                        exp.fulfill()
+                    }
+                }
             case let .failure(error):
-                XCTAssertEqual(error as? SnapshotError, SnapshotError.emptyReference)
+                XCTFail("\(error)")
                 exp.fulfill()
             }
         }
