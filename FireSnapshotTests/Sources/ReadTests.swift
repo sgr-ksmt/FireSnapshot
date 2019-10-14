@@ -25,7 +25,7 @@ class ReadTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-         FirebaseTestHelper.setupFirebaseApp()
+        FirebaseTestHelper.setupFirebaseApp()
     }
 
     override func tearDown() {

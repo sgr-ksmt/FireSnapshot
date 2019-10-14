@@ -78,6 +78,18 @@ public class DocumentPath<T>: DocumentPaths, FirestorePath where T: SnapshotData
         Firestore.firestore().document(path)
     }
 
+    public var id: String {
+        documentReference.documentID
+    }
+
+    public func sameIDSubDocument(_ collectionName: String) -> DocumentPath<T> {
+        collection(collectionName).document(id)
+    }
+
+    public func sameIDSubDocument<U>(_ collectionName: String) -> DocumentPath<U> where U: SnapshotData {
+        collection(collectionName).document(id)
+    }
+
     public static func == (lhs: DocumentPath<T>, rhs: DocumentPath<T>) -> Bool {
         lhs.path == rhs.path
     }
@@ -108,6 +120,10 @@ public class CollectionPath<T>: CollectionPaths, FirestorePath where T: Snapshot
 
     public var collectionReference: CollectionReference {
         Firestore.firestore().collection(path)
+    }
+
+    public var id: String {
+        collectionReference.collectionID
     }
 
     public func documentRefernce(id: String? = nil) -> DocumentReference {
@@ -150,6 +166,22 @@ public class AnyDocumentPath: DocumentPaths, FirestorePath {
         CollectionPath(self.path, collectionName)
     }
 
+    public func anySameIDSubDocument(_ collectionName: String) -> AnyDocumentPath {
+        anyCollection(collectionName).anyDocument(id)
+    }
+
+    public func sameIDSubDocument<U>(_ collectionName: String) -> DocumentPath<U> where U: SnapshotData {
+        collection(collectionName).document(id)
+    }
+
+    public var documentReference: DocumentReference {
+        Firestore.firestore().document(path)
+    }
+
+    public var id: String {
+        documentReference.documentID
+    }
+
     public static func == (lhs: AnyDocumentPath, rhs: AnyDocumentPath) -> Bool {
         lhs.path == rhs.path
     }
@@ -180,6 +212,14 @@ public class AnyCollectionPath: CollectionPaths, FirestorePath {
 
     public func document<T>(_ documentID: String) -> DocumentPath<T> where T: SnapshotData {
         DocumentPath(self.path, documentID)
+    }
+
+    public var collectionReference: CollectionReference {
+        Firestore.firestore().collection(path)
+    }
+
+    public var id: String {
+        collectionReference.collectionID
     }
 
     public static func == (lhs: AnyCollectionPath, rhs: AnyCollectionPath) -> Bool {
