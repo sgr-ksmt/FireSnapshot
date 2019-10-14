@@ -22,7 +22,8 @@ class PathTests: XCTestCase {
         FirebaseTestHelper.deleteFirebaseApp()
     }
 
-    func testDocumentPath() {
+    func test() {
+        // DocumentPath
         XCTAssertTrue(DocumentPath<Mock>("mocks/xxx").isValid)
         XCTAssertTrue(DocumentPath<Mock>("mocks/xxx/sub/yyy").isValid)
         XCTAssertTrue(CollectionPath<Mock>("mocks").document("xxx").isValid)
@@ -48,9 +49,12 @@ class PathTests: XCTestCase {
         XCTAssertEqual(DocumentPath<Mock>("mocks/xxx/sub/yyy").documentReference, Firestore.firestore().document("mocks/xxx/sub/yyy"))
         XCTAssertEqual(DocumentPath<Mock>("mocks/xxx").id, "xxx")
         XCTAssertEqual(DocumentPath<Mock>("mocks/xxx/sub/yyy").id, "yyy")
-    }
 
-    func testCollectionPath() {
+        XCTAssertEqual(DocumentPath<Mock>("mocks/xxx").sameIDSubDocument("sub").path, "mocks/xxx/sub/xxx")
+
+        // ==========================================
+        // CollectionPath
+
         XCTAssertTrue(CollectionPath<Mock>("mocks").isValid)
         XCTAssertTrue(CollectionPath<Mock>("mocks/xxx/sub").isValid)
         XCTAssertTrue(CollectionPath<Mock>("mocks").document("xxx").collection("sub").isValid)
@@ -71,13 +75,14 @@ class PathTests: XCTestCase {
         XCTAssertEqual(CollectionPath<Mock>("mocks/xxx/sub").collectionReference, Firestore.firestore().collection("mocks/xxx/sub"))
         XCTAssertEqual(CollectionPath<Mock>("mocks").id, "mocks")
         XCTAssertEqual(CollectionPath<Mock>("mocks/xxx/sub").id, "sub")
-    }
 
-    func testAnyDocumentPath() {
         XCTAssertTrue(AnyDocumentPath("mocks/xxx").isValid)
         XCTAssertTrue(AnyDocumentPath("mocks/xxx/sub/yyy").isValid)
         XCTAssertTrue(AnyCollectionPath("mocks").anyDocument("xxx").isValid)
         XCTAssertTrue(AnyCollectionPath("mocks").anyDocument("xxx").anyCollection("sub").anyDocument("yyy").isValid)
+
+        // ==========================================
+        // AnyDocumentPath
 
         XCTAssertFalse(AnyDocumentPath("").isValid)
         XCTAssertFalse(AnyDocumentPath("/").isValid)
@@ -99,9 +104,12 @@ class PathTests: XCTestCase {
         XCTAssertEqual(AnyDocumentPath("mocks/xxx/sub/yyy").documentReference, Firestore.firestore().document("mocks/xxx/sub/yyy"))
         XCTAssertEqual(AnyDocumentPath("mocks/xxx").id, "xxx")
         XCTAssertEqual(AnyDocumentPath("mocks/xxx/sub/yyy").id, "yyy")
-    }
 
-    func testAnyCollectionPath() {
+        XCTAssertEqual(AnyDocumentPath("mocks/xxx").anySameIDSubDocument("sub").path, "mocks/xxx/sub/xxx")
+
+        // ==========================================
+        // AnyCollectionPath
+
         XCTAssertTrue(AnyCollectionPath("mocks").isValid)
         XCTAssertTrue(AnyCollectionPath("mocks/xxx/sub").isValid)
         XCTAssertTrue(AnyCollectionPath("mocks").anyDocument("xxx").anyCollection("sub").isValid)

@@ -82,6 +82,14 @@ public class DocumentPath<T>: DocumentPaths, FirestorePath where T: SnapshotData
         documentReference.documentID
     }
 
+    public func sameIDSubDocument(_ collectionName: String) -> DocumentPath<T> {
+        collection(collectionName).document(id)
+    }
+
+    public func sameIDSubDocument<U>(_ collectionName: String) -> DocumentPath<U> where U: SnapshotData {
+        collection(collectionName).document(id)
+    }
+
     public static func == (lhs: DocumentPath<T>, rhs: DocumentPath<T>) -> Bool {
         lhs.path == rhs.path
     }
@@ -156,6 +164,14 @@ public class AnyDocumentPath: DocumentPaths, FirestorePath {
 
     public func collection<T>(_ collectionName: String) -> CollectionPath<T> where T: SnapshotData {
         CollectionPath(self.path, collectionName)
+    }
+
+    public func anySameIDSubDocument(_ collectionName: String) -> AnyDocumentPath {
+        anyCollection(collectionName).anyDocument(id)
+    }
+
+    public func sameIDSubDocument<U>(_ collectionName: String) -> DocumentPath<U> where U: SnapshotData {
+        collection(collectionName).document(id)
     }
 
     public var documentReference: DocumentReference {
