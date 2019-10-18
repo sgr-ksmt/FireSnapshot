@@ -18,6 +18,7 @@ enum FirebaseTestHelper {
         if FirebaseApp.app() == nil {
             let options = FirebaseOptions(googleAppID: "1:123:ios:123abc", gcmSenderID: "sender_id")
             options.projectID = "test-" + dateFormatter.string(from: Date())
+            options.storageBucket = "project-id-123.storage.firebase.com"
             FirebaseApp.configure(options: options)
             let settings = Firestore.firestore().settings
             settings.host = "localhost:8080"

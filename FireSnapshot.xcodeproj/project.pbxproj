@@ -63,6 +63,7 @@
 		1694DFE92351CB2000B7807A /* QueryBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFDA2351CB2000B7807A /* QueryBuilderTests.swift */; };
 		1694DFEA2351CB2000B7807A /* ReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFDB2351CB2000B7807A /* ReferenceTests.swift */; };
 		16982A08235998AA0018C74C /* StoragePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16982A07235998AA0018C74C /* StoragePath.swift */; };
+		16982A0A2359BF820018C74C /* StoragePathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16982A092359BF820018C74C /* StoragePathTests.swift */; };
 		C7AC0728461714610F570CB5 /* Pods_FireSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9C3F24DAB7C0106A5A122D /* Pods_FireSnapshotTests.framework */; };
 		CE86EA2FE75980E5237BCED1 /* Pods_FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8925B294155F0A90A59C088 /* Pods_FireSnapshot.framework */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,7 @@
 		1694DFDA2351CB2000B7807A /* QueryBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilderTests.swift; sourceTree = "<group>"; };
 		1694DFDB2351CB2000B7807A /* ReferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTests.swift; sourceTree = "<group>"; };
 		16982A07235998AA0018C74C /* StoragePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePath.swift; sourceTree = "<group>"; };
+		16982A092359BF820018C74C /* StoragePathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePathTests.swift; sourceTree = "<group>"; };
 		25B42645485A6D1C6682724A /* Pods-FireSnapshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.debug.xcconfig"; sourceTree = "<group>"; };
 		648BB37871CC0A94356CF0DB /* Pods-FireSnapshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.release.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.release.xcconfig"; sourceTree = "<group>"; };
 		B90A83261856C6D7C28E7346 /* Pods-FireSnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshotTests.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshotTests/Pods-FireSnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				1694DFCD2351CB2000B7807A /* ResultTests.swift */,
 				1694DFD92351CB2000B7807A /* TransactionTests.swift */,
 				1694DFD62351CB2000B7807A /* WriteTest.swift */,
+				16982A092359BF820018C74C /* StoragePathTests.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				1694DFDF2351CB2000B7807A /* DocumentTimestampsTests.swift in Sources */,
 				1694DFDE2351CB2000B7807A /* ReadTests.swift in Sources */,
 				1694DFE32351CB2000B7807A /* PathTests.swift in Sources */,
+				16982A0A2359BF820018C74C /* StoragePathTests.swift in Sources */,
 				1694DFE82351CB2000B7807A /* TransactionTests.swift in Sources */,
 				1694DFEA2351CB2000B7807A /* ReferenceTests.swift in Sources */,
 				1694DFE72351CB2000B7807A /* IncrementableNumberTests.swift in Sources */,
