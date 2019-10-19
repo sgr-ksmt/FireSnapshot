@@ -62,6 +62,8 @@
 		1694DFE82351CB2000B7807A /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFD92351CB2000B7807A /* TransactionTests.swift */; };
 		1694DFE92351CB2000B7807A /* QueryBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFDA2351CB2000B7807A /* QueryBuilderTests.swift */; };
 		1694DFEA2351CB2000B7807A /* ReferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFDB2351CB2000B7807A /* ReferenceTests.swift */; };
+		16982A08235998AA0018C74C /* StoragePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16982A07235998AA0018C74C /* StoragePath.swift */; };
+		16982A0A2359BF820018C74C /* StoragePathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16982A092359BF820018C74C /* StoragePathTests.swift */; };
 		C7AC0728461714610F570CB5 /* Pods_FireSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9C3F24DAB7C0106A5A122D /* Pods_FireSnapshotTests.framework */; };
 		CE86EA2FE75980E5237BCED1 /* Pods_FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8925B294155F0A90A59C088 /* Pods_FireSnapshot.framework */; };
 /* End PBXBuildFile section */
@@ -135,6 +137,8 @@
 		1694DFD92351CB2000B7807A /* TransactionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		1694DFDA2351CB2000B7807A /* QueryBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilderTests.swift; sourceTree = "<group>"; };
 		1694DFDB2351CB2000B7807A /* ReferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceTests.swift; sourceTree = "<group>"; };
+		16982A07235998AA0018C74C /* StoragePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePath.swift; sourceTree = "<group>"; };
+		16982A092359BF820018C74C /* StoragePathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePathTests.swift; sourceTree = "<group>"; };
 		25B42645485A6D1C6682724A /* Pods-FireSnapshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.debug.xcconfig"; sourceTree = "<group>"; };
 		648BB37871CC0A94356CF0DB /* Pods-FireSnapshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshot.release.xcconfig"; path = "Target Support Files/Pods-FireSnapshot/Pods-FireSnapshot.release.xcconfig"; sourceTree = "<group>"; };
 		B90A83261856C6D7C28E7346 /* Pods-FireSnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireSnapshotTests.debug.xcconfig"; path = "Target Support Files/Pods-FireSnapshotTests/Pods-FireSnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,29 +210,8 @@
 		1694DF802351CA6A00B7807A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1694DF8E2351CA6A00B7807A /* FirebaseFirestoreSwift */,
-				1694DFA42351CA6A00B7807A /* AtomicArray.swift */,
-				1694DFA32351CA6A00B7807A /* Batch.swift */,
-				1694DF872351CA6A00B7807A /* CollectionGroup.swift */,
-				1694DFA12351CA6A00B7807A /* DeletableField.swift */,
-				1637436323547326009EB510 /* DocumentReference+.swift */,
-				1694DF8A2351CA6A00B7807A /* DocumentTimestamps.swift */,
-				1694DF842351CA6A00B7807A /* FieldNameReferable.swift */,
-				1694DF8B2351CA6A00B7807A /* IncrementableDouble.swift */,
-				1694DF822351CA6A00B7807A /* IncrementableInt.swift */,
-				1694DFA02351CA6A00B7807A /* IncrementableNumber.swift */,
-				1694DF8C2351CA6A00B7807A /* Path.swift */,
-				1694DFA22351CA6A00B7807A /* QueryBuilder.swift */,
-				1694DF832351CA6A00B7807A /* Reference.swift */,
-				1694DFA52351CA6A00B7807A /* Result+.swift */,
-				1694DF892351CA6A00B7807A /* Snapshot.swift */,
-				1694DF8D2351CA6A00B7807A /* SnapshotData.swift */,
-				1694DF882351CA6A00B7807A /* SnapshotError.swift */,
-				1637435F23534929009EB510 /* SnapshotType.swift */,
-				1694DF9F2351CA6A00B7807A /* SnapshotType+Read.swift */,
-				1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */,
-				1694DF862351CA6A00B7807A /* Transaction+Snapshot.swift */,
-				1694DFA62351CA6A00B7807A /* WriteBatch+Snapshot.swift */,
+				16982A05235996150018C74C /* Core */,
+				16982A062359962A0018C74C /* Storage */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -274,8 +257,47 @@
 				1694DFCD2351CB2000B7807A /* ResultTests.swift */,
 				1694DFD92351CB2000B7807A /* TransactionTests.swift */,
 				1694DFD62351CB2000B7807A /* WriteTest.swift */,
+				16982A092359BF820018C74C /* StoragePathTests.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		16982A05235996150018C74C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1694DF8E2351CA6A00B7807A /* FirebaseFirestoreSwift */,
+				1694DFA42351CA6A00B7807A /* AtomicArray.swift */,
+				1694DFA32351CA6A00B7807A /* Batch.swift */,
+				1694DF872351CA6A00B7807A /* CollectionGroup.swift */,
+				1694DFA12351CA6A00B7807A /* DeletableField.swift */,
+				1637436323547326009EB510 /* DocumentReference+.swift */,
+				1694DF8A2351CA6A00B7807A /* DocumentTimestamps.swift */,
+				1694DF842351CA6A00B7807A /* FieldNameReferable.swift */,
+				1694DF8B2351CA6A00B7807A /* IncrementableDouble.swift */,
+				1694DF822351CA6A00B7807A /* IncrementableInt.swift */,
+				1694DFA02351CA6A00B7807A /* IncrementableNumber.swift */,
+				1694DF8C2351CA6A00B7807A /* Path.swift */,
+				1694DFA22351CA6A00B7807A /* QueryBuilder.swift */,
+				1694DF832351CA6A00B7807A /* Reference.swift */,
+				1694DFA52351CA6A00B7807A /* Result+.swift */,
+				1694DF892351CA6A00B7807A /* Snapshot.swift */,
+				1694DF8D2351CA6A00B7807A /* SnapshotData.swift */,
+				1694DF882351CA6A00B7807A /* SnapshotError.swift */,
+				1637435F23534929009EB510 /* SnapshotType.swift */,
+				1694DF9F2351CA6A00B7807A /* SnapshotType+Read.swift */,
+				1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */,
+				1694DF862351CA6A00B7807A /* Transaction+Snapshot.swift */,
+				1694DFA62351CA6A00B7807A /* WriteBatch+Snapshot.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		16982A062359962A0018C74C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				16982A07235998AA0018C74C /* StoragePath.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		6ECC3F1D7692BABEA3B7D5DC /* Pods */ = {
@@ -504,6 +526,7 @@
 				1694DFBD2351CA6A00B7807A /* DocumentReference+WriteEncodable.swift in Sources */,
 				1694DFB62351CA6A00B7807A /* ExplicitNull.swift in Sources */,
 				1637436023534929009EB510 /* SnapshotType.swift in Sources */,
+				16982A08235998AA0018C74C /* StoragePath.swift in Sources */,
 				1694DFA82351CA6A00B7807A /* IncrementableInt.swift in Sources */,
 				1694DFB22351CA6A00B7807A /* Path.swift in Sources */,
 				1694DFC82351CA6A00B7807A /* Batch.swift in Sources */,
@@ -526,6 +549,7 @@
 				1694DFDF2351CB2000B7807A /* DocumentTimestampsTests.swift in Sources */,
 				1694DFDE2351CB2000B7807A /* ReadTests.swift in Sources */,
 				1694DFE32351CB2000B7807A /* PathTests.swift in Sources */,
+				16982A0A2359BF820018C74C /* StoragePathTests.swift in Sources */,
 				1694DFE82351CB2000B7807A /* TransactionTests.swift in Sources */,
 				1694DFEA2351CB2000B7807A /* ReferenceTests.swift in Sources */,
 				1694DFE72351CB2000B7807A /* IncrementableNumberTests.swift in Sources */,

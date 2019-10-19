@@ -3,6 +3,7 @@ source 'https://cdn.cocoapods.org/'
 target 'FireSnapshot' do
   use_frameworks!
   pod 'Firebase/Firestore', '~> 6.9'
+  pod 'Firebase/Storage', '~> 6.9'
 
   target 'FireSnapshotTests' do
     pod 'Firebase/Core', '~> 6.9'
