@@ -375,7 +375,7 @@ Snapshot.get(.products, queryBuilder: { builder in
 - CocoaPods
 
 ```ruby
-pod 'FireSnapshot', '~> 0.7.2'
+pod 'FireSnapshot', '~> 0.7.3'
 ```
 
 <hr />
