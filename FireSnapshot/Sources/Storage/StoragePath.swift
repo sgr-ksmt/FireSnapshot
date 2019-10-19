@@ -6,7 +6,7 @@ import FirebaseStorage
 import Foundation
 
 @propertyWrapper
-public struct StoragePath: Codable {
+public struct StoragePath: Codable, Equatable {
     public var wrappedValue: StorageReference?
     public init(wrappedValue: StorageReference?) {
         self.wrappedValue = wrappedValue
