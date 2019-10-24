@@ -3,6 +3,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import Foundation
 
 public struct DeletableField<T: Codable>: Codable {

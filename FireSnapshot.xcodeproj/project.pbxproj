@@ -23,22 +23,6 @@
 		1694DFB12351CA6A00B7807A /* IncrementableDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF8B2351CA6A00B7807A /* IncrementableDouble.swift */; };
 		1694DFB22351CA6A00B7807A /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF8C2351CA6A00B7807A /* Path.swift */; };
 		1694DFB32351CA6A00B7807A /* SnapshotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF8D2351CA6A00B7807A /* SnapshotData.swift */; };
-		1694DFB42351CA6A00B7807A /* DocumentReference+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF8F2351CA6A00B7807A /* DocumentReference+Codable.swift */; };
-		1694DFB52351CA6A00B7807A /* Timestamp+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF902351CA6A00B7807A /* Timestamp+Codable.swift */; };
-		1694DFB62351CA6A00B7807A /* ExplicitNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF912351CA6A00B7807A /* ExplicitNull.swift */; };
-		1694DFB72351CA6A00B7807A /* CodableErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF922351CA6A00B7807A /* CodableErrors.swift */; };
-		1694DFB82351CA6A00B7807A /* GeoPoint+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF932351CA6A00B7807A /* GeoPoint+Codable.swift */; };
-		1694DFB92351CA6A00B7807A /* Transaction+WriteEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF942351CA6A00B7807A /* Transaction+WriteEncodable.swift */; };
-		1694DFBA2351CA6A00B7807A /* SelfDocumentId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF952351CA6A00B7807A /* SelfDocumentId.swift */; };
-		1694DFBB2351CA6A00B7807A /* CollectionReference+WriteEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF962351CA6A00B7807A /* CollectionReference+WriteEncodable.swift */; };
-		1694DFBC2351CA6A00B7807A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1694DF972351CA6A00B7807A /* README.md */; };
-		1694DFBD2351CA6A00B7807A /* DocumentReference+WriteEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF982351CA6A00B7807A /* DocumentReference+WriteEncodable.swift */; };
-		1694DFBE2351CA6A00B7807A /* FirestoreEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF992351CA6A00B7807A /* FirestoreEncoder.swift */; };
-		1694DFBF2351CA6A00B7807A /* DocumentSnapshot+ReadDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9A2351CA6A00B7807A /* DocumentSnapshot+ReadDecodable.swift */; };
-		1694DFC02351CA6A00B7807A /* WriteBatch+WriteEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9B2351CA6A00B7807A /* WriteBatch+WriteEncodable.swift */; };
-		1694DFC12351CA6A00B7807A /* FieldValue+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9C2351CA6A00B7807A /* FieldValue+Encodable.swift */; };
-		1694DFC22351CA6A00B7807A /* CodablePassThroughTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9D2351CA6A00B7807A /* CodablePassThroughTypes.swift */; };
-		1694DFC32351CA6A00B7807A /* FirestoreDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9E2351CA6A00B7807A /* FirestoreDecoder.swift */; };
 		1694DFC42351CA6A00B7807A /* SnapshotType+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF9F2351CA6A00B7807A /* SnapshotType+Read.swift */; };
 		1694DFC52351CA6A00B7807A /* IncrementableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFA02351CA6A00B7807A /* IncrementableNumber.swift */; };
 		1694DFC62351CA6A00B7807A /* DeletableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DFA12351CA6A00B7807A /* DeletableField.swift */; };
@@ -99,22 +83,6 @@
 		1694DF8B2351CA6A00B7807A /* IncrementableDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementableDouble.swift; sourceTree = "<group>"; };
 		1694DF8C2351CA6A00B7807A /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		1694DF8D2351CA6A00B7807A /* SnapshotData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotData.swift; sourceTree = "<group>"; };
-		1694DF8F2351CA6A00B7807A /* DocumentReference+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentReference+Codable.swift"; sourceTree = "<group>"; };
-		1694DF902351CA6A00B7807A /* Timestamp+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timestamp+Codable.swift"; sourceTree = "<group>"; };
-		1694DF912351CA6A00B7807A /* ExplicitNull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplicitNull.swift; sourceTree = "<group>"; };
-		1694DF922351CA6A00B7807A /* CodableErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableErrors.swift; sourceTree = "<group>"; };
-		1694DF932351CA6A00B7807A /* GeoPoint+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeoPoint+Codable.swift"; sourceTree = "<group>"; };
-		1694DF942351CA6A00B7807A /* Transaction+WriteEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+WriteEncodable.swift"; sourceTree = "<group>"; };
-		1694DF952351CA6A00B7807A /* SelfDocumentId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfDocumentId.swift; sourceTree = "<group>"; };
-		1694DF962351CA6A00B7807A /* CollectionReference+WriteEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionReference+WriteEncodable.swift"; sourceTree = "<group>"; };
-		1694DF972351CA6A00B7807A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		1694DF982351CA6A00B7807A /* DocumentReference+WriteEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentReference+WriteEncodable.swift"; sourceTree = "<group>"; };
-		1694DF992351CA6A00B7807A /* FirestoreEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEncoder.swift; sourceTree = "<group>"; };
-		1694DF9A2351CA6A00B7807A /* DocumentSnapshot+ReadDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentSnapshot+ReadDecodable.swift"; sourceTree = "<group>"; };
-		1694DF9B2351CA6A00B7807A /* WriteBatch+WriteEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WriteBatch+WriteEncodable.swift"; sourceTree = "<group>"; };
-		1694DF9C2351CA6A00B7807A /* FieldValue+Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FieldValue+Encodable.swift"; sourceTree = "<group>"; };
-		1694DF9D2351CA6A00B7807A /* CodablePassThroughTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodablePassThroughTypes.swift; sourceTree = "<group>"; };
-		1694DF9E2351CA6A00B7807A /* FirestoreDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreDecoder.swift; sourceTree = "<group>"; };
 		1694DF9F2351CA6A00B7807A /* SnapshotType+Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SnapshotType+Read.swift"; sourceTree = "<group>"; };
 		1694DFA02351CA6A00B7807A /* IncrementableNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementableNumber.swift; sourceTree = "<group>"; };
 		1694DFA12351CA6A00B7807A /* DeletableField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletableField.swift; sourceTree = "<group>"; };
@@ -218,29 +186,6 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		1694DF8E2351CA6A00B7807A /* FirebaseFirestoreSwift */ = {
-			isa = PBXGroup;
-			children = (
-				1694DF8F2351CA6A00B7807A /* DocumentReference+Codable.swift */,
-				1694DF902351CA6A00B7807A /* Timestamp+Codable.swift */,
-				1694DF912351CA6A00B7807A /* ExplicitNull.swift */,
-				1694DF922351CA6A00B7807A /* CodableErrors.swift */,
-				1694DF932351CA6A00B7807A /* GeoPoint+Codable.swift */,
-				1694DF942351CA6A00B7807A /* Transaction+WriteEncodable.swift */,
-				1694DF952351CA6A00B7807A /* SelfDocumentId.swift */,
-				1694DF962351CA6A00B7807A /* CollectionReference+WriteEncodable.swift */,
-				1694DF972351CA6A00B7807A /* README.md */,
-				1694DF982351CA6A00B7807A /* DocumentReference+WriteEncodable.swift */,
-				1694DF992351CA6A00B7807A /* FirestoreEncoder.swift */,
-				1694DF9A2351CA6A00B7807A /* DocumentSnapshot+ReadDecodable.swift */,
-				1694DF9B2351CA6A00B7807A /* WriteBatch+WriteEncodable.swift */,
-				1694DF9C2351CA6A00B7807A /* FieldValue+Encodable.swift */,
-				1694DF9D2351CA6A00B7807A /* CodablePassThroughTypes.swift */,
-				1694DF9E2351CA6A00B7807A /* FirestoreDecoder.swift */,
-			);
-			path = FirebaseFirestoreSwift;
-			sourceTree = "<group>";
-		};
 		1694DFCC2351CB2000B7807A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +212,6 @@
 		16982A05235996150018C74C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				1694DF8E2351CA6A00B7807A /* FirebaseFirestoreSwift */,
 				1694DFA42351CA6A00B7807A /* AtomicArray.swift */,
 				1694DFA32351CA6A00B7807A /* Batch.swift */,
 				1694DF872351CA6A00B7807A /* CollectionGroup.swift */,
@@ -419,7 +363,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1694DFBC2351CA6A00B7807A /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,44 +445,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				1694DFCB2351CA6A00B7807A /* WriteBatch+Snapshot.swift in Sources */,
-				1694DFBE2351CA6A00B7807A /* FirestoreEncoder.swift in Sources */,
 				1694DFAE2351CA6A00B7807A /* SnapshotError.swift in Sources */,
 				1694DFB12351CA6A00B7807A /* IncrementableDouble.swift in Sources */,
 				1694DFAA2351CA6A00B7807A /* FieldNameReferable.swift in Sources */,
 				1694DFC52351CA6A00B7807A /* IncrementableNumber.swift in Sources */,
-				1694DFB42351CA6A00B7807A /* DocumentReference+Codable.swift in Sources */,
 				1694DFA92351CA6A00B7807A /* Reference.swift in Sources */,
-				1694DFBB2351CA6A00B7807A /* CollectionReference+WriteEncodable.swift in Sources */,
 				1694DFCA2351CA6A00B7807A /* Result+.swift in Sources */,
-				1694DFC12351CA6A00B7807A /* FieldValue+Encodable.swift in Sources */,
 				1694DFC72351CA6A00B7807A /* QueryBuilder.swift in Sources */,
 				1694DFC62351CA6A00B7807A /* DeletableField.swift in Sources */,
-				1694DFBF2351CA6A00B7807A /* DocumentSnapshot+ReadDecodable.swift in Sources */,
-				1694DFC32351CA6A00B7807A /* FirestoreDecoder.swift in Sources */,
-				1694DFC22351CA6A00B7807A /* CodablePassThroughTypes.swift in Sources */,
 				1694DFA72351CA6A00B7807A /* SnapshotType+Write.swift in Sources */,
 				1694DFC92351CA6A00B7807A /* AtomicArray.swift in Sources */,
-				1694DFB82351CA6A00B7807A /* GeoPoint+Codable.swift in Sources */,
 				1694DFAD2351CA6A00B7807A /* CollectionGroup.swift in Sources */,
 				1694DFC42351CA6A00B7807A /* SnapshotType+Read.swift in Sources */,
-				1694DFB72351CA6A00B7807A /* CodableErrors.swift in Sources */,
 				1694DFAF2351CA6A00B7807A /* Snapshot.swift in Sources */,
 				16982A0C235AF4500018C74C /* StorageReference+Codable.swift in Sources */,
-				1694DFB92351CA6A00B7807A /* Transaction+WriteEncodable.swift in Sources */,
 				1694DFAC2351CA6A00B7807A /* Transaction+Snapshot.swift in Sources */,
-				1694DFBD2351CA6A00B7807A /* DocumentReference+WriteEncodable.swift in Sources */,
-				1694DFB62351CA6A00B7807A /* ExplicitNull.swift in Sources */,
 				1637436023534929009EB510 /* SnapshotType.swift in Sources */,
 				16982A08235998AA0018C74C /* StoragePath.swift in Sources */,
 				1694DFA82351CA6A00B7807A /* IncrementableInt.swift in Sources */,
 				1694DFB22351CA6A00B7807A /* Path.swift in Sources */,
 				1694DFC82351CA6A00B7807A /* Batch.swift in Sources */,
-				1694DFC02351CA6A00B7807A /* WriteBatch+WriteEncodable.swift in Sources */,
 				1694DFB32351CA6A00B7807A /* SnapshotData.swift in Sources */,
-				1694DFBA2351CA6A00B7807A /* SelfDocumentId.swift in Sources */,
 				1694DFB02351CA6A00B7807A /* DocumentTimestamps.swift in Sources */,
 				1637436423547326009EB510 /* DocumentReference+.swift in Sources */,
-				1694DFB52351CA6A00B7807A /* Timestamp+Codable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
