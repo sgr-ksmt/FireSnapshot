@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |ss|
     ss.source_files = "FireSnapshot/Sources/Core/**/*.swift"
     ss.dependency "Firebase/Firestore", "~> 6.9"
+    ss.dependency "FirebaseFirestoreSwift", "~> 0.2"
   end
 
   s.subspec 'Storage' do |ss|
