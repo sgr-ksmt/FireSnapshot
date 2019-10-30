@@ -175,32 +175,59 @@ public extension QueryBuilder where D: HasTimestamps {
 
 public extension QueryBuilder {
     @discardableResult
-    func `where`<V>(_ predicate: EqualPredicate<D, V>) -> Self {
+    func `where`<V: Equatable>(_ predicate: EqualPredicate<D, V>) -> Self {
         return `where`(predicate.KeyPath, isEqualTo: predicate.value)
     }
 
     @discardableResult
-    func `where`<V>(_ predicate: LessThanPredicate<D, V>) -> Self {
+    func `where`<V: Comparable>(_ predicate: LessThanPredicate<D, V>) -> Self {
         return `where`(predicate.KeyPath, isLessThan: predicate.value)
     }
 
     @discardableResult
-    func `where`<V>(_ predicate: LessThanOrEqualPredicate<D, V>) -> Self {
+    func `where`<V: Comparable>(_ predicate: LessThanOrEqualPredicate<D, V>) -> Self {
         return `where`(predicate.KeyPath, isLessThanOrEqualTo: predicate.value)
     }
 
     @discardableResult
-    func `where`<V>(_ predicate: GreaterThanPredicate<D, V>) -> Self {
+    func `where`<V: Comparable>(_ predicate: GreaterThanPredicate<D, V>) -> Self {
         return `where`(predicate.KeyPath, isGreaterThan: predicate.value)
     }
 
     @discardableResult
-    func `where`<V>(_ predicate: GreaterThanOrEqualPredicate<D, V>) -> Self {
+    func `where`<V: Comparable>(_ predicate: GreaterThanOrEqualPredicate<D, V>) -> Self {
         return `where`(predicate.KeyPath, isGreaterThanOrEqualTo: predicate.value)
     }
 
     @discardableResult
-    func `where`<V>(_ predicate: ArrayContainsPredicate<D, V>) -> Self where V: Equatable {
+    func `where`<V: Equatable>(_ predicate: ArrayContainsPredicate<D, V>) -> Self where V: Equatable {
         return `where`(predicate.KeyPath, arrayContains: predicate.value)
+    }
+}
+
+public extension QueryBuilder where D: HasTimestamps {
+    @discardableResult
+    func `where`(_ predicate: EqualTimestampPredicate<D>) -> Self {
+        return `where`(predicate.key, isEqualTo: predicate.value)
+    }
+
+    @discardableResult
+    func `where`(_ predicate: LessThanTimestampPredicate<D>) -> Self {
+        return `where`(predicate.key, isLessThan: predicate.value)
+    }
+
+    @discardableResult
+    func `where`(_ predicate: LessThanOrEqualTimestampPredicate<D>) -> Self {
+        return `where`(predicate.key, isLessThanOrEqualTo: predicate.value)
+    }
+
+    @discardableResult
+    func `where`(_ predicate: GreaterThanTimestampPredicate<D>) -> Self {
+        return `where`(predicate.key, isGreaterThan: predicate.value)
+    }
+
+    @discardableResult
+    func `where`(_ predicate: GreaterThanOrEqualTimestampPredicate<D>) -> Self {
+        return `where`(predicate.key, isGreaterThanOrEqualTo: predicate.value)
     }
 }
