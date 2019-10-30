@@ -5,7 +5,7 @@
 import FirebaseFirestore
 import Foundation
 
-public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable {
+public final class QueryBuilder<D: SnapshotData & FieldNameReferable> {
     private(set) var call: Int = 0
     private(set) var stack: Int = 0
     private(set) var query: Query
@@ -19,37 +19,37 @@ public final class QueryBuilder<D> where D: SnapshotData, D: FieldNameReferable 
     }
 
     @discardableResult
-    public func `where`<V>(_ keyPath: KeyPath<D, V>, isEqualTo value: V) -> Self {
+    public func `where`<V: Equatable>(_ keyPath: KeyPath<D, V>, isEqualTo value: V) -> Self {
         updateQuery(keyPath, builder: { $0.whereField($1, isEqualTo: value) })
         return self
     }
 
     @discardableResult
-    public func `where`<V>(_ keyPath: KeyPath<D, V>, isLessThan value: V) -> Self {
+    public func `where`<V: Comparable>(_ keyPath: KeyPath<D, V>, isLessThan value: V) -> Self {
         updateQuery(keyPath, builder: { $0.whereField($1, isLessThan: value) })
         return self
     }
 
     @discardableResult
-    public func `where`<V>(_ keyPath: KeyPath<D, V>, isGreaterThan value: V) -> Self {
+    public func `where`<V: Comparable>(_ keyPath: KeyPath<D, V>, isGreaterThan value: V) -> Self {
         updateQuery(keyPath, builder: { $0.whereField($1, isGreaterThan: value) })
         return self
     }
 
     @discardableResult
-    public func `where`<V>(_ keyPath: KeyPath<D, V>, isLessThanOrEqualTo value: V) -> Self {
+    public func `where`<V: Comparable>(_ keyPath: KeyPath<D, V>, isLessThanOrEqualTo value: V) -> Self {
         updateQuery(keyPath, builder: { $0.whereField($1, isLessThanOrEqualTo: value) })
         return self
     }
 
     @discardableResult
-    public func `where`<V>(_ keyPath: KeyPath<D, V>, isGreaterThanOrEqualTo value: V) -> Self {
+    public func `where`<V: Comparable>(_ keyPath: KeyPath<D, V>, isGreaterThanOrEqualTo value: V) -> Self {
         updateQuery(keyPath, builder: { $0.whereField($1, isGreaterThanOrEqualTo: value) })
         return self
     }
 
     @discardableResult
-    public func `where`<V>(_ keyPath: KeyPath<D, [V]>, arrayContains value: V) -> Self where V: Equatable {
+    public func `where`<V: Equatable>(_ keyPath: KeyPath<D, [V]>, arrayContains value: V) -> Self {
         updateQuery(keyPath, builder: { $0.whereField($1, arrayContains: value) })
         return self
     }
