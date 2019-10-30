@@ -172,3 +172,35 @@ public extension QueryBuilder where D: HasTimestamps {
         return self
     }
 }
+
+public extension QueryBuilder {
+    @discardableResult
+    func `where`<V>(_ predicate: EqualPredicate<D, V>) -> Self {
+        return `where`(predicate.KeyPath, isEqualTo: predicate.value)
+    }
+
+    @discardableResult
+    func `where`<V>(_ predicate: LessThanPredicate<D, V>) -> Self {
+        return `where`(predicate.KeyPath, isLessThan: predicate.value)
+    }
+
+    @discardableResult
+    func `where`<V>(_ predicate: LessThanOrEqualPredicate<D, V>) -> Self {
+        return `where`(predicate.KeyPath, isLessThanOrEqualTo: predicate.value)
+    }
+
+    @discardableResult
+    func `where`<V>(_ predicate: GreaterThanPredicate<D, V>) -> Self {
+        return `where`(predicate.KeyPath, isGreaterThan: predicate.value)
+    }
+
+    @discardableResult
+    func `where`<V>(_ predicate: GreaterThanOrEqualPredicate<D, V>) -> Self {
+        return `where`(predicate.KeyPath, isGreaterThanOrEqualTo: predicate.value)
+    }
+
+    @discardableResult
+    func `where`<V>(_ predicate: ArrayContainsPredicate<D, V>) -> Self where V: Equatable {
+        return `where`(predicate.KeyPath, arrayContains: predicate.value)
+    }
+}

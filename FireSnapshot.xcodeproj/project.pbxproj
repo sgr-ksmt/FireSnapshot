@@ -11,6 +11,8 @@
 		1607A5C6233F4CC00034BB35 /* FireSnapshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1607A5A7233F398A0034BB35 /* FireSnapshot.framework */; };
 		1637436023534929009EB510 /* SnapshotType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637435F23534929009EB510 /* SnapshotType.swift */; };
 		1637436423547326009EB510 /* DocumentReference+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637436323547326009EB510 /* DocumentReference+.swift */; };
+		16856BE52369A18F0064520B /* QueryBuilder+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16856BE42369A18F0064520B /* QueryBuilder+Operator.swift */; };
+		16856BE72369A5780064520B /* QueryBuilder+Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16856BE62369A5780064520B /* QueryBuilder+Predicate.swift */; };
 		1694DFA72351CA6A00B7807A /* SnapshotType+Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */; };
 		1694DFA82351CA6A00B7807A /* IncrementableInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF822351CA6A00B7807A /* IncrementableInt.swift */; };
 		1694DFA92351CA6A00B7807A /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1694DF832351CA6A00B7807A /* Reference.swift */; };
@@ -71,6 +73,8 @@
 		1607A5C5233F4CC00034BB35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1637435F23534929009EB510 /* SnapshotType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotType.swift; sourceTree = "<group>"; };
 		1637436323547326009EB510 /* DocumentReference+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentReference+.swift"; sourceTree = "<group>"; };
+		16856BE42369A18F0064520B /* QueryBuilder+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryBuilder+Operator.swift"; sourceTree = "<group>"; };
+		16856BE62369A5780064520B /* QueryBuilder+Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryBuilder+Predicate.swift"; sourceTree = "<group>"; };
 		1694DF812351CA6A00B7807A /* SnapshotType+Write.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SnapshotType+Write.swift"; sourceTree = "<group>"; };
 		1694DF822351CA6A00B7807A /* IncrementableInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementableInt.swift; sourceTree = "<group>"; };
 		1694DF832351CA6A00B7807A /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 				1694DFA02351CA6A00B7807A /* IncrementableNumber.swift */,
 				1694DF8C2351CA6A00B7807A /* Path.swift */,
 				1694DFA22351CA6A00B7807A /* QueryBuilder.swift */,
+				16856BE62369A5780064520B /* QueryBuilder+Predicate.swift */,
+				16856BE42369A18F0064520B /* QueryBuilder+Operator.swift */,
 				1694DF832351CA6A00B7807A /* Reference.swift */,
 				1694DFA52351CA6A00B7807A /* Result+.swift */,
 				1694DF892351CA6A00B7807A /* Snapshot.swift */,
@@ -447,6 +453,7 @@
 				1694DFCB2351CA6A00B7807A /* WriteBatch+Snapshot.swift in Sources */,
 				1694DFAE2351CA6A00B7807A /* SnapshotError.swift in Sources */,
 				1694DFB12351CA6A00B7807A /* IncrementableDouble.swift in Sources */,
+				16856BE52369A18F0064520B /* QueryBuilder+Operator.swift in Sources */,
 				1694DFAA2351CA6A00B7807A /* FieldNameReferable.swift in Sources */,
 				1694DFC52351CA6A00B7807A /* IncrementableNumber.swift in Sources */,
 				1694DFA92351CA6A00B7807A /* Reference.swift in Sources */,
@@ -457,6 +464,7 @@
 				1694DFC92351CA6A00B7807A /* AtomicArray.swift in Sources */,
 				1694DFAD2351CA6A00B7807A /* CollectionGroup.swift in Sources */,
 				1694DFC42351CA6A00B7807A /* SnapshotType+Read.swift in Sources */,
+				16856BE72369A5780064520B /* QueryBuilder+Predicate.swift in Sources */,
 				1694DFAF2351CA6A00B7807A /* Snapshot.swift in Sources */,
 				16982A0C235AF4500018C74C /* StorageReference+Codable.swift in Sources */,
 				1694DFAC2351CA6A00B7807A /* Transaction+Snapshot.swift in Sources */,
