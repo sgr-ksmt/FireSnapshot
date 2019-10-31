@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 public func == <D: SnapshotData & FieldNameReferable, V: Equatable>(lhs: KeyPath<D, V>, rhs: V) -> EqualPredicate<D, V> {
     .init(keyPath: lhs, value: rhs)

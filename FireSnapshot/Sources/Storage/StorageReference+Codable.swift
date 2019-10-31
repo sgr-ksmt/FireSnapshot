@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import FirebaseStorage
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 private protocol CodableStorageReference: Codable {}
 extension CodableStorageReference {
@@ -12,7 +12,7 @@ extension CodableStorageReference {
             "StorageReference values can only be decoded with Firestore.Decoder"
         )
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         throw FirestoreEncodingError.encodingIsNotSupported(
             "StorageReference values can only be encoded with Firestore.Encoder"

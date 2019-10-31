@@ -2,8 +2,8 @@
 // Copyright © Suguru Kishimoto. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 public protocol WhereQueryPredicate {
     associatedtype Data: SnapshotData & FieldNameReferable
@@ -99,4 +99,3 @@ public struct GreaterThanOrEqualTimestampPredicate<D: SnapshotData & HasTimestam
     public var key: SnapshotTimestampKey
     public var value: Timestamp
 }
-

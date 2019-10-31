@@ -65,7 +65,6 @@ public extension QueryBuilder where D: HasTimestamps {
         fatalError()
     }
 
-
     @discardableResult
     func `where`(_ key: SnapshotTimestampKey, isGreaterThanOrEqualTo value: Timestamp) -> Self {
         fatalError()
