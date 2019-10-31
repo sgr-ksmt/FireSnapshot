@@ -65,7 +65,7 @@ class QueryBuilderTests: XCTestCase {
             { $0.where(\.name <= "") },
             { $0.where(\.name > "") },
             { $0.where(\.name >= "") },
-            { $0.where(\.countries, arrayContains: "") },
+            { $0.where(\.countries ~= "") },
             { $0.order(by: \Mock.name, descending: false) },
             { $0.limit(to: 10) },
             { $0.where(.createTime == Timestamp()) },
