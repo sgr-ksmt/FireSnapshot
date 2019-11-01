@@ -10,12 +10,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: check pod version
+      - name: update pod
         run: |
-          pod --version
-      - name: upgrade pod
-        run: |
-          gem install cocoapods
+          pod update
       - name: Publish to CocoaPod register
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
