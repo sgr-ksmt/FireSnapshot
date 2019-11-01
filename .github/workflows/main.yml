@@ -4,29 +4,22 @@ on: [pull_request]
 
 jobs:
   build:
-
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Cache node modules
-      uses: actions/cache@preview
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - uses: actions/cache@preview
-      with:
-        path: Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-pods-    
-    - name: Select Xcode version # Xcode 10.3 を使う
-      run: sudo xcode-select -s '/Applications/Xcode_11.2.app/Contents/Developer'
-    - name: Setup
-      run: make
-    - name: Install firebase-tools
-      run: npm install -g firebase-tools && firebase setup:emulators:firestore
-    - name: Run Test
-      run: scripts/test.sh
+      - uses: actions/checkout@v1
+      - name: Cache node modules
+      - uses: actions/cache@preview
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+      - name: Select Xcode version
+        run: sudo xcode-select -s '/Applications/Xcode_11.2.app/Contents/Developer'
+      - name: Setup
+        run: make
+      - name: Install firebase-tools
+        run: npm install -g firebase-tools@latest && firebase setup:emulators:firestore
+      - name: Run Test
+        run: scripts/test.sh
