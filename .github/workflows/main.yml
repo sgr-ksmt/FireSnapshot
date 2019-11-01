@@ -20,7 +20,7 @@ jobs:
       - uses: actions/cache@preview
         with:
           path: ~/.cache/firebase/emulators/
-          key: ${{ runner.os }}-emulator-${{ hashFiles('~/.cache/firebase/emulators/cloud-firestore-emulator-v*.jar') }}
+          key: ${{ runner.os }}-emulator-${{ hashFiles('**/cloud-firestore-emulator-v*.jar') }}
           restore-keys: |
             ${{ runner.os }}-emulator-
       - name: Select Xcode version
