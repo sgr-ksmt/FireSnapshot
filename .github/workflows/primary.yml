@@ -34,6 +34,6 @@ jobs:
       - name: Setup
         run: make
       - name: Install firebase-tools
-        run: npm install -g firebase-tools@latest && firebase setup:emulators:firestore
+        run: npm install -g firebase-tools@latest
       - name: Run Test
         run: scripts/test.sh
