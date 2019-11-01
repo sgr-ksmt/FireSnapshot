@@ -7,7 +7,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: veggiemonk/skip-commit@maste
+      - uses: veggiemonk/skip-commit@master
         env:
           COMMIT_FILTER: '[skip ci]'
       - uses: actions/checkout@v1
