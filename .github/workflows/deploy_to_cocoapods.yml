@@ -2,14 +2,20 @@ name: CI
 on:
   push:
     branches:
-    - master
-    
+      - master
+
 jobs:
   build:
     runs-on: macos-latest
-    
+
     steps:
       - uses: actions/checkout@v1
+      - name: check pod version
+        run: |
+          pod --version
+      - name: upgrade pod
+        run: |
+          gem install cocoapods
       - name: Publish to CocoaPod register
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
