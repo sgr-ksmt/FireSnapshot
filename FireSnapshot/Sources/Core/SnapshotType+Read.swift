@@ -9,7 +9,7 @@ public extension SnapshotType {
     typealias QueryBuildBlock = (Query) -> Query
     typealias DocumentReadResultBlock<T: SnapshotData> = (Result<Snapshot<T>, Error>) -> Void
     typealias CollectionReadResultBlock<T: SnapshotData> = (Result<[Snapshot<T>], Error>) -> Void
-    
+
     static func get(_ path: DocumentPath<Data>,
                     source: FirestoreSource = .default,
                     completion: @escaping DocumentReadResultBlock<Data>) {

@@ -15,11 +15,13 @@ private struct Mock: SnapshotData, HasTimestamps, FieldNameReferable {
     var count: Int = 0
     var name: String = ""
     var noRef: String = ""
+    var countries: [String] = []
 
     static var fieldNames: [PartialKeyPath<Mock> : String] {
         [
             \Self.self.name: "name",
-            \Self.self.count: "count"
+            \Self.self.count: "count",
+            \Self.self.countries: "countries"
         ]
     }
 }
@@ -39,8 +41,8 @@ class QueryBuilderTests: XCTestCase {
     func testQueryBuilderStack() {
         do {
             let qb = QueryBuilder<Mock>(CollectionPaths.mocks.collectionReference)
-                .where(\.name, isEqualTo: "")
-                .where(\.count, isEqualTo: 0)
+                .where(\.name == "")
+                .where(\.count == 0)
 
             XCTAssertEqual(qb.call, 2)
             XCTAssertEqual(qb.stack, 2)
@@ -48,9 +50,9 @@ class QueryBuilderTests: XCTestCase {
 
         do {
             let qb = QueryBuilder<Mock>(CollectionPaths.mocks.collectionReference)
-                .where(\.name, isEqualTo: "")
-                .where(\.count, isEqualTo: 0)
-                .where(\.noRef, isEqualTo: "")
+                .where(\.name == "")
+                .where(\.count == 0)
+                .where(\.noRef == "")
 
             XCTAssertEqual(qb.call, 3)
             XCTAssertEqual(qb.stack, 2)
@@ -58,33 +60,34 @@ class QueryBuilderTests: XCTestCase {
 
         do {
             let queryBuilders: [(QueryBuilder<Mock>)->QueryBuilder<Mock>] = [
-            { $0.where(\.name, isEqualTo: "") },
-            { $0.where(\.name, isLessThan: "") },
-            { $0.where(\.name, isLessThanOrEqualTo: "") },
-            { $0.where(\.name, isGreaterThan: "") },
-            { $0.where(\.name, isGreaterThanOrEqualTo: "") },
+            { $0.where(\.name == "") },
+            { $0.where(\.name < "") },
+            { $0.where(\.name <= "") },
+            { $0.where(\.name > "") },
+            { $0.where(\.name >= "") },
+            { $0.where(\.countries ~= "") },
             { $0.order(by: \Mock.name, descending: false) },
             { $0.limit(to: 10) },
-            { $0.where(.createTime, isEqualTo: Timestamp()) },
-            { $0.where(.createTime, isLessThan: Timestamp()) },
-            { $0.where(.createTime, isLessThanOrEqualTo: Timestamp()) },
-            { $0.where(.createTime, isGreaterThan: Timestamp()) },
-            { $0.where(.createTime, isGreaterThanOrEqualTo: Timestamp()) },
-            { $0.where(.updateTime, isEqualTo: Timestamp()) },
-            { $0.where(.updateTime, isLessThan: Timestamp()) },
-            { $0.where(.updateTime, isLessThanOrEqualTo: Timestamp()) },
-            { $0.where(.updateTime, isGreaterThan: Timestamp()) },
-            { $0.where(.updateTime, isGreaterThanOrEqualTo: Timestamp()) },
-            { $0.where(.createTime, isEqualTo: Date()) },
-            { $0.where(.createTime, isLessThan: Date()) },
-            { $0.where(.createTime, isLessThanOrEqualTo: Date()) },
-            { $0.where(.createTime, isGreaterThan: Date()) },
-            { $0.where(.createTime, isGreaterThanOrEqualTo: Date()) },
-            { $0.where(.updateTime, isEqualTo: Date()) },
-            { $0.where(.updateTime, isLessThan: Date()) },
-            { $0.where(.updateTime, isLessThanOrEqualTo: Date()) },
-            { $0.where(.updateTime, isGreaterThan: Date()) },
-            { $0.where(.updateTime, isGreaterThanOrEqualTo: Date()) },
+            { $0.where(.createTime == Timestamp()) },
+            { $0.where(.createTime < Timestamp()) },
+            { $0.where(.createTime <= Timestamp()) },
+            { $0.where(.createTime > Timestamp()) },
+            { $0.where(.createTime >= Timestamp()) },
+            { $0.where(.updateTime == Timestamp()) },
+            { $0.where(.updateTime < Timestamp()) },
+            { $0.where(.updateTime <= Timestamp()) },
+            { $0.where(.updateTime > Timestamp()) },
+            { $0.where(.updateTime >= Timestamp()) },
+            { $0.where(.createTime == Date()) },
+            { $0.where(.createTime < Date()) },
+            { $0.where(.createTime <= Date()) },
+            { $0.where(.createTime > Date()) },
+            { $0.where(.createTime >= Date()) },
+            { $0.where(.updateTime == Date()) },
+            { $0.where(.updateTime < Date()) },
+            { $0.where(.updateTime <= Date()) },
+            { $0.where(.updateTime > Date()) },
+            { $0.where(.updateTime >= Date()) },
             { $0.order(by: .createTime, descending: false) },
             { $0.order(by: .updateTime, descending: false) },
             ]
@@ -105,52 +108,52 @@ class QueryBuilderTests: XCTestCase {
         mock.create { result in
             switch result {
             case .success:
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isEqualTo: 10) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count == 10) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 1)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isEqualTo: 9) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count == 9) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 0)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isLessThan: 11) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count < 11) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 1)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isLessThan: 10) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count < 10) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 0)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isLessThanOrEqualTo: 10) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count <= 10) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 1)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isLessThanOrEqualTo: 9) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count <= 9) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 0)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isGreaterThan: 9) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count > 9) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 1)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isGreaterThan: 10) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count > 10) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 0)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isGreaterThanOrEqualTo: 10) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count >= 10) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 1)
                     exp.fulfill()
                 }
 
-                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count, isGreaterThanOrEqualTo: 11) }) { result in
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count >= 11) }) { result in
                     XCTAssertEqual((try? result.get())?.count, 0)
                     exp.fulfill()
                 }
@@ -225,5 +228,9 @@ class QueryBuilderTests: XCTestCase {
 
         }
         wait(for: [exp], timeout: 10.0)
+    }
+
+    func testQueryOperator() {
+
     }
 }
