@@ -20,9 +20,15 @@ jobs:
       - uses: actions/cache@preview
         with:
           path: ~/.cache/firebase/emulators/
-          key: ${{ runner.os }}-emulator-${{ hashFiles('**/cloud-firestore-emulator-v*.jar') }}
+          key: ${{ runner.os }}-emulator-${{ hashFiles('**/.emulator_version') }}
           restore-keys: |
             ${{ runner.os }}-emulator-
+      - uses: actions/cache@preview
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
       - name: Select Xcode version
         run: sudo xcode-select -s '/Applications/Xcode_11.2.app/Contents/Developer'
       - name: Setup
