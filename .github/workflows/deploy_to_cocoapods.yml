@@ -6,12 +6,12 @@ on:
     
 jobs:
   build:
-  runs-on: macos-latest
+    runs-on: macos-latest
     
-  steps:
-    - uses: actions/checkout@v1
-    - name: Publish to CocoaPod register
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-      run: |
-        pod trunk push FireSnapshot.podspec
+    steps:
+      - uses: actions/checkout@v1
+      - name: Publish to CocoaPod register
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+        run: |
+          pod trunk push FireSnapshot.podspec
