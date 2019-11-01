@@ -8,6 +8,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '8.14.x'
       - uses: actions/cache@preview
         with:
           path: Pods
