@@ -62,7 +62,7 @@ public final class Snapshot<D>: SnapshotType where D: SnapshotData {
         }
     }
 
-    public subscript<V>(dynamicMember keyPath: KeyPath<D, Reference<V>>) -> Reference<V> where V: SnapshotData {
+    public subscript<T, U>(dynamicMember keyPath: KeyPath<D, Reference<T, U>>) -> Reference<T, U> where T: SnapshotData, U: ReferenceWrappable & Codable & Equatable {
         return data[keyPath: keyPath]
     }
 

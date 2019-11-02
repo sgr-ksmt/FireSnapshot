@@ -5,46 +5,59 @@
 import FirebaseStorage
 import Foundation
 
-@propertyWrapper
-public struct StoragePath: Codable, Equatable {
-    public var wrappedValue: StorageReference?
-    public init(wrappedValue: StorageReference?) {
-        self.wrappedValue = wrappedValue
+public protocol StoragePathWrappable {
+    static func wrap(_ storageReference: StorageReference) throws -> Self
+    static func unwrap(_ value: Self) throws -> StorageReference
+}
+
+extension String: StoragePathWrappable {
+    public static func wrap(_ storageReference: StorageReference) throws -> Self {
+        storageReference.fullPath
     }
 
-    public init(path: String) {
-        self.wrappedValue = Storage.storage().reference().child(path)
+    public static func unwrap(_ value: Self) throws -> StorageReference {
+        Storage.storage().reference().child(value)
+    }
+}
+
+extension StorageReference: StoragePathWrappable {
+    public static func wrap(_ storageReference: StorageReference) throws -> Self {
+        storageReference as! Self
+    }
+
+    public static func unwrap(_ value: StorageReference) throws -> StorageReference {
+        value
+    }
+}
+
+@propertyWrapper
+public struct StoragePath<V>: Codable, Equatable where V: StoragePathWrappable & Codable & Equatable {
+    private var value: V?
+    public init(wrappedValue value: V?) {
+        self.value = value
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if container.decodeNil() {
-            wrappedValue = nil
+            value = nil
         } else {
-            wrappedValue = try Storage.storage().reference().child(container.decode(String.self))
+            value = try V.wrap(Storage.storage().reference().child(container.decode(String.self)))
         }
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        try container.encode(wrappedValue?.fullPath)
+        try container.encode(value.map(V.unwrap)?.fullPath)
     }
 
-    public var projectedValue: Self {
-        get {
-            self
-        }
-        set {
-            self = newValue
-        }
+
+    public var wrappedValue: V? {
+        get { value }
+        set { value = newValue }
     }
 
-    public var path: String? {
-        get {
-            wrappedValue?.fullPath
-        }
-        set {
-            wrappedValue = newValue.flatMap(Storage.storage().reference().child)
-        }
+    public var projectedValue: StorageReference? {
+        try? value.map(V.unwrap)
     }
 }
