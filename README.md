@@ -1,4 +1,4 @@
-<p align='center'>
+<p align='center'> 
 
 <img src='https://raw.githubusercontent.com/sgr-ksmt/FireSnapshot/master/assets/logo.png' width='600px' />
 
