@@ -13,7 +13,7 @@ private extension CollectionPaths {
 }
 
 private struct Mock: SnapshotData, HasTimestamps {
-    @StoragePath(path: "path/to/image.jpg") var imageRef
+    @StoragePath var imageRef = "path/to/image.jpg"
 }
 
 class StoragePathTests: XCTestCase {
@@ -29,7 +29,7 @@ class StoragePathTests: XCTestCase {
 
     func testCodable() {
         let mock = Mock()
-        XCTAssertEqual(mock.imageRef, Storage.storage().reference().child("path/to/image.jpg"))
+        XCTAssertEqual(mock.$imageRef, Storage.storage().reference().child("path/to/image.jpg"))
         let fields = try? Firestore.Encoder().encode(mock)
         XCTAssertNotNil(fields)
         XCTAssertEqual(fields?["imageRef"] as? String, "path/to/image.jpg")
@@ -41,9 +41,9 @@ class StoragePathTests: XCTestCase {
 
     func testPath() {
         var mock = Mock()
-        XCTAssertEqual(mock.imageRef, Storage.storage().reference().child("path/to/image.jpg"))
+        XCTAssertEqual(mock.$imageRef, Storage.storage().reference().child("path/to/image.jpg"))
 
-        mock.$imageRef.path = "path/to/video.mp4"
-        XCTAssertEqual(mock.imageRef, Storage.storage().reference().child("path/to/video.mp4"))
+        mock.imageRef = "path/to/video.mp4"
+        XCTAssertEqual(mock.$imageRef, Storage.storage().reference().child("path/to/video.mp4"))
     }
 }
