@@ -1,11 +1,11 @@
-name: CI
+name: Deploy
 on:
   push:
     branches:
       - master
 
 jobs:
-  build:
+  deploy:
     runs-on: macos-latest
 
     steps:

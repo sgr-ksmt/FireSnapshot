@@ -3,7 +3,7 @@ name: CI
 on: [pull_request]
 
 jobs:
-  build:
+  test:
     runs-on: macos-latest
 
     steps:
@@ -37,4 +37,3 @@ jobs:
         run: npm install -g firebase-tools@latest
       - name: Run Test
         run: scripts/test.sh
-
