@@ -18,7 +18,7 @@ private struct User: SnapshotData {
 
 private struct Task: SnapshotData {
     var title: String
-    @Reference<User> var author = nil
+    @Reference<User, DocumentReference> var author = nil
 }
 
 class ReferenceTests: XCTestCase {

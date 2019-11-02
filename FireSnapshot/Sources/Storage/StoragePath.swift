@@ -5,12 +5,12 @@
 import FirebaseStorage
 import Foundation
 
-public protocol StorageReferenceWrappable {
+public protocol StoragePathWrappable {
     static func wrap(_ storageReference: StorageReference) throws -> Self
     static func unwrap(_ value: Self) throws -> StorageReference
 }
 
-extension String: StorageReferenceWrappable {
+extension String: StoragePathWrappable {
     public static func wrap(_ storageReference: StorageReference) throws -> Self {
         storageReference.fullPath
     }
@@ -20,7 +20,7 @@ extension String: StorageReferenceWrappable {
     }
 }
 
-extension StorageReference: StorageReferenceWrappable {
+extension StorageReference: StoragePathWrappable {
     public static func wrap(_ storageReference: StorageReference) throws -> Self {
         storageReference as! Self
     }
@@ -31,8 +31,8 @@ extension StorageReference: StorageReferenceWrappable {
 }
 
 @propertyWrapper
-public struct StoragePath<V>: Codable, Equatable where V: StorageReferenceWrappable & Codable & Equatable {
-    var value: V?
+public struct StoragePath<V>: Codable, Equatable where V: StoragePathWrappable & Codable & Equatable {
+    private var value: V?
     public init(wrappedValue value: V?) {
         self.value = value
     }
