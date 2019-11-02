@@ -8,10 +8,8 @@
 
 [![Release](https://img.shields.io/github/release/sgr-ksmt/FireSnapshot.svg?style=for-the-badge)](https://github.com/sgr-ksmt/FireSnapshot/releases)
 ![Swift](https://img.shields.io/badge/swift-5.1-orange.svg?style=for-the-badge)
-![Firebase](https://img.shields.io/badge/firebase-6.9.0-orange.svg?style=for-the-badge)
+![Firebase](https://img.shields.io/badge/firebase-6.11.0-orange.svg?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-iOS-blue.svg?style=for-the-badge)
-
-![Bitrise](https://img.shields.io/bitrise/088b3cb378bed01b/master?style=for-the-badge&token=W33-pqQu735MA5qn3GGn5w)
 [![license](https://img.shields.io/github/license/sgr-ksmt/FireSnapshot.svg?style=for-the-badge)](https://github.com/sgr-ksmt/FireSnapshot/blob/master/LICENSE)
 
 **A useful Firebase-Cloud-Firestore Wrapper with Codable.**  
