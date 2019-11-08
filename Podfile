@@ -2,12 +2,12 @@ source 'https://cdn.cocoapods.org/'
 
 target 'FireSnapshot' do
   use_frameworks!
-  pod 'Firebase/Firestore', '~> 6.11'
+  pod 'Firebase/Firestore', '~> 6.12'
   pod 'FirebaseFirestoreSwift', '~> 0.2'
-  pod 'Firebase/Storage', '~> 6.11'
+  pod 'Firebase/Storage', '~> 6.12'
 
   target 'FireSnapshotTests' do
-    pod 'Firebase/Core', '~> 6.11'
+    pod 'Firebase/Core', '~> 6.12'
     inherit! :search_paths
   end
 end
