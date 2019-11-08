@@ -66,6 +66,8 @@ class QueryBuilderTests: XCTestCase {
             { $0.where(\.name > "") },
             { $0.where(\.name >= "") },
             { $0.where(\.countries ~= "") },
+            { $0.where(\.name || ["x", "y"])},
+            { $0.where(\.countries ~|| ["x", "y"])},
             { $0.order(by: \Mock.name, descending: false) },
             { $0.limit(to: 10) },
             { $0.where(.createTime == Timestamp()) },
@@ -154,6 +156,87 @@ class QueryBuilderTests: XCTestCase {
                 }
 
                 Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.count >= 11) }) { result in
+                    XCTAssertEqual((try? result.get())?.count, 0)
+                    exp.fulfill()
+                }
+            case let .failure(error):
+                XCTFail("\(error)")
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 10.0)
+    }
+
+    func testArrayContains() {
+        let exp = expectation(description: #function)
+        exp.expectedFulfillmentCount = 2
+        let mock = Snapshot(data: .init(), path: .mocks)
+        mock.countries = ["jp", "us", "uk"]
+        mock.create { result in
+            switch result {
+            case .success:
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.countries ~= "jp")}) { result in
+                    XCTAssertEqual((try? result.get())?.count, 1)
+                    exp.fulfill()
+                }
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.countries ~= "de")}) { result in
+                    XCTAssertEqual((try? result.get())?.count, 0)
+                    exp.fulfill()
+                }
+            case let .failure(error):
+                XCTFail("\(error)")
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 10.0)
+    }
+
+    func testArrayContainsAny() {
+        let exp = expectation(description: #function)
+        exp.expectedFulfillmentCount = 3
+        let mock = Snapshot(data: .init(), path: .mocks)
+        mock.countries = ["jp"]
+        mock.create { result in
+            switch result {
+            case .success:
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.countries ~|| ["jp"])}) { result in
+                    XCTAssertEqual((try? result.get())?.count, 1)
+                    exp.fulfill()
+                }
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.countries ~|| ["jp", "us"])}) { result in
+                    XCTAssertEqual((try? result.get())?.count, 1)
+                    exp.fulfill()
+                }
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.countries ~|| ["us", "de"])}) { result in
+                    XCTAssertEqual((try? result.get())?.count, 0)
+                    exp.fulfill()
+                }
+            case let .failure(error):
+                XCTFail("\(error)")
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 10.0)
+
+    }
+
+    func testIn() {
+        let exp = expectation(description: #function)
+        exp.expectedFulfillmentCount = 3
+        let mock = Snapshot(data: .init(), path: .mocks)
+        mock.name = "xxx"
+        mock.create { result in
+            switch result {
+            case .success:
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.name || ["xxx"])}) { result in
+                    XCTAssertEqual((try? result.get())?.count, 1)
+                    exp.fulfill()
+                }
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.name || ["xxx", "yyy"])}) { result in
+                    XCTAssertEqual((try? result.get())?.count, 1)
+                    exp.fulfill()
+                }
+                Snapshot.get(.mocks, queryBuilderBlock: { $0.where(\.name || ["yyy", "zzz"])}) { result in
                     XCTAssertEqual((try? result.get())?.count, 0)
                     exp.fulfill()
                 }

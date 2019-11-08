@@ -68,3 +68,12 @@ public func > <D: SnapshotData & HasTimestamps>(lhs: SnapshotTimestampKey, rhs: 
 public func >= <D: SnapshotData & HasTimestamps>(lhs: SnapshotTimestampKey, rhs: Date) -> GreaterThanOrEqualTimestampPredicate<D> {
     .init(key: lhs, value: .init(date: rhs))
 }
+
+infix operator ~||
+public func ~|| <D: SnapshotData & FieldNameReferable, V: Equatable>(lhs: KeyPath<D, [V]>, rhs: [V]) -> ArrayContainsAnyPredicate<D, V> {
+    .init(keyPath: lhs, value: rhs)
+}
+
+public func || <D: SnapshotData & FieldNameReferable, V: Equatable>(lhs: KeyPath<D, V>, rhs: [V]) -> InPredicate<D, V> {
+    .init(keyPath: lhs, value: rhs)
+}
