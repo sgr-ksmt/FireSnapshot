@@ -76,6 +76,18 @@ public extension QueryBuilder {
     }
 
     @discardableResult
+    func `where`<V: Equatable>(_ predicate: ArrayContainsAnyPredicate<D, V>) -> Self where V: Equatable {
+        updateQuery(predicate.keyPath, builder: { $0.whereField($1, arrayContainsAny: predicate.value) })
+        return self
+    }
+
+    @discardableResult
+    func `where`<V: Equatable>(_ predicate: InPredicate<D, V>) -> Self where V: Equatable {
+        updateQuery(predicate.keyPath, builder: { $0.whereField($1, in: predicate.value) })
+        return self
+    }
+
+    @discardableResult
     func order(by keyPath: PartialKeyPath<D>, descending: Bool = false) -> Self {
         updateQuery(keyPath, builder: { $0.order(by: $1, descending: descending) })
         return self
