@@ -15,6 +15,8 @@ public final class Snapshot<D>: SnapshotType where D: SnapshotData {
         DocumentPath(reference.path)
     }
 
+    public private(set) var snapshot: DocumentSnapshot?
+
     private var _createTime: Timestamp?
     private var _updateTime: Timestamp?
 
@@ -47,6 +49,7 @@ public final class Snapshot<D>: SnapshotType where D: SnapshotData {
         }
 
         self.init(data: data, reference: snapshot.reference)
+        self.snapshot = snapshot
         if data is HasTimestamps {
             _createTime = snapshot.data()?[SnapshotTimestampKey.createTime.rawValue] as? Timestamp
             _updateTime = snapshot.data()?[SnapshotTimestampKey.updateTime.rawValue] as? Timestamp

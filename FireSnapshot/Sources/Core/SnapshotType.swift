@@ -10,6 +10,7 @@ public protocol SnapshotType {
     associatedtype Data: SnapshotData
     var reference: DocumentReference { get }
     var data: Data { get }
+    var snapshot: DocumentSnapshot? { get }
 }
 
 public extension SnapshotType {
