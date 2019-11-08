@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "FireSnapshot"
-  s.version          = "0.10.0"
+  s.version          = "0.11.0"
   s.summary          = "Firebase Cloud Firestore Model Framework using Codable."
   s.homepage         = "https://github.com/sgr-ksmt/#{s.name}"
   s.license          = 'MIT'
@@ -14,13 +14,13 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |ss|
     ss.source_files = "FireSnapshot/Sources/Core/**/*.swift"
-    ss.dependency "Firebase/Firestore", "~> 6.9"
+    ss.dependency "Firebase/Firestore", "~> 6.12"
     ss.dependency "FirebaseFirestoreSwift", "~> 0.2"
   end
 
   s.subspec 'Storage' do |ss|
     ss.source_files = "FireSnapshot/Sources/Storage/*.swift"
     ss.dependency "FireSnapshot/Core"
-    ss.dependency "Firebase/Storage", "~> 6.9"
+    ss.dependency "Firebase/Storage", "~> 6.12"
   end
 end

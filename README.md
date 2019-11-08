@@ -373,14 +373,14 @@ Snapshot.get(.products, queryBuilder: { builder in
 - CocoaPods
 
 ```ruby
-pod 'FireSnapshot', '~> 0.10.0'
+pod 'FireSnapshot', '~> 0.11.0'
 ```
 
 <hr />
 
 ## Dependencies
 
-- Firebase: `v6.11.0` or higher.
+- Firebase: `v6.12.0` or higher.
 - FirebaseFirestoreSwift: Fetch from master branch.
 - Swift: `5.1` or higher.
 
