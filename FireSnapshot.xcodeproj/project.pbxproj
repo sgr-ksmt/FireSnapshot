@@ -641,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 25B42645485A6D1C6682724A /* Pods-FireSnapshot.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -668,6 +669,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 648BB37871CC0A94356CF0DB /* Pods-FireSnapshot.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
