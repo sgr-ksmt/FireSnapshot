@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "FireSnapshot"
-  s.version          = "0.11.0"
+  s.version          = "0.11.1"
   s.summary          = "Firebase Cloud Firestore Model Framework using Codable."
   s.homepage         = "https://github.com/sgr-ksmt/#{s.name}"
   s.license          = 'MIT'
