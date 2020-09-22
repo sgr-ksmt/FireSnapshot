@@ -1,6 +1,14 @@
 name: CI
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    branches:
+      - 'master'
+    paths-ignore:
+      - '**.md'
 
 jobs:
   test:
@@ -11,26 +19,26 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '8.14.x'
-      - uses: actions/cache@preview
+      - uses: actions/cache@v2
         with:
           path: Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pods-
-      - uses: actions/cache@preview
+      - uses: actions/cache@v2
         with:
           path: ~/.cache/firebase/emulators/
           key: ${{ runner.os }}-emulator-${{ hashFiles('**/.emulator_version') }}
           restore-keys: |
             ${{ runner.os }}-emulator-
-      - uses: actions/cache@preview
+      - uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gem-
       - name: Select Xcode version
-        run: sudo xcode-select -s '/Applications/Xcode_11.2.app/Contents/Developer'
+        run: sudo xcode-select -s '/Applications/Xcode_12.app/Contents/Developer'
       - name: Setup
         run: make
       - name: Install firebase-tools
