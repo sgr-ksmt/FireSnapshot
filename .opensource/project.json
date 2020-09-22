@@ -1,0 +1,5 @@
+{
+    "name": "FireSnapshot",
+    "platforms": ["iOS"],
+    "content": "README.md"
+}
