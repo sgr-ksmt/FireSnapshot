@@ -52,6 +52,6 @@ jobs:
       - name: Setup
         run: make
       - name: Install firebase-tools
-        run: npm install -g firebase-tools@latest
+        run: npm install -g firebase-tools@8.9.2
       - name: Run Test
         run: scripts/test.sh
